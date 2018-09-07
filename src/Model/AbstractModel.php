@@ -9,7 +9,8 @@ abstract class AbstractModel
     /**
      * AbstractModel constructor.
      * @param array $data
-     * @todo If property is of object type, instantiate and assign referenced classes
+     * @todo If property is a model, instantiate referenced model class
+     * @todo If property is a collection of models, instantiate referenced collection class
      */
     public function __construct(array $data = [])
     {
