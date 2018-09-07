@@ -37,9 +37,13 @@ class ClientContact extends AbstractModel
 
     /**
      * @var string
-     * @todo DateTime
      */
     public $phoneOffice;
+
+    /**
+     * @var string
+     */
+    public $phoneMobile;
 
     /**
      * @var
