@@ -52,7 +52,7 @@ class UserProjectAssignment extends AbstractModel
     public $user;
 
     /**
-     * @var ProjectTaskAssignment[]
+     * @var \arueckauer\Harvest\Collection\ProjectTaskAssignment
      */
     public $taskAssignments;
 }

@@ -15,7 +15,7 @@ class Estimate extends AbstractModel
     public $client;
 
     /**
-     * @var EstimateLineItem[]
+     * @var \arueckauer\Harvest\Collection\EstimateLineItem
      */
     public $lineItems;
 

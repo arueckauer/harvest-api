@@ -15,7 +15,7 @@ class Invoice extends AbstractModel
     public $client;
 
     /**
-     * @var InvoiceLineItem[]
+     * @var \arueckauer\Harvest\Collection\InvoiceLineItem
      */
     public $lineItems;
 

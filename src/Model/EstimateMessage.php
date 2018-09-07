@@ -30,7 +30,7 @@ class EstimateMessage extends AbstractModel
     public $sentFromEmail;
 
     /**
-     * @var EstimateMessageRecipient[]
+     * @var \arueckauer\Harvest\Collection\EstimateMessageRecipient
      */
     public $recipients;
 
