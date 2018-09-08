@@ -30,7 +30,7 @@ class InvoiceMessage extends AbstractModel
     public $sentFromEmail;
 
     /**
-     * @var array
+     * @var InvoiceMessageRecipient[]
      */
     public $recipients;
 
