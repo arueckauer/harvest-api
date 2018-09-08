@@ -107,4 +107,60 @@ abstract class AbstractEndpoint
     {
         return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
     }
+
+    /**
+     * Adds values of given required fields to $data array
+     * @param array $requiredFields
+     * @param array $data
+     * @param AbstractModel $model
+     * @return array
+     */
+    protected function addRequiredDataFromModel(array $requiredFields, array $data, AbstractModel $model): array
+    {
+        foreach ($requiredFields as $key => $property) {
+            $data[$key] = $model->$property;
+        }
+
+        return $data;
+    }
+
+    /**
+     * Adds non-null values of given optional fields to $data array
+     * @param array $optionalFields
+     * @param array $data
+     * @param AbstractModel $model
+     * @return array
+     */
+    protected function addOptionalDataFromModel(array $optionalFields, array $data, AbstractModel $model): array
+    {
+        foreach ($optionalFields as $key => $property) {
+            if (null !== $model->$property) {
+                $data[$key] = $model->$property;
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * Gets a value from a model as defined in property argument
+     * - For a direct property access, provide property name
+     * - For referencing a property of a model property, provide an array with model property in 'class'
+     * and property name in 'property'
+     * @param AbstractModel $model
+     * @param array|string $property
+     * @return mixed
+     */
+    private function getValueFromModel(AbstractModel $model, $property)
+    {
+        if (\is_string($property)) {
+            return $model->$property;
+        }
+
+        if (\is_array($property)) {
+            return $model->$property['class']->$property['property'];
+        }
+
+        throw new \InvalidArgumentException('Property argument must be either of type string or array, neither given.');
+    }
 }
