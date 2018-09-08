@@ -38,6 +38,47 @@ This package is heavily inspired by [bestit/harvest-api](https://github.com/best
 
 ## Todo
 
-- This
-- and
-- that
+* [ ] Using DateTime objects for all DateTime and Date fields (such as `created_at` and `updated_at`)
+* [ ] Set a default connect timeout (Guzzle sets it to `0` - unlimited)?
+* [ ] Singular vs plural entity naming convention. Keep it in beautiful singularity or speaking with API?
+* [ ] Use only one of the time entry creation methods (via duration or via start and end time) depending on `company.wants_timestamp_timers`. Is that even possible or does the user need to make the decision?
+* [ ] Error Handling: What is a good approach to handle the various [API Responses](https://help.getharvest.com/api-v2/introduction/overview/general/#api-responses)?
+
+```php
+switch ($response->getStatusCode()) {
+    // 200 Your request was successful.
+    case 200:
+        // All is well
+        break;
+    // 201 A new object has been created. It’s representation will be returned in the response body.
+    case 201:
+        // All is well
+        break;
+    // 403 The object you requested was found but you don’t have authorization to perform your request.
+    case 403:
+        // MC Hammer says, you can't touch this
+        break;
+    // 404 The object you requested can’t be found.
+    case 404:
+        // Nothing to see here, move on
+        break;
+    // 422 There were errors processing your request. Check the response body for additional information.
+    case 422:
+        // Sorry, what was your question?
+        break;
+    // 429 Your request has been throttled. Refer to the Rate Limiting section for details.
+    case 429:
+        // Hey McLightning, there's a speed limit here!
+        break;
+    // 500 There was a server error. Contact support@getharvest.com for help.
+    case 500:
+        // Houston, we have a problem.
+        break;
+    // Unknown status code
+    default:
+        break;
+}
+```
+
+
+
