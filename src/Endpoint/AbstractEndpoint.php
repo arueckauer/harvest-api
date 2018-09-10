@@ -114,11 +114,12 @@ abstract class AbstractEndpoint
      * @param array $data
      * @param AbstractModel $model
      * @return array
+     * @todo Abstract
      */
     protected function addRequiredDataFromModel(array $requiredFields, array $data, AbstractModel $model): array
     {
         foreach ($requiredFields as $key => $property) {
-            $data[$key] = $model->$property;
+            $data[$key] = $this->getValueFromModel($model, $property);
         }
 
         return $data;
@@ -130,12 +131,13 @@ abstract class AbstractEndpoint
      * @param array $data
      * @param AbstractModel $model
      * @return array
+     * @todo Abstract
      */
     protected function addOptionalDataFromModel(array $optionalFields, array $data, AbstractModel $model): array
     {
         foreach ($optionalFields as $key => $property) {
             if (null !== $model->$property) {
-                $data[$key] = $model->$property;
+                $data[$key] = $this->getValueFromModel($model, $property);
             }
         }
 
@@ -150,6 +152,7 @@ abstract class AbstractEndpoint
      * @param AbstractModel $model
      * @param array|string $property
      * @return mixed
+     * @todo Abstract
      */
     private function getValueFromModel(AbstractModel $model, $property)
     {
