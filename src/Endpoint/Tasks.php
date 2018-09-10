@@ -41,18 +41,6 @@ class Tasks extends AbstractEndpoint
     }
 
     /**
-     * Retrieve a task
-     * @see https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#retrieve-a-task
-     * @param int $taskId
-     * @return AbstractModel
-     */
-    public function get($taskId): AbstractModel
-    {
-        $response = $this->getHttpClient()->get(sprintf('tasks/%s', $taskId));
-        return $this->model(TaskModel::class, $response);
-    }
-
-    /**
      * Create a task
      * @see https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#create-a-task
      * @param TaskModel $task
@@ -65,6 +53,18 @@ class Tasks extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('tasks', $options);
 
+        return $this->model(TaskModel::class, $response);
+    }
+
+    /**
+     * Retrieve a task
+     * @see https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#retrieve-a-task
+     * @param int $taskId
+     * @return AbstractModel
+     */
+    public function get($taskId): AbstractModel
+    {
+        $response = $this->getHttpClient()->get(sprintf('tasks/%s', $taskId));
         return $this->model(TaskModel::class, $response);
     }
 
