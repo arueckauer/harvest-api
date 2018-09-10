@@ -134,7 +134,7 @@ class Invoices extends AbstractEndpoint
     }
 
     /**
-     * Update a task
+     * Update a an invoice
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#update-an-invoice
      * @param InvoiceModel $invoice
      * @return AbstractModel
