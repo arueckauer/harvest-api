@@ -34,7 +34,7 @@ class Tasks extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = [])
+    public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('tasks', $options);
         return $this->collection(TaskCollection::class, $response);
@@ -46,7 +46,7 @@ class Tasks extends AbstractEndpoint
      * @param int $taskId
      * @return AbstractModel
      */
-    public function get($taskId)
+    public function get($taskId): AbstractModel
     {
         $response = $this->getHttpClient()->get(sprintf('tasks/%s', $taskId));
         return $this->model(TaskModel::class, $response);
@@ -89,7 +89,7 @@ class Tasks extends AbstractEndpoint
      * @param int $taskId
      * @return \arueckauer\Harvest\Model\AbstractModel
      */
-    public function delete(int $taskId)
+    public function delete(int $taskId): AbstractModel
     {
         $response = $this->getHttpClient()->delete(sprintf('tasks/%s', $taskId));
         return $this->model(TaskModel::class, $response);
