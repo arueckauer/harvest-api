@@ -62,7 +62,7 @@ class Tasks extends AbstractEndpoint
      * @param int $taskId
      * @return AbstractModel
      */
-    public function get($taskId): AbstractModel
+    public function get(int $taskId): AbstractModel
     {
         $response = $this->getHttpClient()->get(sprintf('tasks/%s', $taskId));
         return $this->model(TaskModel::class, $response);

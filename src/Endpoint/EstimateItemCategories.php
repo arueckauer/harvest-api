@@ -50,7 +50,7 @@ class EstimateItemCategories extends AbstractEndpoint
      * @param int $estimateItemCategoryId
      * @return AbstractModel
      */
-    public function get($estimateItemCategoryId): AbstractModel
+    public function get(int $estimateItemCategoryId): AbstractModel
     {
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategoryId);
         $response = $this->getHttpClient()->get($uri);

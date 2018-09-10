@@ -124,7 +124,7 @@ class Estimates extends AbstractEndpoint
      * @param int $estimateId
      * @return AbstractModel
      */
-    public function get($estimateId): AbstractModel
+    public function get(int $estimateId): AbstractModel
     {
         $response = $this->getHttpClient()->get(sprintf('estimates/%s', $estimateId));
         return $this->model(EstimateModel::class, $response);

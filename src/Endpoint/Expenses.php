@@ -70,7 +70,7 @@ class Expenses extends AbstractEndpoint
      * @param int $expenseId
      * @return AbstractModel
      */
-    public function get($expenseId): AbstractModel
+    public function get(int $expenseId): AbstractModel
     {
         $response = $this->getHttpClient()->get(sprintf('expenses/%s', $expenseId));
         return $this->model(ExpenseModel::class, $response);

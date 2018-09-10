@@ -60,7 +60,7 @@ class ExpenseCategories extends AbstractEndpoint
      * @param int $expenseCategoryId
      * @return AbstractModel
      */
-    public function get($expenseCategoryId): AbstractModel
+    public function get(int $expenseCategoryId): AbstractModel
     {
         $response = $this->getHttpClient()->get(sprintf('expense_categories/%s', $expenseCategoryId));
         return $this->model(ExpenseCategoryModel::class, $response);

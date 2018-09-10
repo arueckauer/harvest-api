@@ -89,7 +89,7 @@ class TimeEntries extends AbstractEndpoint
      * @param int $timeEntryId
      * @return AbstractModel
      */
-    public function get($timeEntryId): AbstractModel
+    public function get(int $timeEntryId): AbstractModel
     {
         $response = $this->getHttpClient()->get(sprintf('time_entries/%s', $timeEntryId));
         return $this->model(TimeEntryModel::class, $response);

@@ -62,7 +62,7 @@ class InvoiceItemCategories extends AbstractEndpoint
      * @param int $invoiceItemCategoryId
      * @return AbstractModel
      */
-    public function get($invoiceItemCategoryId): AbstractModel
+    public function get(int $invoiceItemCategoryId): AbstractModel
     {
         $uri      = sprintf('invoice_item_categories/%s', $invoiceItemCategoryId);
         $response = $this->getHttpClient()->get($uri);

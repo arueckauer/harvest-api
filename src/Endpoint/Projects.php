@@ -92,7 +92,7 @@ class Projects extends AbstractEndpoint
      * @param int $projectId
      * @return AbstractModel
      */
-    public function get($projectId): AbstractModel
+    public function get(int $projectId): AbstractModel
     {
         $response = $this->getHttpClient()->get(sprintf('projects/%s', $projectId));
         return $this->model(ProjectModel::class, $response);

@@ -91,7 +91,7 @@ class Invoices extends AbstractEndpoint
      * @param int $invoiceId
      * @return AbstractModel
      */
-    public function get($invoiceId): AbstractModel
+    public function get(int $invoiceId): AbstractModel
     {
         $response = $this->getHttpClient()->get(sprintf('invoices/%s', $invoiceId));
         return $this->model(InvoiceModel::class, $response);
