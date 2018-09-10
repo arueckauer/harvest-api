@@ -97,7 +97,7 @@ class ClientContacts extends AbstractEndpoint
      * Delete a contact
      * @see https://help.getharvest.com/api-v2/clients-api/clients/contacts/#delete-a-contact
      * @param int $contactId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $contactId): AbstractModel
     {

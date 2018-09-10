@@ -148,7 +148,7 @@ class TimeEntries extends AbstractEndpoint
      * Delete a time entry
      * @see https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#delete-a-time-entry
      * @param int $timeEntryId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $timeEntryId): AbstractModel
     {

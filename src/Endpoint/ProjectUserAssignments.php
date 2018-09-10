@@ -108,7 +108,7 @@ class ProjectUserAssignments extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#delete-a-user-assignment
      * @param int $projectUserAssignmentId
      * @param int $projectId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $projectId, int $projectUserAssignmentId): AbstractModel
     {

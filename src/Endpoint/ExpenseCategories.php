@@ -85,7 +85,7 @@ class ExpenseCategories extends AbstractEndpoint
      * Delete an expense category
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#delete-an-expense-category
      * @param int $expenseCategoryId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $expenseCategoryId): AbstractModel
     {

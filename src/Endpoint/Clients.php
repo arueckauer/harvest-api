@@ -85,7 +85,7 @@ class Clients extends AbstractEndpoint
      * Delete a client
      * @see https://help.getharvest.com/api-v2/clients-api/clients/clients/#delete-a-client
      * @param int $clientId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $clientId): AbstractModel
     {

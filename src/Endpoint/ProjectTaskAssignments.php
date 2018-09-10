@@ -107,7 +107,7 @@ class ProjectTaskAssignments extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#delete-a-task-assignment
      * @param int $projectTaskAssignmentId
      * @param int $projectId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $projectId, int $projectTaskAssignmentId): AbstractModel
     {

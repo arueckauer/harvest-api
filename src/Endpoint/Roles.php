@@ -85,7 +85,7 @@ class Roles extends AbstractEndpoint
      * Delete a role
      * @see https://help.getharvest.com/api-v2/roles-api/roles/roles/#delete-a-role
      * @param int $roleId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $roleId): AbstractModel
     {

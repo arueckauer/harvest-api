@@ -77,7 +77,7 @@ class EstimateItemCategories extends AbstractEndpoint
      * Delete an estimate item category
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#delete-an-estimate-item-category
      * @param int $estimateItemCategoryId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $estimateItemCategoryId): AbstractModel
     {

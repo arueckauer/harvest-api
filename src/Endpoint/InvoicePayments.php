@@ -56,7 +56,7 @@ class InvoicePayments extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-payments/#delete-an-invoice-payment
      * @param int $invoiceId
      * @param int $invoicePaymentId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $invoiceId, int $invoicePaymentId): AbstractModel
     {

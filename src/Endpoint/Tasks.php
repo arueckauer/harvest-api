@@ -87,7 +87,7 @@ class Tasks extends AbstractEndpoint
      * Delete a task
      * @see https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#delete-a-task
      * @param int $taskId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $taskId): AbstractModel
     {

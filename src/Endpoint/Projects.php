@@ -117,7 +117,7 @@ class Projects extends AbstractEndpoint
      * Delete a project
      * @see https://help.getharvest.com/api-v2/projects-api/projects/projects/#delete-a-project
      * @param int $projectId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $projectId): AbstractModel
     {

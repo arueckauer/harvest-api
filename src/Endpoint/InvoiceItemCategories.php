@@ -89,7 +89,7 @@ class InvoiceItemCategories extends AbstractEndpoint
      * Delete an invoice item category
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#delete-an-invoice-item-category
      * @param int $invoiceItemCategoryId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $invoiceItemCategoryId): AbstractModel
     {

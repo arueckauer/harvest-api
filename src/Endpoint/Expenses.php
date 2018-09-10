@@ -95,7 +95,7 @@ class Expenses extends AbstractEndpoint
      * Delete an expense
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#delete-an-expense
      * @param int $expenseId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $expenseId): AbstractModel
     {

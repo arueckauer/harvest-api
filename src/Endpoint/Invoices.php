@@ -153,7 +153,7 @@ class Invoices extends AbstractEndpoint
      * Delete an invoice line item
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#delete-an-invoice-line-item
      * @param int $lineItemId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function deleteLineItem(int $lineItemId): AbstractModel
     {
@@ -173,7 +173,7 @@ class Invoices extends AbstractEndpoint
      * Delete an invoice
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#delete-an-invoice
      * @param int $invoiceId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $invoiceId): AbstractModel
     {

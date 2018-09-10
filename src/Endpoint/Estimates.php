@@ -166,7 +166,7 @@ class Estimates extends AbstractEndpoint
      * Delete an estimate
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#delete-an-estimate
      * @param int $estimateId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $estimateId): AbstractModel
     {
@@ -179,7 +179,7 @@ class Estimates extends AbstractEndpoint
      * Delete an estimate line item
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#delete-an-estimate-line-item
      * @param int $lineItemId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function deleteLineItem(int $lineItemId): AbstractModel
     {
