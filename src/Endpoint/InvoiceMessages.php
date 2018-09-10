@@ -87,7 +87,7 @@ class InvoiceMessages extends AbstractEndpoint
      * @param int $invoiceId
      * @return AbstractModel
      */
-    public function markDraftAsSent(int $invoiceId): AbstractModel
+    public function markDraftInvoiceAsSent(int $invoiceId): AbstractModel
     {
         return $this->updateEventType($invoiceId, self::EVENT_TYPE_SEND);
     }
