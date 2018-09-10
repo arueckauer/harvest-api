@@ -34,7 +34,7 @@ No, my father didn't fight in the wars. He was a navigator on a spice freighter.
 
 ## Acknowledgements
 
-This package is heavily inspired by [bestit/harvest-api](https://github.com/bestit/harvest-api), which at the time of development supported Harvest API V1 but not V2.
+This package is heavily inspired by [bestit/harvest-api](https://github.com/bestit/harvest-api), which at the time of development supported Harvest API V1.
 
 ## Todo
 
