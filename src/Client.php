@@ -6,6 +6,7 @@ use arueckauer\Harvest\Endpoint\ClientContacts;
 use arueckauer\Harvest\Endpoint\Clients;
 use arueckauer\Harvest\Endpoint\Company;
 use arueckauer\Harvest\Endpoint\ExpenseCategories;
+use arueckauer\Harvest\Endpoint\Roles;
 use arueckauer\Harvest\Endpoint\Tasks;
 use arueckauer\Harvest\Endpoint\TimeEntries;
 use GuzzleHttp\Client as HttpClient;
@@ -37,6 +38,11 @@ class Client
      * @var ExpenseCategories
      */
     private $expenseCategories;
+
+    /**
+     * @var Roles
+     */
+    private $roles;
 
     /**
      * @var Tasks
@@ -156,6 +162,19 @@ class Client
         }
 
         return $this->expenseCategories;
+    }
+
+    /**
+     * Gets tasks endpoint
+     * @return Roles
+     */
+    public function roles(): Roles
+    {
+        if (null === $this->roles) {
+            $this->roles = new Roles($this->getHttpClient());
+        }
+
+        return $this->roles;
     }
 
     /**
