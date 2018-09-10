@@ -5,6 +5,7 @@ namespace arueckauer\Harvest;
 use arueckauer\Harvest\Endpoint\ClientContacts;
 use arueckauer\Harvest\Endpoint\Clients;
 use arueckauer\Harvest\Endpoint\Company;
+use arueckauer\Harvest\Endpoint\ExpenseCategories;
 use arueckauer\Harvest\Endpoint\Tasks;
 use arueckauer\Harvest\Endpoint\TimeEntries;
 use GuzzleHttp\Client as HttpClient;
@@ -31,6 +32,11 @@ class Client
      * @var Company
      */
     private $company;
+
+    /**
+     * @var ExpenseCategories
+     */
+    private $expenseCategories;
 
     /**
      * @var Tasks
@@ -137,6 +143,19 @@ class Client
         }
 
         return $this->company;
+    }
+
+    /**
+     * Gets expense categories endpoint
+     * @return ExpenseCategories
+     */
+    public function expenseCategories(): ExpenseCategories
+    {
+        if (null === $this->expenseCategories) {
+            $this->expenseCategories = new ExpenseCategories($this->getHttpClient());
+        }
+
+        return $this->expenseCategories;
     }
 
     /**
