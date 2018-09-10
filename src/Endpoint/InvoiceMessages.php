@@ -72,7 +72,7 @@ class InvoiceMessages extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#delete-an-invoice-message
      * @param int $invoiceId
      * @param int $invoiceMessageId
-     * @return \arueckauer\Harvest\Model\AbstractModel
+     * @return AbstractModel
      */
     public function delete(int $invoiceId, int $invoiceMessageId): AbstractModel
     {
