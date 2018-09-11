@@ -6,6 +6,7 @@ use arueckauer\Harvest\Endpoint\ClientContacts;
 use arueckauer\Harvest\Endpoint\Clients;
 use arueckauer\Harvest\Endpoint\Company;
 use arueckauer\Harvest\Endpoint\ExpenseCategories;
+use arueckauer\Harvest\Endpoint\Projects;
 use arueckauer\Harvest\Endpoint\Roles;
 use arueckauer\Harvest\Endpoint\Tasks;
 use arueckauer\Harvest\Endpoint\TimeEntries;
@@ -53,6 +54,11 @@ class Client
      * @var TimeEntries
      */
     private $timeEntries;
+
+    /**
+     * @var Projects
+     */
+    private $projects;
 
     /**
      * @var array
@@ -201,6 +207,19 @@ class Client
         }
 
         return $this->timeEntries;
+    }
+
+    /**
+     * Gets projects endpoint
+     * @return Projects
+     */
+    public function projects(): Projects
+    {
+        if (null === $this->projects) {
+            $this->projects = new Projects($this->getHttpClient());
+        }
+
+        return $this->projects;
     }
 
     /**
