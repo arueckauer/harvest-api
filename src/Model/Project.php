@@ -10,6 +10,11 @@ class Project extends AbstractModel
     public $id;
 
     /**
+     * @var int
+     */
+    public $clientId;
+
+    /**
      * @var Client
      */
     public $client;
