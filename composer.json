@@ -5,8 +5,7 @@
     "homepage": "https://github.com/arueckauer/harvest-api",
     "license": "MIT",
     "authors": [{
-        "name": "Andi Rückauer",
-        "email": "github@rueckauer.ch"
+        "name": "Andi Rückauer"
     }],
     "keywords": [
         "harvest",
