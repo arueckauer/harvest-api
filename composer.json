@@ -6,7 +6,8 @@
     "license": "MIT",
     "authors": [{
         "name": "Andi Rückauer",
-        "homepage": "https://github.com/arueckauer"
+        "homepage": "https://github.com/arueckauer",
+        "role": "Developer"
     }],
     "keywords": [
         "harvest",
