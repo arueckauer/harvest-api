@@ -1,5 +1,7 @@
 # Harvest API
 
+**Important: This package is under development and thus neither fully implemented or tested. Not production ready!**
+
 Harvest 2 API using OAuth access tokens
 
 Please see <https://github.com/arueckauer/harvest-api> for background information.
