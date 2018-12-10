@@ -8,7 +8,9 @@ Please see <https://github.com/arueckauer/harvest-api> for background informatio
 
 ## Getting Started
 
-Biggs, Wedge, let's close it up. We're going in. We're going in full throttle. Right with you, boss. Luke, at that speed will you be able to pull out in time? It'll be just like Beggar's Canyon back home.
+### Install via composer
+
+```composer require arueckauer/harvest-api```
 
 ## Usage
 
