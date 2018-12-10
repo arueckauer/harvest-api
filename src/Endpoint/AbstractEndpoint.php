@@ -1,9 +1,9 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Model\AbstractModel;
+use arueckauer\HarvestApi\Collection\AbstractCollection;
+use arueckauer\HarvestApi\Model\AbstractModel;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;

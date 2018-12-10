@@ -1,11 +1,11 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\Client as ClientCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\Client as ClientModel;
+use arueckauer\HarvestApi\Collection\AbstractCollection;
+use arueckauer\HarvestApi\Collection\Client as ClientCollection;
+use arueckauer\HarvestApi\Model\AbstractModel;
+use arueckauer\HarvestApi\Model\Client as ClientModel;
 
 class Clients extends AbstractEndpoint
 {

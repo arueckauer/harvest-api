@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\Project as ProjectModel;
+use arueckauer\HarvestApi\Model\Project as ProjectModel;
 
 class Project extends AbstractCollection
 {

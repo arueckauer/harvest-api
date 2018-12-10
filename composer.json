@@ -1,5 +1,5 @@
 {
-    "name": "arueckauer/harvest",
+    "name": "arueckauer/harvest-api",
     "type": "library",
     "description": "Harvest 2 API using OAuth access tokens",
     "homepage": "https://github.com/arueckauer/harvest-api",
@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "arueckauer\\Harvest\\": "src/"
+            "arueckauer\\HarvestApi\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "arueckauer\\Harvest\\": "tests/"
+            "arueckauer\\HarvestApi\\": "tests/"
         }
     }
 }

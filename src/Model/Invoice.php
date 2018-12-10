@@ -1,6 +1,6 @@
 <?php
 
-namespace arueckauer\Harvest\Model;
+namespace arueckauer\HarvestApi\Model;
 
 class Invoice extends AbstractModel
 {
@@ -15,7 +15,7 @@ class Invoice extends AbstractModel
     public $client;
 
     /**
-     * @var \arueckauer\Harvest\Collection\InvoiceLineItem
+     * @var \arueckauer\HarvestApi\Collection\InvoiceLineItem
      */
     public $lineItems;
 

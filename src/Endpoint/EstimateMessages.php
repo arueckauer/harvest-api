@@ -1,11 +1,11 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\EstimateMessage as EstimateMessageCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\EstimateMessage as EstimateMessageModel;
+use arueckauer\HarvestApi\Collection\AbstractCollection;
+use arueckauer\HarvestApi\Collection\EstimateMessage as EstimateMessageCollection;
+use arueckauer\HarvestApi\Model\AbstractModel;
+use arueckauer\HarvestApi\Model\EstimateMessage as EstimateMessageModel;
 
 class EstimateMessages extends AbstractEndpoint
 {

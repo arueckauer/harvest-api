@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\UserProjectAssignment as UserProjectAssignmentModel;
+use arueckauer\HarvestApi\Model\UserProjectAssignment as UserProjectAssignmentModel;
 
 class UserProjectAssignment extends AbstractCollection
 {

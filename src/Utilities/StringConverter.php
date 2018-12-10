@@ -1,6 +1,6 @@
 <?php
 
-namespace arueckauer\Harvest\Utilities;
+namespace arueckauer\HarvestApi\Utilities;
 
 /**
  * Class Utils

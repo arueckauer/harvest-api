@@ -1,11 +1,11 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\Role as RoleCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\Role as RoleModel;
+use arueckauer\HarvestApi\Collection\AbstractCollection;
+use arueckauer\HarvestApi\Collection\Role as RoleCollection;
+use arueckauer\HarvestApi\Model\AbstractModel;
+use arueckauer\HarvestApi\Model\Role as RoleModel;
 
 class Roles extends AbstractEndpoint
 {

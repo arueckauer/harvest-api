@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\Task as TaskModel;
+use arueckauer\HarvestApi\Model\Task as TaskModel;
 
 class Task extends AbstractCollection
 {

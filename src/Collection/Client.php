@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\Client as ClientModel;
+use arueckauer\HarvestApi\Model\Client as ClientModel;
 
 class Client extends AbstractCollection
 {

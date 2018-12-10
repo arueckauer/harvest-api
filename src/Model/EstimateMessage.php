@@ -1,6 +1,6 @@
 <?php
 
-namespace arueckauer\Harvest\Model;
+namespace arueckauer\HarvestApi\Model;
 
 class EstimateMessage extends AbstractModel
 {
@@ -30,7 +30,7 @@ class EstimateMessage extends AbstractModel
     public $sentFromEmail;
 
     /**
-     * @var \arueckauer\Harvest\Collection\EstimateMessageRecipient
+     * @var \arueckauer\HarvestApi\Collection\EstimateMessageRecipient
      */
     public $recipients;
 

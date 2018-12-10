@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\Expense as ExpenseModel;
+use arueckauer\HarvestApi\Model\Expense as ExpenseModel;
 
 class Expense extends AbstractCollection
 {

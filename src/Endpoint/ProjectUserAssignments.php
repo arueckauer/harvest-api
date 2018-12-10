@@ -1,11 +1,11 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\ProjectUserAssignment as ProjectUserAssignmentCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\ProjectUserAssignment as ProjectUserAssignmentModel;
+use arueckauer\HarvestApi\Collection\AbstractCollection;
+use arueckauer\HarvestApi\Collection\ProjectUserAssignment as ProjectUserAssignmentCollection;
+use arueckauer\HarvestApi\Model\AbstractModel;
+use arueckauer\HarvestApi\Model\ProjectUserAssignment as ProjectUserAssignmentModel;
 
 class ProjectUserAssignments extends AbstractEndpoint
 {

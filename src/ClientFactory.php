@@ -1,6 +1,6 @@
 <?php
 
-namespace arueckauer\Harvest;
+namespace arueckauer\HarvestApi;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;

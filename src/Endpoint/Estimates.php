@@ -1,13 +1,13 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\Estimate as EstimateCollection;
-use arueckauer\Harvest\Collection\EstimateLineItem as LineItemCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\Estimate as EstimateModel;
-use arueckauer\Harvest\Model\EstimateLineItem;
+use arueckauer\HarvestApi\Collection\AbstractCollection;
+use arueckauer\HarvestApi\Collection\Estimate as EstimateCollection;
+use arueckauer\HarvestApi\Collection\EstimateLineItem as LineItemCollection;
+use arueckauer\HarvestApi\Model\AbstractModel;
+use arueckauer\HarvestApi\Model\Estimate as EstimateModel;
+use arueckauer\HarvestApi\Model\EstimateLineItem;
 
 class Estimates extends AbstractEndpoint
 {

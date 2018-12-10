@@ -1,12 +1,12 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\Invoice as InvoiceCollection;
-use arueckauer\Harvest\Collection\InvoiceLineItem as LineItemCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\Invoice as InvoiceModel;
+use arueckauer\HarvestApi\Collection\AbstractCollection;
+use arueckauer\HarvestApi\Collection\Invoice as InvoiceCollection;
+use arueckauer\HarvestApi\Collection\InvoiceLineItem as LineItemCollection;
+use arueckauer\HarvestApi\Model\AbstractModel;
+use arueckauer\HarvestApi\Model\Invoice as InvoiceModel;
 
 class Invoices extends AbstractEndpoint
 {

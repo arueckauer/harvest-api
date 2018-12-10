@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\Role as RoleModel;
+use arueckauer\HarvestApi\Model\Role as RoleModel;
 
 class Role extends AbstractCollection
 {

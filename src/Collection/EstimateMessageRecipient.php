@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\EstimateMessageRecipient as EstimateMessageRecipientModel;
+use arueckauer\HarvestApi\Model\EstimateMessageRecipient as EstimateMessageRecipientModel;
 
 class EstimateMessageRecipient extends AbstractCollection
 {

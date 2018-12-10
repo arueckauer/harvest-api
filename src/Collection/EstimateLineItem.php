@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\EstimateLineItem as EstimateLineItemModel;
+use arueckauer\HarvestApi\Model\EstimateLineItem as EstimateLineItemModel;
 
 class EstimateLineItem extends AbstractCollection
 {

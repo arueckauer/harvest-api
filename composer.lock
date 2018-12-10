@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59e7875b893b4fb2ee9d52ddbb232c8c",
+    "content-hash": "408dd5f85a0cf8bc240520239cbd90d5",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -129,12 +129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "4b909c00f9e834d99cba188593ce387bfdfabfc7"
+                "reference": "5e61346ab1e1ca7d01d2f633bad9574d35717781"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/4b909c00f9e834d99cba188593ce387bfdfabfc7",
-                "reference": "4b909c00f9e834d99cba188593ce387bfdfabfc7",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/5e61346ab1e1ca7d01d2f633bad9574d35717781",
+                "reference": "5e61346ab1e1ca7d01d2f633bad9574d35717781",
                 "shasum": ""
             },
             "require": {
@@ -147,6 +147,9 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
+            },
+            "suggest": {
+                "zendframework/zend-httphandlerrunner": "Emit PSR-7 responses"
             },
             "type": "library",
             "extra": {
@@ -188,7 +191,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2018-12-07T12:06:34+00:00"
+            "time": "2018-12-07T15:04:46+00:00"
         },
         {
             "name": "psr/http-message",
@@ -242,23 +245,23 @@
         },
         {
             "name": "ralouphie/getallheaders",
-            "version": "2.0.5",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ralouphie/getallheaders.git",
-                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa"
+                "reference": "cd148e0cf8789def229b1bc24be0cb0eeb24301c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
-                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/cd148e0cf8789def229b1bc24be0cb0eeb24301c",
+                "reference": "cd148e0cf8789def229b1bc24be0cb0eeb24301c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3"
+                "php": ">=5.6"
             },
             "require-dev": {
-                "phpunit/phpunit": "~3.7.0",
+                "phpunit/phpunit": "^5",
                 "satooshi/php-coveralls": ">=1.0"
             },
             "type": "library",
@@ -278,7 +281,7 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
-            "time": "2016-02-11T07:05:27+00:00"
+            "time": "2018-12-10T04:22:02+00:00"
         }
     ],
     "packages-dev": [],

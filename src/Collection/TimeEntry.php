@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\TimeEntry as TimeEntryModel;
+use arueckauer\HarvestApi\Model\TimeEntry as TimeEntryModel;
 
 class TimeEntry extends AbstractCollection
 {

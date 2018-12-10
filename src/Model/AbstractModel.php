@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Model;
+namespace arueckauer\HarvestApi\Model;
 
-use arueckauer\Harvest\Utilities\StringConverter;
+use arueckauer\HarvestApi\Utilities\StringConverter;
 
 abstract class AbstractModel
 {

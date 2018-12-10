@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\User as UserModel;
+use arueckauer\HarvestApi\Model\User as UserModel;
 
 class User extends AbstractCollection
 {

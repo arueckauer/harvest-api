@@ -1,9 +1,9 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\Company as CompanyModel;
+use arueckauer\HarvestApi\Model\AbstractModel;
+use arueckauer\HarvestApi\Model\Company as CompanyModel;
 
 class Company extends AbstractEndpoint
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
 use ArrayAccess;
 use ArrayIterator;

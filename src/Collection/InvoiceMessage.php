@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\InvoiceMessage as InvoiceMessageModel;
+use arueckauer\HarvestApi\Model\InvoiceMessage as InvoiceMessageModel;
 
 class InvoiceMessage extends AbstractCollection
 {

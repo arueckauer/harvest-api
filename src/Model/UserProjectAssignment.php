@@ -1,6 +1,6 @@
 <?php
 
-namespace arueckauer\Harvest\Model;
+namespace arueckauer\HarvestApi\Model;
 
 class UserProjectAssignment extends AbstractModel
 {
@@ -52,7 +52,7 @@ class UserProjectAssignment extends AbstractModel
     public $user;
 
     /**
-     * @var \arueckauer\Harvest\Collection\ProjectTaskAssignment
+     * @var \arueckauer\HarvestApi\Collection\ProjectTaskAssignment
      */
     public $taskAssignments;
 }

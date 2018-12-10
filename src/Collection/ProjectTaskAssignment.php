@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\ProjectTaskAssignment as ProjectTaskAssignmentModel;
+use arueckauer\HarvestApi\Model\ProjectTaskAssignment as ProjectTaskAssignmentModel;
 
 class ProjectTaskAssignment extends AbstractCollection
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace arueckauer\Harvest;
+namespace arueckauer\HarvestApi;
 
-use arueckauer\Harvest\Endpoint\ClientContacts;
-use arueckauer\Harvest\Endpoint\Clients;
-use arueckauer\Harvest\Endpoint\Company;
-use arueckauer\Harvest\Endpoint\ExpenseCategories;
-use arueckauer\Harvest\Endpoint\Projects;
-use arueckauer\Harvest\Endpoint\Roles;
-use arueckauer\Harvest\Endpoint\Tasks;
-use arueckauer\Harvest\Endpoint\TimeEntries;
+use arueckauer\HarvestApi\Endpoint\ClientContacts;
+use arueckauer\HarvestApi\Endpoint\Clients;
+use arueckauer\HarvestApi\Endpoint\Company;
+use arueckauer\HarvestApi\Endpoint\ExpenseCategories;
+use arueckauer\HarvestApi\Endpoint\Projects;
+use arueckauer\HarvestApi\Endpoint\Roles;
+use arueckauer\HarvestApi\Endpoint\Tasks;
+use arueckauer\HarvestApi\Endpoint\TimeEntries;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\ClientInterface;
 

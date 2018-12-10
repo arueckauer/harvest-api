@@ -1,6 +1,6 @@
 <?php
 
-namespace arueckauer\Harvest\Model;
+namespace arueckauer\HarvestApi\Model;
 
 class InvoiceLineItem extends AbstractModel
 {

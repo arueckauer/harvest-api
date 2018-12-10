@@ -1,8 +1,8 @@
 <?php
 
-namespace arueckauer\Harvest\Collection;
+namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\Harvest\Model\ExpenseCategory as ExpenseCategoryModel;
+use arueckauer\HarvestApi\Model\ExpenseCategory as ExpenseCategoryModel;
 
 class ExpenseCategory extends AbstractCollection
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\EstimateItemCategory as EstimateItemCategoryCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\EstimateItemCategory as EstimateItemCategoryModel;
+use arueckauer\HarvestApi\Collection\AbstractCollection;
+use arueckauer\HarvestApi\Collection\EstimateItemCategory as EstimateItemCategoryCollection;
+use arueckauer\HarvestApi\Model\AbstractModel;
+use arueckauer\HarvestApi\Model\EstimateItemCategory as EstimateItemCategoryModel;
 
 class EstimateItemCategories extends AbstractEndpoint
 {
