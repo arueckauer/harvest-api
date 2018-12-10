@@ -321,13 +321,14 @@
 
 ### Users
 
-|          | Endpoint Class | PHP-Call | API-Call (postman) |
-| -------- | :------------: | :------: | :----------------: |
-| all      |                |          |                    |
-| create   |                |          |                    |
-| retrieve |                |          |                    |
-| update   |                |          |                    |
-| delete   |                |          |                    |
-|          |                |          |                    |
-|          |                |          |                    |
-|          |                |          |                    |
+|             | Endpoint Class | PHP-Call | API-Call (postman) |
+| ----------- | :------------: | :------: | :----------------: |
+| all         |       ✓        |    ✓     |         ✓          |
+| create      |       ✓        |    ✓     |         ✓          |
+| retrieve-me |                |          |                    |
+| retrieve    |       ✓        |    ✓     |         ✓          |
+| update      |       ✓        |    ✓     |         ✓          |
+| delete      |       ✓        |    ✓     |         ✓          |
+|             |                |          |                    |
+|             |                |          |                    |
+|             |                |          |                    |

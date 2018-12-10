@@ -10,6 +10,7 @@ use arueckauer\HarvestApi\Endpoint\Projects;
 use arueckauer\HarvestApi\Endpoint\Roles;
 use arueckauer\HarvestApi\Endpoint\Tasks;
 use arueckauer\HarvestApi\Endpoint\TimeEntries;
+use arueckauer\HarvestApi\Endpoint\Users;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\ClientInterface;
 
@@ -59,6 +60,11 @@ class Client
      * @var Projects
      */
     private $projects;
+
+    /**
+     * @var Users
+     */
+    private $users;
 
     /**
      * @var array
@@ -220,6 +226,19 @@ class Client
         }
 
         return $this->projects;
+    }
+
+    /**
+     * Gets users endpoint
+     * @return Users
+     */
+    public function users(): Users
+    {
+        if (null === $this->users) {
+            $this->users = new Users($this->getHttpClient());
+        }
+
+        return $this->users;
     }
 
     /**
