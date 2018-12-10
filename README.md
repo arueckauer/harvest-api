@@ -8,7 +8,7 @@ Please see <https://github.com/arueckauer/harvest-api> for background informatio
 
 ## Getting Started
 
-### Install via composer
+Install via [composer](https://getcomposer.org/)
 
 ```composer require arueckauer/harvest-api```
 
