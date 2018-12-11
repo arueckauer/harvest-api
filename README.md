@@ -104,11 +104,11 @@ Please read and adhere to our [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md).
 
 ### Submitting Bugs
 
-Work in progress
+This package is still under development and thus incomplete features and bugs are to be expected. If you experience any difficulties, feel free to open an issue here on GitHub.
 
 ### Pull requests
 
-Work in progress
+Contributions via pull requests are welcome.
 
 ## Acknowledgements
 
