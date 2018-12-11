@@ -6,8 +6,6 @@ Harvest 2 API using OAuth access tokens
 
 Please see <https://github.com/arueckauer/harvest-api> for background information.
 
-[TOC]
-
 ## Getting Started
 
 Install via [composer](https://getcomposer.org/)
