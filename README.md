@@ -26,7 +26,7 @@ Place configuration of your Harvest account in`config/autoload/application.local
 declare(strict_types = 1);
 
 return [
-    arueckauer\Harvest\ClientFactory::class => [
+    arueckauer\HarvestApi\ClientFactory::class => [
         'config' => [
             'headers' => [
                 'Authorization'      => 'Bearer ???',
@@ -62,7 +62,7 @@ class HarvestApiFactory
 {
     public function __invoke(ContainerInterface $container) : HarvestApi
     {
-        return new HarvestApi($container->get(\arueckauer\Harvest\Client::class));
+        return new HarvestApi($container->get(\arueckauer\HarvestApi\Client::class));
     }
 }
 
