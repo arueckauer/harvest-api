@@ -96,7 +96,7 @@ $client = new \arueckauer\HarvestApi\Client($headers);
 
 ## Test
 
-Let me see your identification. You don't need to see his identification. We don't need to see his identification.
+Work in progress
 
 ## License
 
@@ -104,21 +104,23 @@ MIT License. See [LICENSE](LICENSE)
 
 ## Contributing
 
-Seventeen thousand! Those guys must really be desperate. This could really save my neck. Get back to the ship and get her ready.
+Work in progress
 
 ### Submitting Bugs
 
-Close up formation. You'd better let her loose. Almost there! I can't hold them! It's away! It's a hit! Negative. Negative! It didn't go in. It just impacted on the surface.
+Work in progress
 
 ### Pull requests
 
-No, my father didn't fight in the wars. He was a navigator on a spice freighter. That's what your uncle told you. He didn't hold with your father's ideals.
+Work in progress
 
 ## Acknowledgements
 
 This package is heavily inspired by [bestit/harvest-api](https://github.com/bestit/harvest-api), which at the time of development supported Harvest API V1.
 
 ## Todo
+
+To check the current status of the implementation, check out [CHECKLIST](CHECKLIST.md). The following contains a list of further to-dos.
 
 * [ ] Using DateTime objects for all DateTime and Date fields (such as `created_at` and `updated_at`)
 * [ ] Set a default connect timeout (Guzzle sets it to `0` - unlimited)?
