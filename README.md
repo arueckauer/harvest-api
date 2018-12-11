@@ -100,7 +100,7 @@ MIT License. See [LICENSE](LICENSE)
 
 ## Contributing
 
-Work in progress
+Please read and adhere to our [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md).
 
 ### Submitting Bugs
 
