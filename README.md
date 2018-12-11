@@ -29,9 +29,9 @@ return [
     arueckauer\HarvestApi\ClientFactory::class => [
         'config' => [
             'headers' => [
-                'Authorization'      => 'Bearer ???',
-                'Harvest-Account-Id' => '???',
-                'User-Agent'         => 'My Harvest App (https://example.com)',
+                'Authorization'      => 'Bearer $ACCESS_TOKEN',
+                'Harvest-Account-Id' => '$ACCOUNT_ID',
+                'User-Agent'         => 'MyApp (yourname@example.com)',
             ],
         ],
     ],
@@ -80,9 +80,9 @@ class HarvestApiFactory
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $headers = [
-    'Authorization'      => 'Bearer 1691208.pt.BzCN8w2Nhs8TMeRfsX_2S2_HDup7e_7e5GPXUUsgkAOu_30BFI9zJjJLLZvyA2x3p3kX_OWBoJOI7394BvW0Bw',
-    'Harvest-Account-Id' => '977320',
-    'User-Agent'         => 'Furry Invention Inc. (https://furry-invention.com/contact)',
+    'Authorization'      => 'Bearer $ACCESS_TOKEN',
+    'Harvest-Account-Id' => '$ACCOUNT_ID',
+    'User-Agent'         => 'MyApp (yourname@example.com)',
 ];
 $client = new \arueckauer\HarvestApi\Client($headers);
 
