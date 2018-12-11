@@ -77,11 +77,9 @@ class Client
 
     /**
      * @var array
-     * @todo Should we set a default timeout? Guzzle's default (0: unlimited) seems to be too high
      */
     private $config = [
         'base_uri' => 'https://api.harvestapp.com/v2/',
-        'timeout'  => 30.0,
         'debug'    => false,
     ];
 
