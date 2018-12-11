@@ -72,8 +72,6 @@ class HarvestApiFactory
 
 #### Other context
 
-Add the autoloader
-
 ```php
 <?php
 
