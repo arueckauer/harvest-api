@@ -15,9 +15,10 @@ class ClientFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $harvestConfig = $container->has('config') ? $container->get('config') : [];
-        $headers       = $harvestConfig['headers'] ?? [];
-        $config        = $harvestConfig['config']   ?? [];
+        $applicationConfig = $container->has('config')? $container->get('config') : [];
+        $harvestConfig     = array_key_exists(self::class, $applicationConfig) ? $applicationConfig[self::class]['config'] : [];
+        $headers           = $harvestConfig['headers'] ?? [];
+        $config            = $harvestConfig['config']  ?? [];
 
         return new Client($headers, $config);
     }
