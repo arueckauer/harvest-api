@@ -245,16 +245,16 @@
         },
         {
             "name": "ralouphie/getallheaders",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ralouphie/getallheaders.git",
-                "reference": "cd148e0cf8789def229b1bc24be0cb0eeb24301c"
+                "reference": "beb49b96960f0cbf17e7fbcaaddc8eb434e126eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/cd148e0cf8789def229b1bc24be0cb0eeb24301c",
-                "reference": "cd148e0cf8789def229b1bc24be0cb0eeb24301c",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/beb49b96960f0cbf17e7fbcaaddc8eb434e126eb",
+                "reference": "beb49b96960f0cbf17e7fbcaaddc8eb434e126eb",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
-            "time": "2018-12-10T04:22:02+00:00"
+            "time": "2018-12-11T21:53:24+00:00"
         }
     ],
     "packages-dev": [],
