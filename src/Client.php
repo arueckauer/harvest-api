@@ -6,6 +6,7 @@ use arueckauer\HarvestApi\Endpoint\ClientContacts;
 use arueckauer\HarvestApi\Endpoint\Clients;
 use arueckauer\HarvestApi\Endpoint\Company;
 use arueckauer\HarvestApi\Endpoint\ExpenseCategories;
+use arueckauer\HarvestApi\Endpoint\Expenses;
 use arueckauer\HarvestApi\Endpoint\Projects;
 use arueckauer\HarvestApi\Endpoint\Roles;
 use arueckauer\HarvestApi\Endpoint\Tasks;
@@ -159,6 +160,19 @@ class Client
         }
 
         return $this->company;
+    }
+
+    /**
+     * Gets expense endpoint
+     * @return Expenses
+     */
+    public function expenses(): Expenses
+    {
+        if (null === $this->expenseCategories) {
+            $this->expenseCategories = new Expenses($this->getHttpClient());
+        }
+
+        return $this->expenseCategories;
     }
 
     /**
