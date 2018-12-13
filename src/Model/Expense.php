@@ -82,6 +82,16 @@ class Expense extends AbstractModel
     public $spentDate;
 
     /**
+     * @var float
+     */
+    public $totalCost;
+
+    /**
+     * @var int
+     */
+    public $units;
+
+    /**
      * @var string
      * @todo DateTime
      */
