@@ -4,7 +4,7 @@ namespace arueckauer\HarvestApi\Model;
 
 use arueckauer\HarvestApi\Utilities\StringConverter;
 
-abstract class AbstractModel
+abstract class AbstractModel implements ModelInterface
 {
     /**
      * AbstractModel constructor.
