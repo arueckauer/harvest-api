@@ -2,6 +2,7 @@
 
 namespace arueckauer\HarvestApi\Model;
 
+use arueckauer\HarvestApi\Model\Property\DataHandler;
 use arueckauer\HarvestApi\Utilities\StringConverter;
 
 abstract class AbstractModel implements ModelInterface
@@ -9,11 +10,13 @@ abstract class AbstractModel implements ModelInterface
     /**
      * AbstractModel constructor.
      * @param array $data
-     * @todo If property is a model, instantiate referenced model class
-     * @todo If property is a collection of models, instantiate referenced collection class
+     * @throws \Doctrine\Annotations\AnnotationException
+     * @throws \ReflectionException
      */
     public function __construct(array $data = [])
     {
+        $dataHandler = new DataHandler(static::class);
+
         foreach ($data as $key => $value) {
             $property = StringConverter::snakeCaseToCamelCase($key);
 
@@ -21,7 +24,7 @@ abstract class AbstractModel implements ModelInterface
                 continue;
             }
 
-            $this->{$property} = $value;
+            $this->{$property} = $dataHandler->processValue($property, $value);
         }
     }
 
