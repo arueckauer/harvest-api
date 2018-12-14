@@ -19,7 +19,8 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.1.0",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "doctrine/annotations": "^2.0@dev"
     },
     "autoload": {
         "psr-4": {
