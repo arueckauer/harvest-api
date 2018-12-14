@@ -2,6 +2,8 @@
 
 namespace arueckauer\HarvestApi\Model;
 
+use arueckauer\HarvestApi\PropertyReference;
+
 class Expense extends AbstractModel
 {
     /**
@@ -11,26 +13,31 @@ class Expense extends AbstractModel
 
     /**
      * @var Client
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\Model\Client")
      */
     public $client;
 
     /**
      * @var Project
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\Model\Project")
      */
     public $project;
 
     /**
      * @var ExpenseCategory
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\Model\ExpenseCategory")
      */
     public $expenseCategory;
 
     /**
      * @var User
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\Model\User")
      */
     public $user;
 
     /**
      * @var ProjectUserAssignment
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\Model\ProjectUserAssignment")
      */
     public $userAssignment;
 
