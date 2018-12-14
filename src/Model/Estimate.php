@@ -21,7 +21,7 @@ class Estimate extends AbstractModel
 
     /**
      * @var object
-     * @Todo Define class
+     * @todo Define class
      */
     public $creator;
 

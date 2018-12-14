@@ -36,7 +36,7 @@ class Expense extends AbstractModel
 
     /**
      * @var object
-     * @Todo Define class
+     * @todo Define class
      */
     public $receipt;
 

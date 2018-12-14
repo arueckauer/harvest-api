@@ -26,7 +26,7 @@ class Invoice extends AbstractModel
 
     /**
      * @var object
-     * @Todo Define class
+     * @todo Define class
      */
     public $retainer;
 
