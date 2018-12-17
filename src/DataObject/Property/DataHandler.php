@@ -40,7 +40,8 @@ class DataHandler
         /** @var PropertyReference $propertyConfiguration */
         $propertyConfiguration = $reader->getPropertyAnnotation($reflectionProperty, static::$annotationName);
 
-        if (null === $propertyConfiguration) {
+        // Instantiation of referenced data object requires a data array (not null)
+        if (null === $propertyConfiguration || null === $value) {
             return $value;
         }
 
