@@ -2,6 +2,7 @@
 
 namespace arueckauer\HarvestApi\DataObject;
 
+use arueckauer\HarvestApi\DataObject\Reference\Receipt;
 use arueckauer\HarvestApi\PropertyReference;
 
 class Expense extends AbstractDataObject
@@ -42,8 +43,8 @@ class Expense extends AbstractDataObject
     public $userAssignment;
 
     /**
-     * @var object
-     * @todo Define class
+     * @var Receipt
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Receipt")
      */
     public $receipt;
 
