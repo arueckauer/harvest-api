@@ -2,7 +2,6 @@
 
 namespace arueckauer\HarvestApi\DataObject\Property;
 
-use arueckauer\HarvestApi\DataObject\DataObjectInterface;
 use arueckauer\HarvestApi\PropertyReference;
 use Doctrine\Annotations\AnnotationException;
 use Doctrine\Annotations\AnnotationReader;
@@ -57,7 +56,7 @@ class DataHandler
         throw new AnnotationException($message);
     }
 
-    private function instantiateReferencedClass(string $class, $data): DataObjectInterface
+    private function instantiateReferencedClass(string $class, $data)
     {
         return new $class($data);
     }
