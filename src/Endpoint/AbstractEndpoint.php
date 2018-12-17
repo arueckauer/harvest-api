@@ -114,7 +114,6 @@ abstract class AbstractEndpoint
      * @param array $data
      * @param AbstractDataObject $dataObject
      * @return array
-     * @todo Abstract
      */
     protected function addRequiredDataFromDataObject(
         array $requiredFields,
@@ -134,7 +133,6 @@ abstract class AbstractEndpoint
      * @param array $data
      * @param AbstractDataObject $dataObject
      * @return array
-     * @todo Abstract
      */
     protected function addOptionalDataFromDataObject(
         array $optionalFields,
@@ -158,7 +156,6 @@ abstract class AbstractEndpoint
      * @param AbstractDataObject $dataObject
      * @param array|string $property
      * @return mixed
-     * @todo Abstract
      */
     private function getValueFromDataObject(AbstractDataObject $dataObject, $property)
     {
