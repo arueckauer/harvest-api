@@ -12,7 +12,7 @@ class InvoiceLineItem extends AbstractDataObject
     public $id;
 
     /**
-     * @var Project
+     * @var Reference\Project
      * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Project")
      */
     public $project;
