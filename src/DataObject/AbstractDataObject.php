@@ -3,7 +3,8 @@
 namespace arueckauer\HarvestApi\DataObject;
 
 use arueckauer\HarvestApi\DataObject\Property\DataHandler;
-use arueckauer\HarvestApi\Utilities\StringConverter;
+use Zend\Filter\Word\CamelCaseToUnderscore;
+use Zend\Filter\Word\UnderscoreToStudlyCase;
 
 abstract class AbstractDataObject implements DataObjectInterface
 {
@@ -16,9 +17,10 @@ abstract class AbstractDataObject implements DataObjectInterface
     public function __construct(array $data = [])
     {
         $dataHandler = new DataHandler(static::class);
+        $wordFilter  = new UnderscoreToStudlyCase();
 
         foreach ($data as $key => $value) {
-            $property = StringConverter::snakeCaseToCamelCase($key);
+            $property = $wordFilter->filter($key);
 
             if (!property_exists($this, $property)) {
                 continue;
@@ -36,6 +38,7 @@ abstract class AbstractDataObject implements DataObjectInterface
     {
         $reflection = new \ReflectionObject($this);
         $data       = [];
+        $wordFiler  = new CamelCaseToUnderscore();
 
         foreach ($reflection->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
             $property = $property->getName();
@@ -49,7 +52,8 @@ abstract class AbstractDataObject implements DataObjectInterface
                 }
             }
 
-            $data[StringConverter::fromCamelCaseToSnakeCase($property)] = $value;
+            $key        = $wordFiler->filter($property);
+            $data[$key] = $value;
         }
 
         return $data;
