@@ -2,6 +2,8 @@
 
 namespace arueckauer\HarvestApi\DataObject;
 
+use arueckauer\HarvestApi\PropertyReference;
+
 class InvoiceLineItem extends AbstractDataObject
 {
     /**
@@ -11,6 +13,7 @@ class InvoiceLineItem extends AbstractDataObject
 
     /**
      * @var Project
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Project")
      */
     public $project;
 

@@ -2,6 +2,8 @@
 
 namespace arueckauer\HarvestApi\DataObject;
 
+use arueckauer\HarvestApi\PropertyReference;
+
 class InvoicePayment extends AbstractDataObject
 {
     /**
@@ -47,8 +49,8 @@ class InvoicePayment extends AbstractDataObject
     public $transactionId;
 
     /**
-     * @var object
-     * @todo Define class
+     * @var Reference\PaymentGateway
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\PaymentGateway")
      */
     public $paymentGateway;
 
