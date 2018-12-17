@@ -2,10 +2,10 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\HarvestApi\Collection\AbstractCollection;
-use arueckauer\HarvestApi\Collection\Estimate as EstimateCollection;
-use arueckauer\HarvestApi\Collection\EstimateLineItem as LineItemCollection;
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
+use arueckauer\HarvestApi\DataObject\Collection\Estimate as EstimateCollection;
+use arueckauer\HarvestApi\DataObject\Collection\EstimateLineItem as LineItemCollection;
 use arueckauer\HarvestApi\DataObject\Estimate as EstimateDataObject;
 use arueckauer\HarvestApi\DataObject\EstimateLineItem;
 

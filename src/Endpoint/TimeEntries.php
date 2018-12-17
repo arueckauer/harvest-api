@@ -2,8 +2,8 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\HarvestApi\Collection\AbstractCollection;
-use arueckauer\HarvestApi\Collection\TimeEntry as TimeEntryCollection;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
+use arueckauer\HarvestApi\DataObject\Collection\TimeEntry as TimeEntryCollection;
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\TimeEntry as TimeEntryDataObject;
 

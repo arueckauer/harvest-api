@@ -2,8 +2,8 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\HarvestApi\Collection\AbstractCollection;
-use arueckauer\HarvestApi\Collection\InvoiceItemCategory as InvoiceItemCategoryCollection;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
+use arueckauer\HarvestApi\DataObject\Collection\InvoiceItemCategory as InvoiceItemCategoryCollection;
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\InvoiceItemCategory as InvoiceItemCategoryDataObject;
 

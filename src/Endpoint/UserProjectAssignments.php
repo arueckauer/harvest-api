@@ -2,8 +2,8 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\HarvestApi\Collection\AbstractCollection;
-use arueckauer\HarvestApi\Collection\UserProjectAssignment as UserProjectAssignmentCollection;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
+use arueckauer\HarvestApi\DataObject\Collection\UserProjectAssignment as UserProjectAssignmentCollection;
 
 class UserProjectAssignments extends AbstractEndpoint
 {

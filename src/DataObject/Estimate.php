@@ -18,7 +18,7 @@ class Estimate extends AbstractDataObject
     public $client;
 
     /**
-     * @var \arueckauer\HarvestApi\Collection\EstimateLineItem
+     * @var \arueckauer\HarvestApi\DataObject\Collection\EstimateLineItem
      */
     public $lineItems;
 

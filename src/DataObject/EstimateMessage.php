@@ -30,7 +30,7 @@ class EstimateMessage extends AbstractDataObject
     public $sentFromEmail;
 
     /**
-     * @var \arueckauer\HarvestApi\Collection\EstimateMessageRecipient
+     * @var \arueckauer\HarvestApi\DataObject\Collection\EstimateMessageRecipient
      */
     public $recipients;
 

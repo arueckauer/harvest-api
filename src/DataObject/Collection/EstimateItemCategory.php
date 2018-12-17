@@ -1,6 +1,6 @@
 <?php
 
-namespace arueckauer\HarvestApi\Collection;
+namespace arueckauer\HarvestApi\DataObject\Collection;
 
 use arueckauer\HarvestApi\DataObject\EstimateItemCategory as EstimateItemCategoryDataObject;
 

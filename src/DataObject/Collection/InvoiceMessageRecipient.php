@@ -1,10 +1,10 @@
 <?php
 
-namespace arueckauer\HarvestApi\Collection;
+namespace arueckauer\HarvestApi\DataObject\Collection;
 
 use arueckauer\HarvestApi\DataObject\InvoiceMessage as InvoiceMessageDataObject;
 
-class InvoiceMessage extends AbstractCollection
+class InvoiceMessageRecipient extends AbstractCollection
 {
     /**
      * InvoiceMessage constructor.
