@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\EstimateItemCategory as EstimateItemCategoryCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\EstimateItemCategory as EstimateItemCategoryModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\EstimateItemCategory as EstimateItemCategoryDataObject;
 
 class EstimateItemCategories extends AbstractEndpoint
 {
@@ -32,57 +32,57 @@ class EstimateItemCategories extends AbstractEndpoint
     /**
      * Create an estimate item category
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#create-an-estimate-item-category
-     * @param EstimateItemCategoryModel $estimateItemCategory
-     * @return AbstractModel
+     * @param EstimateItemCategoryDataObject $estimateItemCategory
+     * @return AbstractDataObject
      */
-    public function create(EstimateItemCategoryModel $estimateItemCategory): AbstractModel
+    public function create(EstimateItemCategoryDataObject $estimateItemCategory): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $estimateItemCategory);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $estimateItemCategory);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('estimate_item_categories', $options);
 
-        return $this->model(EstimateItemCategoryModel::class, $response);
+        return $this->dataObject(EstimateItemCategoryDataObject::class, $response);
     }
 
     /**
      * Retrieve an estimate item category
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#retrieve-an-estimate-item-category
      * @param int $estimateItemCategoryId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $estimateItemCategoryId): AbstractModel
+    public function get(int $estimateItemCategoryId): AbstractDataObject
     {
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategoryId);
         $response = $this->getHttpClient()->get($uri);
-        return $this->model(EstimateItemCategoryModel::class, $response);
+        return $this->dataObject(EstimateItemCategoryDataObject::class, $response);
     }
 
     /**
      * Update an estimate item category
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#update-an-estimate-item-category
-     * @param EstimateItemCategoryModel $estimateItemCategory
-     * @return AbstractModel
+     * @param EstimateItemCategoryDataObject $estimateItemCategory
+     * @return AbstractDataObject
      */
-    public function update(EstimateItemCategoryModel $estimateItemCategory): AbstractModel
+    public function update(EstimateItemCategoryDataObject $estimateItemCategory): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $estimateItemCategory);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $estimateItemCategory);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategory->id);
         $response = $this->getHttpClient()->patch($uri, $options);
 
-        return $this->model(EstimateItemCategoryModel::class, $response);
+        return $this->dataObject(EstimateItemCategoryDataObject::class, $response);
     }
 
     /**
      * Delete an estimate item category
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#delete-an-estimate-item-category
      * @param int $estimateItemCategoryId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $estimateItemCategoryId): AbstractModel
+    public function delete(int $estimateItemCategoryId): AbstractDataObject
     {
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategoryId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->model(EstimateItemCategoryModel::class, $response);
+        return $this->dataObject(EstimateItemCategoryDataObject::class, $response);
     }
 }

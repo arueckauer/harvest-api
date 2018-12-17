@@ -2,10 +2,10 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\Expense as ExpenseCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\Expense as ExpenseModel;
+use arueckauer\HarvestApi\DataObject\Expense as ExpenseDataObject;
 
 class Expenses extends AbstractEndpoint
 {
@@ -51,55 +51,55 @@ class Expenses extends AbstractEndpoint
     /**
      * Create an expense
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#create-an-expense
-     * @param ExpenseModel $expense
-     * @return AbstractModel
+     * @param ExpenseDataObject $expense
+     * @return AbstractDataObject
      */
-    public function create(ExpenseModel $expense): AbstractModel
+    public function create(ExpenseDataObject $expense): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $expense);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $expense);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $expense);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $expense);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('expenses', $options);
 
-        return $this->model(ExpenseModel::class, $response);
+        return $this->dataObject(ExpenseDataObject::class, $response);
     }
 
     /**
      * Retrieve an expense
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#retrieve-an-expense
      * @param int $expenseId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $expenseId): AbstractModel
+    public function get(int $expenseId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('expenses/%s', $expenseId));
-        return $this->model(ExpenseModel::class, $response);
+        return $this->dataObject(ExpenseDataObject::class, $response);
     }
 
     /**
      * Update an expense
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#update-an-expense
-     * @param ExpenseModel $expense
-     * @return AbstractModel
+     * @param ExpenseDataObject $expense
+     * @return AbstractDataObject
      */
-    public function update(ExpenseModel $expense): AbstractModel
+    public function update(ExpenseDataObject $expense): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $expense);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $expense);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('expenses/%s', $expense->id), $options);
 
-        return $this->model(ExpenseModel::class, $response);
+        return $this->dataObject(ExpenseDataObject::class, $response);
     }
 
     /**
      * Delete an expense
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#delete-an-expense
      * @param int $expenseId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $expenseId): AbstractModel
+    public function delete(int $expenseId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('expenses/%s', $expenseId));
-        return $this->model(ExpenseModel::class, $response);
+        return $this->dataObject(ExpenseDataObject::class, $response);
     }
 }

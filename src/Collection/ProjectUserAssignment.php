@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\ProjectUserAssignment as ProjectUserAssignmentModel;
+use arueckauer\HarvestApi\DataObject\ProjectUserAssignment as ProjectUserAssignmentDataObject;
 
 class ProjectUserAssignment extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class ProjectUserAssignment extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, ProjectUserAssignmentModel::class);
+        $this->setData($data, ProjectUserAssignmentDataObject::class);
     }
 }

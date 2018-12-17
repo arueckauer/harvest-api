@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\InvoiceItemCategory as InvoiceItemCategoryModel;
+use arueckauer\HarvestApi\DataObject\InvoiceItemCategory as InvoiceItemCategoryDataObject;
 
 class InvoiceItemCategory extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class InvoiceItemCategory extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, InvoiceItemCategoryModel::class);
+        $this->setData($data, InvoiceItemCategoryDataObject::class);
     }
 }

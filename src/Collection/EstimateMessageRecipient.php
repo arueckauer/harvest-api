@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\EstimateMessageRecipient as EstimateMessageRecipientModel;
+use arueckauer\HarvestApi\DataObject\EstimateMessageRecipient as EstimateMessageRecipientDataObject;
 
 class EstimateMessageRecipient extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class EstimateMessageRecipient extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, EstimateMessageRecipientModel::class);
+        $this->setData($data, EstimateMessageRecipientDataObject::class);
     }
 }

@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\Task as TaskCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\Task as TaskModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\Task as TaskDataObject;
 
 class Tasks extends AbstractEndpoint
 {
@@ -43,55 +43,55 @@ class Tasks extends AbstractEndpoint
     /**
      * Create a task
      * @see https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#create-a-task
-     * @param TaskModel $task
-     * @return AbstractModel
+     * @param TaskDataObject $task
+     * @return AbstractDataObject
      */
-    public function create(TaskModel $task): AbstractModel
+    public function create(TaskDataObject $task): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $task);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $task);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $task);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $task);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('tasks', $options);
 
-        return $this->model(TaskModel::class, $response);
+        return $this->dataObject(TaskDataObject::class, $response);
     }
 
     /**
      * Retrieve a task
      * @see https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#retrieve-a-task
      * @param int $taskId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $taskId): AbstractModel
+    public function get(int $taskId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('tasks/%s', $taskId));
-        return $this->model(TaskModel::class, $response);
+        return $this->dataObject(TaskDataObject::class, $response);
     }
 
     /**
      * Update a task
      * @see https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#update-a-task
-     * @param TaskModel $task
-     * @return AbstractModel
+     * @param TaskDataObject $task
+     * @return AbstractDataObject
      */
-    public function update(TaskModel $task): AbstractModel
+    public function update(TaskDataObject $task): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $task);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $task);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('tasks/%s', $task->id), $options);
 
-        return $this->model(TaskModel::class, $response);
+        return $this->dataObject(TaskDataObject::class, $response);
     }
 
     /**
      * Delete a task
      * @see https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#delete-a-task
      * @param int $taskId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $taskId): AbstractModel
+    public function delete(int $taskId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('tasks/%s', $taskId));
-        return $this->model(TaskModel::class, $response);
+        return $this->dataObject(TaskDataObject::class, $response);
     }
 }

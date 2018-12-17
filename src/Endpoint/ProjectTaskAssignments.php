@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\ProjectTaskAssignment as ProjectTaskAssignmentCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\ProjectTaskAssignment as ProjectTaskAssignmentModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\ProjectTaskAssignment as ProjectTaskAssignmentDataObject;
 
 class ProjectTaskAssignments extends AbstractEndpoint
 {
@@ -56,19 +56,19 @@ class ProjectTaskAssignments extends AbstractEndpoint
     /**
      * Create a task assignment
      * @see https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#create-a-task-assignment
-     * @param ProjectTaskAssignmentModel $projectTaskAssignment
+     * @param ProjectTaskAssignmentDataObject $projectTaskAssignment
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function create(int $projectId, ProjectTaskAssignmentModel $projectTaskAssignment): AbstractModel
+    public function create(int $projectId, ProjectTaskAssignmentDataObject $projectTaskAssignment): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $projectTaskAssignment);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $projectTaskAssignment);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $projectTaskAssignment);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $projectTaskAssignment);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $uri      = sprintf('projects/%s/task_assignments', $projectId);
         $response = $this->getHttpClient()->post($uri, $options);
 
-        return $this->model(ProjectTaskAssignmentModel::class, $response);
+        return $this->dataObject(ProjectTaskAssignmentDataObject::class, $response);
     }
 
     /**
@@ -76,30 +76,30 @@ class ProjectTaskAssignments extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#retrieve-a-task-assignment
      * @param int $projectTaskAssignmentId
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $projectId, int $projectTaskAssignmentId): AbstractModel
+    public function get(int $projectId, int $projectTaskAssignmentId): AbstractDataObject
     {
         $uri      = sprintf('projects/%s/task_assignments/%s', $projectId, $projectTaskAssignmentId);
         $response = $this->getHttpClient()->get($uri);
-        return $this->model(ProjectTaskAssignmentModel::class, $response);
+        return $this->dataObject(ProjectTaskAssignmentDataObject::class, $response);
     }
 
     /**
      * Update a task assignment
      * @see https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#update-a-task-assignment
-     * @param ProjectTaskAssignmentModel $projectTaskAssignment
+     * @param ProjectTaskAssignmentDataObject $projectTaskAssignment
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function update(int $projectId, ProjectTaskAssignmentModel $projectTaskAssignment): AbstractModel
+    public function update(int $projectId, ProjectTaskAssignmentDataObject $projectTaskAssignment): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $projectTaskAssignment);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $projectTaskAssignment);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $uri      = sprintf('projects/%s/task_assignments/%s', $projectId, $projectTaskAssignment->id);
         $response = $this->getHttpClient()->patch($uri, $options);
 
-        return $this->model(ProjectTaskAssignmentModel::class, $response);
+        return $this->dataObject(ProjectTaskAssignmentDataObject::class, $response);
     }
 
     /**
@@ -107,12 +107,12 @@ class ProjectTaskAssignments extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#delete-a-task-assignment
      * @param int $projectTaskAssignmentId
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $projectId, int $projectTaskAssignmentId): AbstractModel
+    public function delete(int $projectId, int $projectTaskAssignmentId): AbstractDataObject
     {
         $uri      = sprintf('projects/%s/task_assignments/%s', $projectId, $projectTaskAssignmentId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->model(ProjectTaskAssignmentModel::class, $response);
+        return $this->dataObject(ProjectTaskAssignmentDataObject::class, $response);
     }
 }

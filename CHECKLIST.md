@@ -4,32 +4,32 @@
 
 ## Classes
 
-| Module                     | Model | Collection | Endpoint | List | Create | Retrieve | Update | Delete |
-| -------------------------- | :---: | :--------: | :------: | :--: | :----: | :------: | :----: | :----: |
-| Client Contacts            |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Clients                    |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Company                    |   ✓   |     ◯      |    ✓     |  ◯   |   ◯    |          |   ◯    |   ◯    |
-| Invoice Messages           |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Invoice Payments           |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Invoices                   |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Invoice Line Item          |   ✓   |     ✓      |    ◯     |      |        |          |        |        |
-| Invoice Item Categories    |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Estimate Messages          |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Estimate Message Recipient |   ✓   |     ✓      |    ◯     |      |        |          |        |        |
-| Estimates                  |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Estimate Line Item         |   ✓   |     ✓      |    ◯     |      |        |          |        |        |
-| Estimate Item Categories   |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Expenses                   |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Expense Categories         |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Tasks                      |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Time Entries               |   ✓   |     ✓      |    ✓     |      | ✓ / ✗  |          |        |        |
-| Project User Assignments   |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Project Task Assignments   |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Projects                   |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Roles                      |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| User Project Assignments   |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-| Users                      |   ✓   |     ✓      |    ✓     |      |        |          |        |        |
-|                            |       |            |          |      |        |          |        |        |
+| Module                     | DataObject | Collection | Endpoint | List | Create | Retrieve | Update | Delete |
+| -------------------------- | :--------: | :--------: | :------: | :--: | :----: | :------: | :----: | :----: |
+| Client Contacts            |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Clients                    |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Company                    |     ✓      |     ◯      |    ✓     |  ◯   |   ◯    |          |   ◯    |   ◯    |
+| Invoice Messages           |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Invoice Payments           |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Invoices                   |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Invoice Line Item          |     ✓      |     ✓      |    ◯     |      |        |          |        |        |
+| Invoice Item Categories    |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Estimate Messages          |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Estimate Message Recipient |     ✓      |     ✓      |    ◯     |      |        |          |        |        |
+| Estimates                  |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Estimate Line Item         |     ✓      |     ✓      |    ◯     |      |        |          |        |        |
+| Estimate Item Categories   |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Expenses                   |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Expense Categories         |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Tasks                      |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Time Entries               |     ✓      |     ✓      |    ✓     |      | ✓ / ✗  |          |        |        |
+| Project User Assignments   |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Project Task Assignments   |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Projects                   |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Roles                      |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| User Project Assignments   |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+| Users                      |     ✓      |     ✓      |    ✓     |      |        |          |        |        |
+|                            |            |            |          |      |        |          |        |        |
 
 ## Endpoints
 

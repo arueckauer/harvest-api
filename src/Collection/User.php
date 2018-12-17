@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\User as UserModel;
+use arueckauer\HarvestApi\DataObject\User as UserDataObject;
 
 class User extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class User extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, UserModel::class);
+        $this->setData($data, UserDataObject::class);
     }
 }

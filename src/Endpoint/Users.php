@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\User as UserCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\User as UserModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\User as UserDataObject;
 
 class Users extends AbstractEndpoint
 {
@@ -67,66 +67,66 @@ class Users extends AbstractEndpoint
     /**
      * Create an user
      * @see https://help.getharvest.com/api-v2/users-api/users/users/#create-a-user
-     * @param UserModel $user
-     * @return AbstractModel
+     * @param UserDataObject $user
+     * @return AbstractDataObject
      */
-    public function create(UserModel $user): AbstractModel
+    public function create(UserDataObject $user): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $user);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $user);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $user);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $user);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('users', $options);
 
-        return $this->model(UserModel::class, $response);
+        return $this->dataObject(UserDataObject::class, $response);
     }
 
     /**
      * Retrieve an user
      * @see https://help.getharvest.com/api-v2/users-api/users/users/#retrieve-a-user
      * @param int $userId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $userId): AbstractModel
+    public function get(int $userId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('users/%s', $userId));
-        return $this->model(UserModel::class, $response);
+        return $this->dataObject(UserDataObject::class, $response);
     }
 
     /**
      * Retrieve the currently authenticated user
      * @see https://help.getharvest.com/api-v2/users-api/users/users/#retrieve-the-currently-authenticated-user
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function getCurrentlyAuthenticatedUser(): AbstractModel
+    public function getCurrentlyAuthenticatedUser(): AbstractDataObject
     {
         $response = $this->getHttpClient()->get('users/me');
-        return $this->model(UserModel::class, $response);
+        return $this->dataObject(UserDataObject::class, $response);
     }
 
     /**
      * Update an user
      * @see https://help.getharvest.com/api-v2/users-api/users/users/#update-a-user
-     * @param UserModel $user
-     * @return AbstractModel
+     * @param UserDataObject $user
+     * @return AbstractDataObject
      */
-    public function update(UserModel $user): AbstractModel
+    public function update(UserDataObject $user): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $user);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $user);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('users/%s', $user->id), $options);
 
-        return $this->model(UserModel::class, $response);
+        return $this->dataObject(UserDataObject::class, $response);
     }
 
     /**
      * Delete an user
      * @see https://help.getharvest.com/api-v2/users-api/users/users/#delete-a-user
      * @param int $userId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $userId): AbstractModel
+    public function delete(int $userId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('users/%s', $userId));
-        return $this->model(UserModel::class, $response);
+        return $this->dataObject(UserDataObject::class, $response);
     }
 }

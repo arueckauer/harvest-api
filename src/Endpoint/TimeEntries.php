@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\TimeEntry as TimeEntryCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\TimeEntry as TimeEntryModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\TimeEntry as TimeEntryDataObject;
 
 class TimeEntries extends AbstractEndpoint
 {
@@ -87,72 +87,72 @@ class TimeEntries extends AbstractEndpoint
      * Retrieve a time entry
      * @see https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#retrieve-a-time-entry
      * @param int $timeEntryId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $timeEntryId): AbstractModel
+    public function get(int $timeEntryId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('time_entries/%s', $timeEntryId));
-        return $this->model(TimeEntryModel::class, $response);
+        return $this->dataObject(TimeEntryDataObject::class, $response);
     }
 
     /**
      * Create a time entry via duration
      * @see https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#create-a-time-entry-via-duration
      * @todo Depending on company.wants_timestamp_timers, use either duration or start and end time
-     * @param TimeEntryModel $timeEntry
-     * @return AbstractModel
+     * @param TimeEntryDataObject $timeEntry
+     * @return AbstractDataObject
      */
-    public function createViaDuration(TimeEntryModel $timeEntry): AbstractModel
+    public function createViaDuration(TimeEntryDataObject $timeEntry): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateViaDurationFields, [], $timeEntry);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateViaDurationFields, $data, $timeEntry);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateViaDurationFields, [], $timeEntry);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateViaDurationFields, $data, $timeEntry);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('time_entries', $options);
 
-        return $this->model(TimeEntryModel::class, $response);
+        return $this->dataObject(TimeEntryDataObject::class, $response);
     }
 
     /**
      * Create a time entry via start and end time
      * @see https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#create-a-time-entry-via-start-and-end-time
      * @todo Depending on company.wants_timestamp_timers, use either duration or start and end time
-     * @param TimeEntryModel $timeEntry
-     * @return AbstractModel
+     * @param TimeEntryDataObject $timeEntry
+     * @return AbstractDataObject
      */
-    public function createViaStartAndEndTime(TimeEntryModel $timeEntry): AbstractModel
+    public function createViaStartAndEndTime(TimeEntryDataObject $timeEntry): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateViaStartAndEndTimeFields, [], $timeEntry);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateViaStartAndEndTimeFields, $data, $timeEntry);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateViaStartAndEndTimeFields, [], $timeEntry);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateViaStartAndEndTimeFields, $data, $timeEntry);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('time_entries', $options);
 
-        return $this->model(TimeEntryModel::class, $response);
+        return $this->dataObject(TimeEntryDataObject::class, $response);
     }
 
     /**
      * Update a time entry
      * @see https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#update-a-time-entry
-     * @param TimeEntryModel $timeEntry
-     * @return AbstractModel
+     * @param TimeEntryDataObject $timeEntry
+     * @return AbstractDataObject
      */
-    public function update(TimeEntryModel $timeEntry): AbstractModel
+    public function update(TimeEntryDataObject $timeEntry): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $timeEntry);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $timeEntry);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('time_entries/%s', $timeEntry->id), $options);
 
-        return $this->model(TimeEntryModel::class, $response);
+        return $this->dataObject(TimeEntryDataObject::class, $response);
     }
 
     /**
      * Delete a time entry
      * @see https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#delete-a-time-entry
      * @param int $timeEntryId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $timeEntryId): AbstractModel
+    public function delete(int $timeEntryId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('time_entries/%s', $timeEntryId));
-        return $this->model(TimeEntryModel::class, $response);
+        return $this->dataObject(TimeEntryDataObject::class, $response);
     }
 }

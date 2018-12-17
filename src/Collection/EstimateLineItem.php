@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\EstimateLineItem as EstimateLineItemModel;
+use arueckauer\HarvestApi\DataObject\EstimateLineItem as EstimateLineItemDataObject;
 
 class EstimateLineItem extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class EstimateLineItem extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, EstimateLineItemModel::class);
+        $this->setData($data, EstimateLineItemDataObject::class);
     }
 }

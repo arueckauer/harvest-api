@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\TimeEntry as TimeEntryModel;
+use arueckauer\HarvestApi\DataObject\TimeEntry as TimeEntryDataObject;
 
 class TimeEntry extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class TimeEntry extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, TimeEntryModel::class);
+        $this->setData($data, TimeEntryDataObject::class);
     }
 }

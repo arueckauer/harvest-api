@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\Project as ProjectCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\Project as ProjectModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\Project as ProjectDataObject;
 
 class Projects extends AbstractEndpoint
 {
@@ -73,55 +73,55 @@ class Projects extends AbstractEndpoint
     /**
      * Create a project
      * @see https://help.getharvest.com/api-v2/projects-api/projects/projects/#create-a-project
-     * @param ProjectModel $project
-     * @return AbstractModel
+     * @param ProjectDataObject $project
+     * @return AbstractDataObject
      */
-    public function create(ProjectModel $project): AbstractModel
+    public function create(ProjectDataObject $project): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $project);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $project);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $project);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $project);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('projects', $options);
 
-        return $this->model(ProjectModel::class, $response);
+        return $this->dataObject(ProjectDataObject::class, $response);
     }
 
     /**
      * Retrieve a project
      * @see https://help.getharvest.com/api-v2/projects-api/projects/projects/#retrieve-a-project
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $projectId): AbstractModel
+    public function get(int $projectId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('projects/%s', $projectId));
-        return $this->model(ProjectModel::class, $response);
+        return $this->dataObject(ProjectDataObject::class, $response);
     }
 
     /**
      * Update a project
      * @see https://help.getharvest.com/api-v2/projects-api/projects/projects/#update-a-project
-     * @param ProjectModel $project
-     * @return AbstractModel
+     * @param ProjectDataObject $project
+     * @return AbstractDataObject
      */
-    public function update(ProjectModel $project): AbstractModel
+    public function update(ProjectDataObject $project): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $project);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $project);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('projects/%s', $project->id), $options);
 
-        return $this->model(ProjectModel::class, $response);
+        return $this->dataObject(ProjectDataObject::class, $response);
     }
 
     /**
      * Delete a project
      * @see https://help.getharvest.com/api-v2/projects-api/projects/projects/#delete-a-project
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $projectId): AbstractModel
+    public function delete(int $projectId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('projects/%s', $projectId));
-        return $this->model(ProjectModel::class, $response);
+        return $this->dataObject(ProjectDataObject::class, $response);
     }
 }

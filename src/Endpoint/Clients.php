@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\Client as ClientCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\Client as ClientModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\Client as ClientDataObject;
 
 class Clients extends AbstractEndpoint
 {
@@ -42,54 +42,54 @@ class Clients extends AbstractEndpoint
      * Retrieve a client
      * @see https://help.getharvest.com/api-v2/clients-api/clients/clients/#retrieve-a-client
      * @param int $clientId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $clientId): AbstractModel
+    public function get(int $clientId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('clients/%s', $clientId));
-        return $this->model(ClientModel::class, $response);
+        return $this->dataObject(ClientDataObject::class, $response);
     }
 
     /**
      * Create a client
      * @see https://help.getharvest.com/api-v2/clients-api/clients/clients/#create-a-client
-     * @param ClientModel $client
-     * @return AbstractModel
+     * @param ClientDataObject $client
+     * @return AbstractDataObject
      */
-    public function create(ClientModel $client): AbstractModel
+    public function create(ClientDataObject $client): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $client);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $client);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $client);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $client);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('clients', $options);
 
-        return $this->model(ClientModel::class, $response);
+        return $this->dataObject(ClientDataObject::class, $response);
     }
 
     /**
      * Update a client
      * @see https://help.getharvest.com/api-v2/clients-api/clients/clients/#update-a-client
-     * @param ClientModel $client
-     * @return AbstractModel
+     * @param ClientDataObject $client
+     * @return AbstractDataObject
      */
-    public function update(ClientModel $client): AbstractModel
+    public function update(ClientDataObject $client): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $client);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $client);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('clients/%s', $client->id), $options);
 
-        return $this->model(ClientModel::class, $response);
+        return $this->dataObject(ClientDataObject::class, $response);
     }
 
     /**
      * Delete a client
      * @see https://help.getharvest.com/api-v2/clients-api/clients/clients/#delete-a-client
      * @param int $clientId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $clientId): AbstractModel
+    public function delete(int $clientId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('clients/%s', $clientId));
-        return $this->model(ClientModel::class, $response);
+        return $this->dataObject(ClientDataObject::class, $response);
     }
 }

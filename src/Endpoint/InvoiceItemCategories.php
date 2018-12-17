@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\InvoiceItemCategory as InvoiceItemCategoryCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\InvoiceItemCategory as InvoiceItemCategoryModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\InvoiceItemCategory as InvoiceItemCategoryDataObject;
 
 class InvoiceItemCategories extends AbstractEndpoint
 {
@@ -43,58 +43,58 @@ class InvoiceItemCategories extends AbstractEndpoint
     /**
      * Create an invoice item category
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#create-an-invoice-item-category
-     * @param InvoiceItemCategoryModel $invoiceItemCategory
-     * @return AbstractModel
+     * @param InvoiceItemCategoryDataObject $invoiceItemCategory
+     * @return AbstractDataObject
      */
-    public function create(InvoiceItemCategoryModel $invoiceItemCategory): AbstractModel
+    public function create(InvoiceItemCategoryDataObject $invoiceItemCategory): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $invoiceItemCategory);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $invoiceItemCategory);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $invoiceItemCategory);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoiceItemCategory);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('invoice_item_categories', $options);
 
-        return $this->model(InvoiceItemCategoryModel::class, $response);
+        return $this->dataObject(InvoiceItemCategoryDataObject::class, $response);
     }
 
     /**
      * Retrieve an invoice item category
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#retrieve-an-invoice-item-category
      * @param int $invoiceItemCategoryId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $invoiceItemCategoryId): AbstractModel
+    public function get(int $invoiceItemCategoryId): AbstractDataObject
     {
         $uri      = sprintf('invoice_item_categories/%s', $invoiceItemCategoryId);
         $response = $this->getHttpClient()->get($uri);
-        return $this->model(InvoiceItemCategoryModel::class, $response);
+        return $this->dataObject(InvoiceItemCategoryDataObject::class, $response);
     }
 
     /**
      * Update an invoice item category
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#update-an-invoice-item-category
-     * @param InvoiceItemCategoryModel $invoiceItemCategory
-     * @return AbstractModel
+     * @param InvoiceItemCategoryDataObject $invoiceItemCategory
+     * @return AbstractDataObject
      */
-    public function update(InvoiceItemCategoryModel $invoiceItemCategory): AbstractModel
+    public function update(InvoiceItemCategoryDataObject $invoiceItemCategory): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $invoiceItemCategory);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $invoiceItemCategory);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $uri      = sprintf('invoice_item_categories/%s', $invoiceItemCategory->id);
         $response = $this->getHttpClient()->patch($uri, $options);
 
-        return $this->model(InvoiceItemCategoryModel::class, $response);
+        return $this->dataObject(InvoiceItemCategoryDataObject::class, $response);
     }
 
     /**
      * Delete an invoice item category
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#delete-an-invoice-item-category
      * @param int $invoiceItemCategoryId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $invoiceItemCategoryId): AbstractModel
+    public function delete(int $invoiceItemCategoryId): AbstractDataObject
     {
         $uri      = sprintf('invoice_item_categories/%s', $invoiceItemCategoryId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->model(InvoiceItemCategoryModel::class, $response);
+        return $this->dataObject(InvoiceItemCategoryDataObject::class, $response);
     }
 }

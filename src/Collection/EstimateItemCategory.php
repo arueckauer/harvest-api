@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\EstimateItemCategory as EstimateItemCategoryModel;
+use arueckauer\HarvestApi\DataObject\EstimateItemCategory as EstimateItemCategoryDataObject;
 
 class EstimateItemCategory extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class EstimateItemCategory extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, EstimateItemCategoryModel::class);
+        $this->setData($data, EstimateItemCategoryDataObject::class);
     }
 }

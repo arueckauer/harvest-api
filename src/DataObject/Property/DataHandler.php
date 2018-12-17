@@ -9,7 +9,7 @@ use Doctrine\Annotations\AnnotationReader;
 
 class DataHandler
 {
-    private $modelClass;
+    private $dataObjectClass;
 
     private $reflectionClass;
 
@@ -17,11 +17,11 @@ class DataHandler
 
     /**
      * DataHandler constructor.
-     * @param string $modelClass
+     * @param string $dataObjectClass
      */
-    public function __construct(string $modelClass)
+    public function __construct(string $dataObjectClass)
     {
-        $this->modelClass = $modelClass;
+        $this->dataObjectClass = $dataObjectClass;
         AnnotationReader::addGlobalIgnoredName('todo');
     }
 
@@ -50,7 +50,7 @@ class DataHandler
 
         $message = sprintf(
             'Unable to process value due to a mis-configured annotation of property %s in class %s',
-            $this->modelClass,
+            $this->dataObjectClass,
             $reflectionProperty->getName()
         );
         throw new AnnotationException($message);
@@ -62,21 +62,21 @@ class DataHandler
     }
 
     /**
-     * Gets ReflectionClass for current model object
+     * Gets ReflectionClass for current dataObject object
      * @throws \ReflectionException
      * @return \ReflectionClass
      */
     private function getReflectionClass(): \ReflectionClass
     {
         if (null === $this->reflectionClass) {
-            $this->reflectionClass = new \ReflectionClass($this->modelClass);
+            $this->reflectionClass = new \ReflectionClass($this->dataObjectClass);
         }
 
         return $this->reflectionClass;
     }
 
     /**
-     * Gets ReflectionProperty object for given property of current model object
+     * Gets ReflectionProperty object for given property of current dataObject object
      * @param string $property
      * @throws \ReflectionException
      * @return \ReflectionProperty

@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\ExpenseCategory as ExpenseCategoryCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\ExpenseCategory as ExpenseCategoryModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\ExpenseCategory as ExpenseCategoryDataObject;
 
 class ExpenseCategories extends AbstractEndpoint
 {
@@ -41,55 +41,55 @@ class ExpenseCategories extends AbstractEndpoint
     /**
      * Create an expense category
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#create-an-expense-category
-     * @param ExpenseCategoryModel $expenseCategory
-     * @return AbstractModel
+     * @param ExpenseCategoryDataObject $expenseCategory
+     * @return AbstractDataObject
      */
-    public function create(ExpenseCategoryModel $expenseCategory): AbstractModel
+    public function create(ExpenseCategoryDataObject $expenseCategory): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $expenseCategory);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $expenseCategory);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $expenseCategory);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $expenseCategory);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('expense_categories', $options);
 
-        return $this->model(ExpenseCategoryModel::class, $response);
+        return $this->dataObject(ExpenseCategoryDataObject::class, $response);
     }
 
     /**
      * Retrieve an expense category
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#retrieve-an-expense-category
      * @param int $expenseCategoryId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $expenseCategoryId): AbstractModel
+    public function get(int $expenseCategoryId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('expense_categories/%s', $expenseCategoryId));
-        return $this->model(ExpenseCategoryModel::class, $response);
+        return $this->dataObject(ExpenseCategoryDataObject::class, $response);
     }
 
     /**
      * Update an expense category
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#update-an-expense-category
-     * @param ExpenseCategoryModel $expenseCategory
-     * @return AbstractModel
+     * @param ExpenseCategoryDataObject $expenseCategory
+     * @return AbstractDataObject
      */
-    public function update(ExpenseCategoryModel $expenseCategory): AbstractModel
+    public function update(ExpenseCategoryDataObject $expenseCategory): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $expenseCategory);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $expenseCategory);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('expense_categories/%s', $expenseCategory->id), $options);
 
-        return $this->model(ExpenseCategoryModel::class, $response);
+        return $this->dataObject(ExpenseCategoryDataObject::class, $response);
     }
 
     /**
      * Delete an expense category
      * @see https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#delete-an-expense-category
      * @param int $expenseCategoryId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $expenseCategoryId): AbstractModel
+    public function delete(int $expenseCategoryId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('expense_categories/%s', $expenseCategoryId));
-        return $this->model(ExpenseCategoryModel::class, $response);
+        return $this->dataObject(ExpenseCategoryDataObject::class, $response);
     }
 }

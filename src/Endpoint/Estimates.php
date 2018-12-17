@@ -5,9 +5,9 @@ namespace arueckauer\HarvestApi\Endpoint;
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\Estimate as EstimateCollection;
 use arueckauer\HarvestApi\Collection\EstimateLineItem as LineItemCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\Estimate as EstimateModel;
-use arueckauer\HarvestApi\Model\EstimateLineItem;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\Estimate as EstimateDataObject;
+use arueckauer\HarvestApi\DataObject\EstimateLineItem;
 
 class Estimates extends AbstractEndpoint
 {
@@ -87,19 +87,19 @@ class Estimates extends AbstractEndpoint
     /**
      * Create an estimate
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#create-an-estimate
-     * @param EstimateModel $estimate
-     * @return AbstractModel
+     * @param EstimateDataObject $estimate
+     * @return AbstractDataObject
      */
-    public function create(EstimateModel $estimate): AbstractModel
+    public function create(EstimateDataObject $estimate): AbstractDataObject
     {
-        $data               = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $estimate);
-        $data               = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $estimate);
+        $data               = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $estimate);
+        $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $estimate);
         $data['line_items'] = $this->generateCreateLineItemsArray($estimate->lineItems);
 
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('estimates', $options);
 
-        return $this->model(EstimateModel::class, $response);
+        return $this->dataObject(EstimateDataObject::class, $response);
     }
 
     /**
@@ -107,43 +107,43 @@ class Estimates extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#create-an-estimate-line-item
      * @param int $estimateId
      * @param EstimateLineItem $lineItem
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function createLineItem(int $estimateId, EstimateLineItem $lineItem): AbstractModel
+    public function createLineItem(int $estimateId, EstimateLineItem $lineItem): AbstractDataObject
     {
         $data['line_items'] = $this->generateCreateLineItemArray($lineItem);
         $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->post(sprintf('estimates/%s', $estimateId), $options);
 
-        return $this->model(EstimateModel::class, $response);
+        return $this->dataObject(EstimateDataObject::class, $response);
     }
 
     /**
      * Retrieve an estimate
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#retrieve-an-estimate
      * @param int $estimateId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $estimateId): AbstractModel
+    public function get(int $estimateId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('estimates/%s', $estimateId));
-        return $this->model(EstimateModel::class, $response);
+        return $this->dataObject(EstimateDataObject::class, $response);
     }
 
     /**
      * Update an estimate
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#update-an-estimate
-     * @param EstimateModel $estimate
-     * @return AbstractModel
+     * @param EstimateDataObject $estimate
+     * @return AbstractDataObject
      */
-    public function update(EstimateModel $estimate): AbstractModel
+    public function update(EstimateDataObject $estimate): AbstractDataObject
     {
-        $data               = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $estimate);
+        $data               = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $estimate);
         $data['line_items'] = $this->generateUpdateLineItemsArray($estimate->lineItems);
         $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->patch(sprintf('estimates/%s', $estimate->id), $options);
 
-        return $this->model(EstimateModel::class, $response);
+        return $this->dataObject(EstimateDataObject::class, $response);
     }
 
     /**
@@ -151,37 +151,37 @@ class Estimates extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#update-an-estimate-line-item
      * @param int $estimateId
      * @param EstimateLineItem $lineItem
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function updateLineItem(int $estimateId, EstimateLineItem $lineItem): AbstractModel
+    public function updateLineItem(int $estimateId, EstimateLineItem $lineItem): AbstractDataObject
     {
         $data['line_items'] = $this->generateUpdateLineItemArray($lineItem);
         $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->post(sprintf('estimates/%s', $estimateId), $options);
 
-        return $this->model(EstimateModel::class, $response);
+        return $this->dataObject(EstimateDataObject::class, $response);
     }
 
     /**
      * Delete an estimate
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#delete-an-estimate
      * @param int $estimateId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $estimateId): AbstractModel
+    public function delete(int $estimateId): AbstractDataObject
     {
         $uri      = sprintf('estimates/%s', $estimateId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->model(EstimateModel::class, $response);
+        return $this->dataObject(EstimateDataObject::class, $response);
     }
 
     /**
      * Delete an estimate line item
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#delete-an-estimate-line-item
      * @param int $lineItemId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function deleteLineItem(int $lineItemId): AbstractModel
+    public function deleteLineItem(int $lineItemId): AbstractDataObject
     {
         $data = [
             'line_items' => [
@@ -192,7 +192,7 @@ class Estimates extends AbstractEndpoint
         $uri      = sprintf('estimates/%s', $lineItemId);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch($uri, $options);
-        return $this->model(EstimateModel::class, $response);
+        return $this->dataObject(EstimateDataObject::class, $response);
     }
 
     /**
@@ -203,23 +203,23 @@ class Estimates extends AbstractEndpoint
     private function generateCreateLineItemsArray(LineItemCollection $lineItemCollection): array
     {
         $lineItems = [];
-        foreach ($lineItemCollection as $lineItemModel) {
-            $lineItems[] = $this->generateCreateLineItemArray($lineItemModel);
+        foreach ($lineItemCollection as $lineItemDataObject) {
+            $lineItems[] = $this->generateCreateLineItemArray($lineItemDataObject);
         }
         return $lineItems;
     }
 
     /**
      * Generates line item array
-     * @param EstimateLineItem $lineItemModel
+     * @param EstimateLineItem $lineItemDataObject
      * @return array
      */
-    private function generateCreateLineItemArray(EstimateLineItem $lineItemModel): array
+    private function generateCreateLineItemArray(EstimateLineItem $lineItemDataObject): array
     {
         $requiredFields = static::$requiredLineItemCreateFreeFormFields;
         $optionalFields = static::$optionalLineItemCreateFreeFormFields;
-        $data           = $this->addRequiredDataFromModel($requiredFields, [], $lineItemModel);
-        $data           = $this->addOptionalDataFromModel($optionalFields, $data, $lineItemModel);
+        $data           = $this->addRequiredDataFromDataObject($requiredFields, [], $lineItemDataObject);
+        $data           = $this->addOptionalDataFromDataObject($optionalFields, $data, $lineItemDataObject);
         return $data;
     }
 
@@ -231,19 +231,19 @@ class Estimates extends AbstractEndpoint
     private function generateUpdateLineItemsArray(LineItemCollection $lineItemCollection): array
     {
         $lineItems = [];
-        foreach ($lineItemCollection as $lineItemModel) {
-            $lineItems[] = $this->generateUpdateLineItemArray($lineItemModel);
+        foreach ($lineItemCollection as $lineItemDataObject) {
+            $lineItems[] = $this->generateUpdateLineItemArray($lineItemDataObject);
         }
         return $lineItems;
     }
 
     /**
      * Generates line item array
-     * @param EstimateLineItem $lineItemModel
+     * @param EstimateLineItem $lineItemDataObject
      * @return array
      */
-    private function generateUpdateLineItemArray(EstimateLineItem $lineItemModel): array
+    private function generateUpdateLineItemArray(EstimateLineItem $lineItemDataObject): array
     {
-        return $this->addOptionalDataFromModel(static::$optionalLineItemUpdateFields, [], $lineItemModel);
+        return $this->addOptionalDataFromDataObject(static::$optionalLineItemUpdateFields, [], $lineItemDataObject);
     }
 }

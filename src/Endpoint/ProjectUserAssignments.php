@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\ProjectUserAssignment as ProjectUserAssignmentCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\ProjectUserAssignment as ProjectUserAssignmentModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\ProjectUserAssignment as ProjectUserAssignmentDataObject;
 
 class ProjectUserAssignments extends AbstractEndpoint
 {
@@ -57,19 +57,19 @@ class ProjectUserAssignments extends AbstractEndpoint
     /**
      * Create a user assignment
      * @see https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#create-a-user-assignment
-     * @param ProjectUserAssignmentModel $projectUserAssignment
+     * @param ProjectUserAssignmentDataObject $projectUserAssignment
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function create(int $projectId, ProjectUserAssignmentModel $projectUserAssignment): AbstractModel
+    public function create(int $projectId, ProjectUserAssignmentDataObject $projectUserAssignment): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $projectUserAssignment);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $projectUserAssignment);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $projectUserAssignment);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $projectUserAssignment);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $uri      = sprintf('projects/%s/user_assignments', $projectId);
         $response = $this->getHttpClient()->post($uri, $options);
 
-        return $this->model(ProjectUserAssignmentModel::class, $response);
+        return $this->dataObject(ProjectUserAssignmentDataObject::class, $response);
     }
 
     /**
@@ -77,30 +77,30 @@ class ProjectUserAssignments extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#retrieve-a-user-assignment
      * @param int $projectUserAssignmentId
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $projectId, int $projectUserAssignmentId): AbstractModel
+    public function get(int $projectId, int $projectUserAssignmentId): AbstractDataObject
     {
         $uri      = sprintf('projects/%s/user_assignments/%s', $projectId, $projectUserAssignmentId);
         $response = $this->getHttpClient()->get($uri);
-        return $this->model(ProjectUserAssignmentModel::class, $response);
+        return $this->dataObject(ProjectUserAssignmentDataObject::class, $response);
     }
 
     /**
      * Update a user assignment
      * @see https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#update-a-user-assignment
-     * @param ProjectUserAssignmentModel $projectUserAssignment
+     * @param ProjectUserAssignmentDataObject $projectUserAssignment
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function update(int $projectId, ProjectUserAssignmentModel $projectUserAssignment): AbstractModel
+    public function update(int $projectId, ProjectUserAssignmentDataObject $projectUserAssignment): AbstractDataObject
     {
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $projectUserAssignment);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $projectUserAssignment);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $uri      = sprintf('projects/%s/user_assignments/%s', $projectId, $projectUserAssignment->id);
         $response = $this->getHttpClient()->patch($uri, $options);
 
-        return $this->model(ProjectUserAssignmentModel::class, $response);
+        return $this->dataObject(ProjectUserAssignmentDataObject::class, $response);
     }
 
     /**
@@ -108,12 +108,12 @@ class ProjectUserAssignments extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#delete-a-user-assignment
      * @param int $projectUserAssignmentId
      * @param int $projectId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $projectId, int $projectUserAssignmentId): AbstractModel
+    public function delete(int $projectId, int $projectUserAssignmentId): AbstractDataObject
     {
         $uri      = sprintf('projects/%s/user_assignments/%s', $projectId, $projectUserAssignmentId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->model(ProjectUserAssignmentModel::class, $response);
+        return $this->dataObject(ProjectUserAssignmentDataObject::class, $response);
     }
 }

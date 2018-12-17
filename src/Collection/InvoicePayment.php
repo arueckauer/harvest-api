@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\InvoicePayment as InvoicePaymentModel;
+use arueckauer\HarvestApi\DataObject\InvoicePayment as InvoicePaymentDataObject;
 
 class InvoicePayment extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class InvoicePayment extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, InvoicePaymentModel::class);
+        $this->setData($data, InvoicePaymentDataObject::class);
     }
 }

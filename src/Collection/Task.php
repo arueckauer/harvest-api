@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\Task as TaskModel;
+use arueckauer\HarvestApi\DataObject\Task as TaskDataObject;
 
 class Task extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class Task extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, TaskModel::class);
+        $this->setData($data, TaskDataObject::class);
     }
 }

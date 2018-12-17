@@ -4,8 +4,8 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\Collection\AbstractCollection;
 use arueckauer\HarvestApi\Collection\InvoicePayment as InvoicePaymentCollection;
-use arueckauer\HarvestApi\Model\AbstractModel;
-use arueckauer\HarvestApi\Model\InvoicePayment as InvoicePaymentModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\InvoicePayment as InvoicePaymentDataObject;
 
 class InvoicePayments extends AbstractEndpoint
 {
@@ -37,18 +37,18 @@ class InvoicePayments extends AbstractEndpoint
      * Create an invoice payment
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-payments/#create-an-invoice-payment
      * @param int $invoiceId
-     * @param InvoicePaymentModel $invoicePayment
-     * @return AbstractModel
+     * @param InvoicePaymentDataObject $invoicePayment
+     * @return AbstractDataObject
      */
-    public function create(int $invoiceId, InvoicePaymentModel $invoicePayment): AbstractModel
+    public function create(int $invoiceId, InvoicePaymentDataObject $invoicePayment): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $invoicePayment);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $invoicePayment);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $invoicePayment);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoicePayment);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $uri      = sprintf('invoices/%s/payments', $invoiceId);
         $response = $this->getHttpClient()->post($uri, $options);
 
-        return $this->model(InvoicePaymentModel::class, $response);
+        return $this->dataObject(InvoicePaymentDataObject::class, $response);
     }
 
     /**
@@ -56,12 +56,12 @@ class InvoicePayments extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-payments/#delete-an-invoice-payment
      * @param int $invoiceId
      * @param int $invoicePaymentId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $invoiceId, int $invoicePaymentId): AbstractModel
+    public function delete(int $invoiceId, int $invoicePaymentId): AbstractDataObject
     {
         $uri      = sprintf('invoices/%s/payments/%s', $invoiceId, $invoicePaymentId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->model(InvoicePaymentModel::class, $response);
+        return $this->dataObject(InvoicePaymentDataObject::class, $response);
     }
 }

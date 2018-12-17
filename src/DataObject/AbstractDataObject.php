@@ -29,7 +29,7 @@ abstract class AbstractDataObject implements DataObjectInterface
     }
 
     /**
-     * Convert model to an array
+     * Convert dataObject to an array
      * @return array
      */
     public function toArray(): array

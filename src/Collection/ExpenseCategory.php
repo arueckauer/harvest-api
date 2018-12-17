@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\ExpenseCategory as ExpenseCategoryModel;
+use arueckauer\HarvestApi\DataObject\ExpenseCategory as ExpenseCategoryDataObject;
 
 class ExpenseCategory extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class ExpenseCategory extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, ExpenseCategoryModel::class);
+        $this->setData($data, ExpenseCategoryDataObject::class);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\Project as ProjectModel;
+use arueckauer\HarvestApi\DataObject\Project as ProjectDataObject;
 
 class Project extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class Project extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, ProjectModel::class);
+        $this->setData($data, ProjectDataObject::class);
     }
 }

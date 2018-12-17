@@ -2,7 +2,7 @@
 
 namespace arueckauer\HarvestApi\Collection;
 
-use arueckauer\HarvestApi\Model\Client as ClientModel;
+use arueckauer\HarvestApi\DataObject\Client as ClientDataObject;
 
 class Client extends AbstractCollection
 {
@@ -12,6 +12,6 @@ class Client extends AbstractCollection
      */
     public function __construct(array $data)
     {
-        $this->setData($data, ClientModel::class);
+        $this->setData($data, ClientDataObject::class);
     }
 }
