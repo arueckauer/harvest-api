@@ -115,13 +115,11 @@ class Project extends AbstractDataObject
 
     /**
      * @var string
-     * @todo Date
      */
     public $startsOn;
 
     /**
      * @var string
-     * @todo Date
      */
     public $endsOn;
 
