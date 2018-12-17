@@ -2,10 +2,10 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
-use arueckauer\HarvestApi\DataObject\Collection\Client as ClientCollection;
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Client as ClientDataObject;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
+use arueckauer\HarvestApi\DataObject\Collection\Client as ClientCollection;
 
 class Clients extends AbstractEndpoint
 {

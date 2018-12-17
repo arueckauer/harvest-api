@@ -2,9 +2,9 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\ExpenseCategory as ExpenseCategoryCollection;
-use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\ExpenseCategory as ExpenseCategoryDataObject;
 
 class ExpenseCategories extends AbstractEndpoint

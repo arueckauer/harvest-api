@@ -2,8 +2,8 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;

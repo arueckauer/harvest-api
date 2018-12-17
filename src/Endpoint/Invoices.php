@@ -2,10 +2,10 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\Invoice as InvoiceCollection;
 use arueckauer\HarvestApi\DataObject\Collection\InvoiceLineItem as LineItemCollection;
-use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Invoice as InvoiceDataObject;
 
 class Invoices extends AbstractEndpoint

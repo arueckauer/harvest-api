@@ -2,9 +2,9 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\ProjectTaskAssignment as ProjectTaskAssignmentCollection;
-use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\ProjectTaskAssignment as ProjectTaskAssignmentDataObject;
 
 class ProjectTaskAssignments extends AbstractEndpoint

@@ -2,9 +2,9 @@
 
 namespace arueckauer\HarvestApi\Endpoint;
 
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\InvoiceMessage as InvoiceMessageCollection;
-use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\InvoiceMessage as InvoiceMessageDataObject;
 
 class InvoiceMessages extends AbstractEndpoint
