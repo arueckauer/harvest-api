@@ -56,7 +56,7 @@ class UserProjectAssignment extends AbstractDataObject
     public $user;
 
     /**
-     * @var \arueckauer\HarvestApi\DataObject\Collection\ProjectTaskAssignment
+     * @var Collection\ProjectTaskAssignment
      */
     public $taskAssignments;
 }

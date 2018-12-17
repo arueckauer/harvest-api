@@ -18,7 +18,7 @@ class Invoice extends AbstractDataObject
     public $client;
 
     /**
-     * @var \arueckauer\HarvestApi\DataObject\Collection\InvoiceLineItem
+     * @var Collection\InvoiceLineItem
      */
     public $lineItems;
 
