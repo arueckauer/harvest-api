@@ -39,7 +39,7 @@ class EstimateMessages extends AbstractEndpoint
     {
         $uri      = sprintf('estimates/%s/messages', $estimateId);
         $response = $this->getHttpClient()->get($uri, $options);
-        return $this->collection(EstimateMessageCollection::class, $response);
+        return $this->getCollectionFromResponse(EstimateMessageCollection::class, $response);
     }
 
     /**
@@ -61,7 +61,7 @@ class EstimateMessages extends AbstractEndpoint
         $uri                = sprintf('estimates/%s/messages', $estimateId);
         $response           = $this->getHttpClient()->post($uri, $options);
 
-        return $this->dataObject(EstimateMessageDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateMessageDataObject::class, $response);
     }
 
     /**
@@ -75,7 +75,7 @@ class EstimateMessages extends AbstractEndpoint
     {
         $uri      = sprintf('estimates/%s/messages/%s', $estimateId, $estimateMessageId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->dataObject(EstimateMessageDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateMessageDataObject::class, $response);
     }
 
     /**
@@ -128,6 +128,6 @@ class EstimateMessages extends AbstractEndpoint
         $uri      = sprintf('estimates/%s/messages', $estimateId);
         $response = $this->getHttpClient()->post($uri, $options);
 
-        return $this->dataObject(EstimateMessageDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateMessageDataObject::class, $response);
     }
 }

@@ -15,6 +15,6 @@ class Company extends AbstractEndpoint
     public function get(): AbstractDataObject
     {
         $response = $this->getHttpClient()->get('company');
-        return $this->dataObject(CompanyDataObject::class, $response);
+        return $this->getDataObjectFromResponse(CompanyDataObject::class, $response);
     }
 }

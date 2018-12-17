@@ -34,7 +34,7 @@ class Roles extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('roles', $options);
-        return $this->collection(RoleCollection::class, $response);
+        return $this->getCollectionFromResponse(RoleCollection::class, $response);
     }
 
     /**
@@ -50,7 +50,7 @@ class Roles extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('roles', $options);
 
-        return $this->dataObject(RoleDataObject::class, $response);
+        return $this->getDataObjectFromResponse(RoleDataObject::class, $response);
     }
 
     /**
@@ -62,7 +62,7 @@ class Roles extends AbstractEndpoint
     public function get(int $roleId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('roles/%s', $roleId));
-        return $this->dataObject(RoleDataObject::class, $response);
+        return $this->getDataObjectFromResponse(RoleDataObject::class, $response);
     }
 
     /**
@@ -78,7 +78,7 @@ class Roles extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('roles/%s', $role->id), $options);
 
-        return $this->dataObject(RoleDataObject::class, $response);
+        return $this->getDataObjectFromResponse(RoleDataObject::class, $response);
     }
 
     /**
@@ -90,6 +90,6 @@ class Roles extends AbstractEndpoint
     public function delete(int $roleId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('roles/%s', $roleId));
-        return $this->dataObject(RoleDataObject::class, $response);
+        return $this->getDataObjectFromResponse(RoleDataObject::class, $response);
     }
 }

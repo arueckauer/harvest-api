@@ -26,7 +26,7 @@ class EstimateItemCategories extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('estimate_item_categories', $options);
-        return $this->collection(EstimateItemCategoryCollection::class, $response);
+        return $this->getCollectionFromResponse(EstimateItemCategoryCollection::class, $response);
     }
 
     /**
@@ -41,7 +41,7 @@ class EstimateItemCategories extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('estimate_item_categories', $options);
 
-        return $this->dataObject(EstimateItemCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateItemCategoryDataObject::class, $response);
     }
 
     /**
@@ -54,7 +54,7 @@ class EstimateItemCategories extends AbstractEndpoint
     {
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategoryId);
         $response = $this->getHttpClient()->get($uri);
-        return $this->dataObject(EstimateItemCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateItemCategoryDataObject::class, $response);
     }
 
     /**
@@ -70,7 +70,7 @@ class EstimateItemCategories extends AbstractEndpoint
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategory->id);
         $response = $this->getHttpClient()->patch($uri, $options);
 
-        return $this->dataObject(EstimateItemCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateItemCategoryDataObject::class, $response);
     }
 
     /**
@@ -83,6 +83,6 @@ class EstimateItemCategories extends AbstractEndpoint
     {
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategoryId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->dataObject(EstimateItemCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateItemCategoryDataObject::class, $response);
     }
 }

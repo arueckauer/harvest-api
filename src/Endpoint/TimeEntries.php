@@ -80,7 +80,7 @@ class TimeEntries extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('time_entries', $options);
-        return $this->collection(TimeEntryCollection::class, $response);
+        return $this->getCollectionFromResponse(TimeEntryCollection::class, $response);
     }
 
     /**
@@ -92,7 +92,7 @@ class TimeEntries extends AbstractEndpoint
     public function get(int $timeEntryId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('time_entries/%s', $timeEntryId));
-        return $this->dataObject(TimeEntryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);
     }
 
     /**
@@ -109,7 +109,7 @@ class TimeEntries extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('time_entries', $options);
 
-        return $this->dataObject(TimeEntryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);
     }
 
     /**
@@ -126,7 +126,7 @@ class TimeEntries extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('time_entries', $options);
 
-        return $this->dataObject(TimeEntryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);
     }
 
     /**
@@ -141,7 +141,7 @@ class TimeEntries extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('time_entries/%s', $timeEntry->id), $options);
 
-        return $this->dataObject(TimeEntryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);
     }
 
     /**
@@ -153,6 +153,6 @@ class TimeEntries extends AbstractEndpoint
     public function delete(int $timeEntryId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('time_entries/%s', $timeEntryId));
-        return $this->dataObject(TimeEntryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);
     }
 }

@@ -18,7 +18,7 @@ class UserProjectAssignments extends AbstractEndpoint
     {
         $uri      = sprintf('users/%s/project_assignments', $userId);
         $response = $this->getHttpClient()->get($uri, $options);
-        return $this->collection(UserProjectAssignmentCollection::class, $response);
+        return $this->getCollectionFromResponse(UserProjectAssignmentCollection::class, $response);
     }
 
     /**
@@ -31,6 +31,6 @@ class UserProjectAssignments extends AbstractEndpoint
     {
         $uri      = 'users/me/project_assignments';
         $response = $this->getHttpClient()->get($uri, $options);
-        return $this->collection(UserProjectAssignmentCollection::class, $response);
+        return $this->getCollectionFromResponse(UserProjectAssignmentCollection::class, $response);
     }
 }

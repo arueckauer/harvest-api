@@ -82,7 +82,7 @@ class Invoices extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('invoices', $options);
-        return $this->collection(InvoiceCollection::class, $response);
+        return $this->getCollectionFromResponse(InvoiceCollection::class, $response);
     }
 
     /**
@@ -94,7 +94,7 @@ class Invoices extends AbstractEndpoint
     public function get(int $invoiceId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('invoices/%s', $invoiceId));
-        return $this->dataObject(InvoiceDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
@@ -112,7 +112,7 @@ class Invoices extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('invoices', $options);
 
-        return $this->dataObject(InvoiceDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
@@ -130,7 +130,7 @@ class Invoices extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('invoices', $options);
 
-        return $this->dataObject(InvoiceDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
@@ -146,7 +146,7 @@ class Invoices extends AbstractEndpoint
         $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->patch(sprintf('invoices/%s', $invoice->id), $options);
 
-        return $this->dataObject(InvoiceDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
@@ -166,7 +166,7 @@ class Invoices extends AbstractEndpoint
         $uri      = sprintf('invoices/%s', $lineItemId);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch($uri, $options);
-        return $this->dataObject(InvoiceDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
@@ -179,7 +179,7 @@ class Invoices extends AbstractEndpoint
     {
         $uri      = sprintf('invoices/%s', $invoiceId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->dataObject(InvoiceDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**

@@ -37,7 +37,7 @@ class Tasks extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('tasks', $options);
-        return $this->collection(TaskCollection::class, $response);
+        return $this->getCollectionFromResponse(TaskCollection::class, $response);
     }
 
     /**
@@ -53,7 +53,7 @@ class Tasks extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('tasks', $options);
 
-        return $this->dataObject(TaskDataObject::class, $response);
+        return $this->getDataObjectFromResponse(TaskDataObject::class, $response);
     }
 
     /**
@@ -65,7 +65,7 @@ class Tasks extends AbstractEndpoint
     public function get(int $taskId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('tasks/%s', $taskId));
-        return $this->dataObject(TaskDataObject::class, $response);
+        return $this->getDataObjectFromResponse(TaskDataObject::class, $response);
     }
 
     /**
@@ -80,7 +80,7 @@ class Tasks extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('tasks/%s', $task->id), $options);
 
-        return $this->dataObject(TaskDataObject::class, $response);
+        return $this->getDataObjectFromResponse(TaskDataObject::class, $response);
     }
 
     /**
@@ -92,6 +92,6 @@ class Tasks extends AbstractEndpoint
     public function delete(int $taskId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('tasks/%s', $taskId));
-        return $this->dataObject(TaskDataObject::class, $response);
+        return $this->getDataObjectFromResponse(TaskDataObject::class, $response);
     }
 }

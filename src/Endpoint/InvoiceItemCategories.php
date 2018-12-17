@@ -37,7 +37,7 @@ class InvoiceItemCategories extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('invoice_item_categories', $options);
-        return $this->collection(InvoiceItemCategoryCollection::class, $response);
+        return $this->getCollectionFromResponse(InvoiceItemCategoryCollection::class, $response);
     }
 
     /**
@@ -53,7 +53,7 @@ class InvoiceItemCategories extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('invoice_item_categories', $options);
 
-        return $this->dataObject(InvoiceItemCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceItemCategoryDataObject::class, $response);
     }
 
     /**
@@ -66,7 +66,7 @@ class InvoiceItemCategories extends AbstractEndpoint
     {
         $uri      = sprintf('invoice_item_categories/%s', $invoiceItemCategoryId);
         $response = $this->getHttpClient()->get($uri);
-        return $this->dataObject(InvoiceItemCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceItemCategoryDataObject::class, $response);
     }
 
     /**
@@ -82,7 +82,7 @@ class InvoiceItemCategories extends AbstractEndpoint
         $uri      = sprintf('invoice_item_categories/%s', $invoiceItemCategory->id);
         $response = $this->getHttpClient()->patch($uri, $options);
 
-        return $this->dataObject(InvoiceItemCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceItemCategoryDataObject::class, $response);
     }
 
     /**
@@ -95,6 +95,6 @@ class InvoiceItemCategories extends AbstractEndpoint
     {
         $uri      = sprintf('invoice_item_categories/%s', $invoiceItemCategoryId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->dataObject(InvoiceItemCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceItemCategoryDataObject::class, $response);
     }
 }

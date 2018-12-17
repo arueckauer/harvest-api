@@ -61,7 +61,7 @@ class Users extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('users', $options);
-        return $this->collection(UserCollection::class, $response);
+        return $this->getCollectionFromResponse(UserCollection::class, $response);
     }
 
     /**
@@ -77,7 +77,7 @@ class Users extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('users', $options);
 
-        return $this->dataObject(UserDataObject::class, $response);
+        return $this->getDataObjectFromResponse(UserDataObject::class, $response);
     }
 
     /**
@@ -89,7 +89,7 @@ class Users extends AbstractEndpoint
     public function get(int $userId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('users/%s', $userId));
-        return $this->dataObject(UserDataObject::class, $response);
+        return $this->getDataObjectFromResponse(UserDataObject::class, $response);
     }
 
     /**
@@ -100,7 +100,7 @@ class Users extends AbstractEndpoint
     public function getCurrentlyAuthenticatedUser(): AbstractDataObject
     {
         $response = $this->getHttpClient()->get('users/me');
-        return $this->dataObject(UserDataObject::class, $response);
+        return $this->getDataObjectFromResponse(UserDataObject::class, $response);
     }
 
     /**
@@ -115,7 +115,7 @@ class Users extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('users/%s', $user->id), $options);
 
-        return $this->dataObject(UserDataObject::class, $response);
+        return $this->getDataObjectFromResponse(UserDataObject::class, $response);
     }
 
     /**
@@ -127,6 +127,6 @@ class Users extends AbstractEndpoint
     public function delete(int $userId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('users/%s', $userId));
-        return $this->dataObject(UserDataObject::class, $response);
+        return $this->getDataObjectFromResponse(UserDataObject::class, $response);
     }
 }

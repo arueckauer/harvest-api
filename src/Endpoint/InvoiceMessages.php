@@ -42,7 +42,7 @@ class InvoiceMessages extends AbstractEndpoint
     {
         $uri      = sprintf('invoices/%s/messages', $invoiceId);
         $response = $this->getHttpClient()->get($uri, $options);
-        return $this->collection(InvoiceMessageCollection::class, $response);
+        return $this->getCollectionFromResponse(InvoiceMessageCollection::class, $response);
     }
 
     /**
@@ -64,7 +64,7 @@ class InvoiceMessages extends AbstractEndpoint
         $uri                = sprintf('invoices/%s/messages', $invoiceId);
         $response           = $this->getHttpClient()->post($uri, $options);
 
-        return $this->dataObject(InvoiceMessageDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceMessageDataObject::class, $response);
     }
 
     /**
@@ -78,7 +78,7 @@ class InvoiceMessages extends AbstractEndpoint
     {
         $uri      = sprintf('invoices/%s/messages/%s', $invoiceId, $invoiceMessageId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->dataObject(InvoiceMessageDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceMessageDataObject::class, $response);
     }
 
     /**
@@ -131,6 +131,6 @@ class InvoiceMessages extends AbstractEndpoint
         $uri      = sprintf('invoices/%s/messages', $invoiceId);
         $response = $this->getHttpClient()->post($uri, $options);
 
-        return $this->dataObject(InvoiceMessageDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceMessageDataObject::class, $response);
     }
 }

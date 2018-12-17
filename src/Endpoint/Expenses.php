@@ -45,7 +45,7 @@ class Expenses extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('expenses', $options);
-        return $this->collection(ExpenseCollection::class, $response);
+        return $this->getCollectionFromResponse(ExpenseCollection::class, $response);
     }
 
     /**
@@ -61,7 +61,7 @@ class Expenses extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('expenses', $options);
 
-        return $this->dataObject(ExpenseDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ExpenseDataObject::class, $response);
     }
 
     /**
@@ -73,7 +73,7 @@ class Expenses extends AbstractEndpoint
     public function get(int $expenseId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('expenses/%s', $expenseId));
-        return $this->dataObject(ExpenseDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ExpenseDataObject::class, $response);
     }
 
     /**
@@ -88,7 +88,7 @@ class Expenses extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('expenses/%s', $expense->id), $options);
 
-        return $this->dataObject(ExpenseDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ExpenseDataObject::class, $response);
     }
 
     /**
@@ -100,6 +100,6 @@ class Expenses extends AbstractEndpoint
     public function delete(int $expenseId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('expenses/%s', $expenseId));
-        return $this->dataObject(ExpenseDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ExpenseDataObject::class, $response);
     }
 }

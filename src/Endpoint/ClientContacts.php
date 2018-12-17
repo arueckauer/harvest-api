@@ -46,7 +46,7 @@ class ClientContacts extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('contacts', $options);
-        return $this->collection(ClientContactCollection::class, $response);
+        return $this->getCollectionFromResponse(ClientContactCollection::class, $response);
     }
 
     /**
@@ -58,7 +58,7 @@ class ClientContacts extends AbstractEndpoint
     public function get(int $contactId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('contacts/%s', $contactId));
-        return $this->dataObject(ClientContactDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);
     }
 
     /**
@@ -74,7 +74,7 @@ class ClientContacts extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('contacts', $options);
 
-        return $this->dataObject(ClientContactDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);
     }
 
     /**
@@ -90,7 +90,7 @@ class ClientContacts extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('contacts/%s', $contact->id), $options);
 
-        return $this->dataObject(ClientContactDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);
     }
 
     /**
@@ -102,6 +102,6 @@ class ClientContacts extends AbstractEndpoint
     public function delete(int $contactId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('contacts/%s', $contactId));
-        return $this->dataObject(ClientContactDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);
     }
 }

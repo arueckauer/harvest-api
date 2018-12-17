@@ -81,7 +81,7 @@ class Estimates extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('estimates', $options);
-        return $this->collection(EstimateCollection::class, $response);
+        return $this->getCollectionFromResponse(EstimateCollection::class, $response);
     }
 
     /**
@@ -99,7 +99,7 @@ class Estimates extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('estimates', $options);
 
-        return $this->dataObject(EstimateDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
     }
 
     /**
@@ -115,7 +115,7 @@ class Estimates extends AbstractEndpoint
         $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->post(sprintf('estimates/%s', $estimateId), $options);
 
-        return $this->dataObject(EstimateDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
     }
 
     /**
@@ -127,7 +127,7 @@ class Estimates extends AbstractEndpoint
     public function get(int $estimateId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('estimates/%s', $estimateId));
-        return $this->dataObject(EstimateDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
     }
 
     /**
@@ -143,7 +143,7 @@ class Estimates extends AbstractEndpoint
         $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->patch(sprintf('estimates/%s', $estimate->id), $options);
 
-        return $this->dataObject(EstimateDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
     }
 
     /**
@@ -159,7 +159,7 @@ class Estimates extends AbstractEndpoint
         $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->post(sprintf('estimates/%s', $estimateId), $options);
 
-        return $this->dataObject(EstimateDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
     }
 
     /**
@@ -172,7 +172,7 @@ class Estimates extends AbstractEndpoint
     {
         $uri      = sprintf('estimates/%s', $estimateId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->dataObject(EstimateDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
     }
 
     /**
@@ -192,7 +192,7 @@ class Estimates extends AbstractEndpoint
         $uri      = sprintf('estimates/%s', $lineItemId);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch($uri, $options);
-        return $this->dataObject(EstimateDataObject::class, $response);
+        return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
     }
 
     /**

@@ -30,7 +30,7 @@ abstract class AbstractEndpoint
      * @param ResponseInterface $response
      * @return AbstractCollection
      */
-    public function collection(string $collectionClass, ResponseInterface $response): AbstractCollection
+    public function getCollectionFromResponse(string $collectionClass, ResponseInterface $response): AbstractCollection
     {
         $column = substr($collectionClass, strrpos($collectionClass, '\\') + 1);
         $data   = $this->outerArray($response, strtolower($column));
@@ -43,7 +43,7 @@ abstract class AbstractEndpoint
      * @param ResponseInterface $response
      * @return AbstractDataObject
      */
-    public function dataObject($dataObjectClass, ResponseInterface $response): AbstractDataObject
+    public function getDataObjectFromResponse($dataObjectClass, ResponseInterface $response): AbstractDataObject
     {
         return new $dataObjectClass($this->decodeJson($response));
     }

@@ -35,7 +35,7 @@ class ExpenseCategories extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('expense_categories', $options);
-        return $this->collection(ExpenseCategoryCollection::class, $response);
+        return $this->getCollectionFromResponse(ExpenseCategoryCollection::class, $response);
     }
 
     /**
@@ -51,7 +51,7 @@ class ExpenseCategories extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('expense_categories', $options);
 
-        return $this->dataObject(ExpenseCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ExpenseCategoryDataObject::class, $response);
     }
 
     /**
@@ -63,7 +63,7 @@ class ExpenseCategories extends AbstractEndpoint
     public function get(int $expenseCategoryId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('expense_categories/%s', $expenseCategoryId));
-        return $this->dataObject(ExpenseCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ExpenseCategoryDataObject::class, $response);
     }
 
     /**
@@ -78,7 +78,7 @@ class ExpenseCategories extends AbstractEndpoint
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('expense_categories/%s', $expenseCategory->id), $options);
 
-        return $this->dataObject(ExpenseCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ExpenseCategoryDataObject::class, $response);
     }
 
     /**
@@ -90,6 +90,6 @@ class ExpenseCategories extends AbstractEndpoint
     public function delete(int $expenseCategoryId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('expense_categories/%s', $expenseCategoryId));
-        return $this->dataObject(ExpenseCategoryDataObject::class, $response);
+        return $this->getDataObjectFromResponse(ExpenseCategoryDataObject::class, $response);
     }
 }

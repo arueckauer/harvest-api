@@ -30,7 +30,7 @@ class InvoicePayments extends AbstractEndpoint
     {
         $uri      = sprintf('invoices/%s/payments', $invoiceId);
         $response = $this->getHttpClient()->get($uri, $options);
-        return $this->collection(InvoicePaymentCollection::class, $response);
+        return $this->getCollectionFromResponse(InvoicePaymentCollection::class, $response);
     }
 
     /**
@@ -48,7 +48,7 @@ class InvoicePayments extends AbstractEndpoint
         $uri      = sprintf('invoices/%s/payments', $invoiceId);
         $response = $this->getHttpClient()->post($uri, $options);
 
-        return $this->dataObject(InvoicePaymentDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoicePaymentDataObject::class, $response);
     }
 
     /**
@@ -62,6 +62,6 @@ class InvoicePayments extends AbstractEndpoint
     {
         $uri      = sprintf('invoices/%s/payments/%s', $invoiceId, $invoicePaymentId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->dataObject(InvoicePaymentDataObject::class, $response);
+        return $this->getDataObjectFromResponse(InvoicePaymentDataObject::class, $response);
     }
 }
