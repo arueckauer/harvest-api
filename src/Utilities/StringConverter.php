@@ -2,9 +2,6 @@
 
 namespace arueckauer\HarvestApi\Utilities;
 
-/**
- * Class Utils
- */
 class StringConverter
 {
     /**
