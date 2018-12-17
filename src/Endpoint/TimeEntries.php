@@ -121,8 +121,16 @@ class TimeEntries extends AbstractEndpoint
      */
     public function createViaStartAndEndTime(TimeEntryDataObject $timeEntry): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateViaStartAndEndTimeFields, [], $timeEntry);
-        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateViaStartAndEndTimeFields, $data, $timeEntry);
+        $data = $this->addRequiredDataFromDataObject(
+            static::$requiredCreateViaStartAndEndTimeFields,
+            [],
+            $timeEntry
+        );
+        $data = $this->addOptionalDataFromDataObject(
+            static::$optionalCreateViaStartAndEndTimeFields,
+            $data,
+            $timeEntry
+        );
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('time_entries', $options);
 

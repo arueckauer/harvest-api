@@ -56,10 +56,14 @@ class EstimateMessages extends AbstractEndpoint
             $recipients[] = $recipient->toArray();
         }
         $data['recipients'] = $recipients;
-        $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $estimateMessage);
-        $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
-        $uri                = sprintf('estimates/%s/messages', $estimateId);
-        $response           = $this->getHttpClient()->post($uri, $options);
+        $data               = $this->addOptionalDataFromDataObject(
+            static::$optionalCreateFields,
+            $data,
+            $estimateMessage
+        );
+        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $uri      = sprintf('estimates/%s/messages', $estimateId);
+        $response = $this->getHttpClient()->post($uri, $options);
 
         return $this->getDataObjectFromResponse(EstimateMessageDataObject::class, $response);
     }

@@ -209,7 +209,11 @@ class Invoices extends AbstractEndpoint
     {
         $lineItems = [];
         foreach ($lineItemCollection as $lineItemDataObject) {
-            $lineItems[] = $this->addOptionalDataFromDataObject(static::$optionalLineItemUpdateFields, [], $lineItemDataObject);
+            $lineItems[] = $this->addOptionalDataFromDataObject(
+                static::$optionalLineItemUpdateFields,
+                [],
+                $lineItemDataObject
+            );
         }
         return $lineItems;
     }

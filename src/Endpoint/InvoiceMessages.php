@@ -59,10 +59,14 @@ class InvoiceMessages extends AbstractEndpoint
             $recipients[] = $recipient->toArray();
         }
         $data['recipients'] = $recipients;
-        $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoiceMessage);
-        $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
-        $uri                = sprintf('invoices/%s/messages', $invoiceId);
-        $response           = $this->getHttpClient()->post($uri, $options);
+        $data               = $this->addOptionalDataFromDataObject(
+            static::$optionalCreateFields,
+            $data,
+            $invoiceMessage
+        );
+        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $uri      = sprintf('invoices/%s/messages', $invoiceId);
+        $response = $this->getHttpClient()->post($uri, $options);
 
         return $this->getDataObjectFromResponse(InvoiceMessageDataObject::class, $response);
     }
