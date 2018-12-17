@@ -2,6 +2,8 @@
 
 namespace arueckauer\HarvestApi\DataObject;
 
+use arueckauer\HarvestApi\PropertyReference;
+
 class TimeEntry extends AbstractDataObject
 {
     /**
@@ -16,43 +18,50 @@ class TimeEntry extends AbstractDataObject
     public $spentDate;
 
     /**
-     * @var User
+     * @var Reference\Creator
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Creator")
      */
     public $user;
 
     /**
-     * @var ProjectUserAssignment
+     * @var Reference\ProjectUserAssignment
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\ProjectUserAssignment")
      */
     public $userAssignment;
 
     /**
-     * @var Client
+     * @var Reference\Client
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Client")
      */
     public $client;
 
     /**
-     * @var Project
+     * @var Reference\Project
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Project")
      */
     public $project;
 
     /**
-     * @var Task
+     * @var Reference\Task
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Task")
      */
     public $task;
 
     /**
-     * @var ProjectTaskAssignment
+     * @var Reference\ProjectTaskAssignment
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\ProjectTaskAssignment")
      */
     public $taskAssignment;
 
     /**
-     * @var object
-     * @todo Define class
+     * @var Reference\ExternalReference
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\ExternalReference")
      */
     public $externalReference;
 
     /**
-     * @var Invoice
+     * @var Reference\Invoice
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Invoice")
      */
     public $invoice;
 

@@ -2,6 +2,8 @@
 
 namespace arueckauer\HarvestApi\DataObject;
 
+use arueckauer\HarvestApi\PropertyReference;
+
 class Invoice extends AbstractDataObject
 {
     /**
@@ -10,7 +12,8 @@ class Invoice extends AbstractDataObject
     public $id;
 
     /**
-     * @var Client
+     * @var Reference\Client
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Client")
      */
     public $client;
 
@@ -20,18 +23,20 @@ class Invoice extends AbstractDataObject
     public $lineItems;
 
     /**
-     * @var Estimate
+     * @var Reference\Estimate
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Estimate")
      */
     public $estimate;
 
     /**
-     * @var object
-     * @todo Define class
+     * @var Reference\Retainer
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Retainer")
      */
     public $retainer;
 
     /**
-     * @var User
+     * @var Reference\Creator
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Creator")
      */
     public $creator;
 

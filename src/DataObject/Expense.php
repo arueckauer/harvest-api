@@ -2,7 +2,6 @@
 
 namespace arueckauer\HarvestApi\DataObject;
 
-use arueckauer\HarvestApi\DataObject\Reference\Receipt;
 use arueckauer\HarvestApi\PropertyReference;
 
 class Expense extends AbstractDataObject
@@ -13,43 +12,44 @@ class Expense extends AbstractDataObject
     public $id;
 
     /**
-     * @var Client
+     * @var Reference\Client
      * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Client")
      */
     public $client;
 
     /**
-     * @var Project
+     * @var Reference\Project
      * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Project")
      */
     public $project;
 
     /**
-     * @var ExpenseCategory
+     * @var Reference\ExpenseCategory
      * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\ExpenseCategory")
      */
     public $expenseCategory;
 
     /**
-     * @var User
-     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\User")
+     * @var Reference\Creator
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Creator")
      */
     public $user;
 
     /**
-     * @var ProjectUserAssignment
+     * @var Reference\ProjectUserAssignment
      * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\ProjectUserAssignment")
      */
     public $userAssignment;
 
     /**
-     * @var Receipt
+     * @var Reference\Receipt
      * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Receipt")
      */
     public $receipt;
 
     /**
-     * @var Invoice
+     * @var Reference\Invoice
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Invoice")
      */
     public $invoice;
 

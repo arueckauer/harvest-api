@@ -2,6 +2,8 @@
 
 namespace arueckauer\HarvestApi\DataObject;
 
+use arueckauer\HarvestApi\PropertyReference;
+
 class ProjectUserAssignment extends AbstractDataObject
 {
     /**
@@ -10,12 +12,14 @@ class ProjectUserAssignment extends AbstractDataObject
     public $id;
 
     /**
-     * @var Project
+     * @var Reference\Project
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Project")
      */
     public $project;
 
     /**
-     * @var User
+     * @var Reference\Creator
+     * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Creator")
      */
     public $user;
 

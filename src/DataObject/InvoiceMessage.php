@@ -30,7 +30,7 @@ class InvoiceMessage extends AbstractDataObject
     public $sentFromEmail;
 
     /**
-     * @var InvoiceMessageRecipient[]
+     * @var \arueckauer\HarvestApi\Collection\InvoiceMessageRecipient
      */
     public $recipients;
 
