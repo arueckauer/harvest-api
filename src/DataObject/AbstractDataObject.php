@@ -39,8 +39,17 @@ abstract class AbstractDataObject implements DataObjectInterface
 
         foreach ($reflection->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
             $property = $property->getName();
+            $value    = $this->$property;
+            if (is_object($value)) {
+                if ($value instanceof \DateTimeImmutable) {
+                    $value = $value->format(\DateTime::ATOM);
+                }
+                if ($value instanceof DataObjectInterface) {
+                    $value = $value->toArray();
+                }
+            }
 
-            $data[StringConverter::fromCamelCaseToSnakeCase($property)] = $this->$property;
+            $data[StringConverter::fromCamelCaseToSnakeCase($property)] = $value;
         }
 
         return $data;
