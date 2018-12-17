@@ -44,14 +44,14 @@ class ProjectTaskAssignment extends AbstractDataObject
     public $budget;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $createdAt;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $updatedAt;
 }

@@ -2,6 +2,8 @@
 
 namespace arueckauer\HarvestApi\DataObject;
 
+use arueckauer\HarvestApi\PropertyReference;
+
 class EstimateItemCategory extends AbstractDataObject
 {
     /**
@@ -15,14 +17,14 @@ class EstimateItemCategory extends AbstractDataObject
     public $name;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $createdAt;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $updatedAt;
 }

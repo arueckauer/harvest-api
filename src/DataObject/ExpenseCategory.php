@@ -2,6 +2,8 @@
 
 namespace arueckauer\HarvestApi\DataObject;
 
+use arueckauer\HarvestApi\PropertyReference;
+
 class ExpenseCategory extends AbstractDataObject
 {
     /**
@@ -30,14 +32,14 @@ class ExpenseCategory extends AbstractDataObject
     public $isActive;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $createdAt;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $updatedAt;
 }

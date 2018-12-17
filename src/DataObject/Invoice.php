@@ -121,26 +121,26 @@ class Invoice extends AbstractDataObject
     public $state;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $periodStart;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $periodEnd;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $issueDate;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $dueDate;
 
@@ -150,38 +150,38 @@ class Invoice extends AbstractDataObject
     public $paymentTerm;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $sentAt;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $paidAt;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $paidDate;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $closedAt;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $createdAt;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $updatedAt;
 }

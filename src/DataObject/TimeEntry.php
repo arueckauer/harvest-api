@@ -12,8 +12,8 @@ class TimeEntry extends AbstractDataObject
     public $id;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $spentDate;
 
@@ -96,8 +96,8 @@ class TimeEntry extends AbstractDataObject
     public $isBilled;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $timerStartedAt;
 
@@ -137,14 +137,14 @@ class TimeEntry extends AbstractDataObject
     public $costRate;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $createdAt;
 
     /**
-     * @var string
-     * @todo DateTime
+     * @var \DateTimeImmutable
+     * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $updatedAt;
 }
