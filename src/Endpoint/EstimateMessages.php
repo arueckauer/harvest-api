@@ -1,11 +1,11 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\EstimateMessage as EstimateMessageCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\EstimateMessage as EstimateMessageModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
+use arueckauer\HarvestApi\DataObject\Collection\EstimateMessage as EstimateMessageCollection;
+use arueckauer\HarvestApi\DataObject\EstimateMessage as EstimateMessageDataObject;
 
 class EstimateMessages extends AbstractEndpoint
 {
@@ -39,29 +39,33 @@ class EstimateMessages extends AbstractEndpoint
     {
         $uri      = sprintf('estimates/%s/messages', $estimateId);
         $response = $this->getHttpClient()->get($uri, $options);
-        return $this->collection(EstimateMessageCollection::class, $response);
+        return $this->getCollectionFromResponse(EstimateMessageCollection::class, $response);
     }
 
     /**
      * Create an estimate message
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#create-an-estimate-message
      * @param int $estimateId
-     * @param EstimateMessageModel $estimateMessage
-     * @return AbstractModel
+     * @param EstimateMessageDataObject $estimateMessage
+     * @return AbstractDataObject
      */
-    public function create(int $estimateId, EstimateMessageModel $estimateMessage): AbstractModel
+    public function create(int $estimateId, EstimateMessageDataObject $estimateMessage): AbstractDataObject
     {
         $recipients = [];
         foreach ($estimateMessage->recipients as $recipient) {
             $recipients[] = $recipient->toArray();
         }
         $data['recipients'] = $recipients;
-        $data               = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $estimateMessage);
-        $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
-        $uri                = sprintf('estimates/%s/messages', $estimateId);
-        $response           = $this->getHttpClient()->post($uri, $options);
+        $data               = $this->addOptionalDataFromDataObject(
+            static::$optionalCreateFields,
+            $data,
+            $estimateMessage
+        );
+        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $uri      = sprintf('estimates/%s/messages', $estimateId);
+        $response = $this->getHttpClient()->post($uri, $options);
 
-        return $this->model(EstimateMessageModel::class, $response);
+        return $this->getDataObjectFromResponse(EstimateMessageDataObject::class, $response);
     }
 
     /**
@@ -69,22 +73,22 @@ class EstimateMessages extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#delete-an-estimate-message
      * @param int $estimateId
      * @param int $estimateMessageId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $estimateId, int $estimateMessageId): AbstractModel
+    public function delete(int $estimateId, int $estimateMessageId): AbstractDataObject
     {
         $uri      = sprintf('estimates/%s/messages/%s', $estimateId, $estimateMessageId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->model(EstimateMessageModel::class, $response);
+        return $this->getDataObjectFromResponse(EstimateMessageDataObject::class, $response);
     }
 
     /**
      * Mark a draft estimate as sent
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#mark-a-draft-estimate-as-sent
      * @param int $estimateId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function markDraftEstimateAsSent(int $estimateId): AbstractModel
+    public function markDraftEstimateAsSent(int $estimateId): AbstractDataObject
     {
         return $this->updateEventType($estimateId, self::EVENT_TYPE_SEND);
     }
@@ -93,9 +97,9 @@ class EstimateMessages extends AbstractEndpoint
      * Mark an open estimate as accepted<
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#mark-an-open-estimate-as-accepted
      * @param int $estimateId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function markOpenEstimateAsAccepted(int $estimateId): AbstractModel
+    public function markOpenEstimateAsAccepted(int $estimateId): AbstractDataObject
     {
         return $this->updateEventType($estimateId, self::EVENT_TYPE_ACCEPT);
     }
@@ -104,9 +108,9 @@ class EstimateMessages extends AbstractEndpoint
      * Mark an open estimate as declined
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#mark-an-open-estimate-as-declined
      * @param int $estimateId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function markOpenEstimateAsDeclined(int $estimateId): AbstractModel
+    public function markOpenEstimateAsDeclined(int $estimateId): AbstractDataObject
     {
         return $this->updateEventType($estimateId, self::EVENT_TYPE_DECLINE);
     }
@@ -115,19 +119,19 @@ class EstimateMessages extends AbstractEndpoint
      * Re-open a closed estimate
      * @see https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#re-open-a-closed-estimate
      * @param int $estimateId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function reOpenClosedEstimate(int $estimateId): AbstractModel
+    public function reOpenClosedEstimate(int $estimateId): AbstractDataObject
     {
         return $this->updateEventType($estimateId, self::EVENT_TYPE_RE_OPEN);
     }
 
-    private function updateEventType(int $estimateId, string $eventType): AbstractModel
+    private function updateEventType(int $estimateId, string $eventType): AbstractDataObject
     {
         $options  = ['event_type' => $eventType];
         $uri      = sprintf('estimates/%s/messages', $estimateId);
         $response = $this->getHttpClient()->post($uri, $options);
 
-        return $this->model(EstimateMessageModel::class, $response);
+        return $this->getDataObjectFromResponse(EstimateMessageDataObject::class, $response);
     }
 }

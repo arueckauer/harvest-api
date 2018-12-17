@@ -1,11 +1,11 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\ClientContact as ClientContactCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\ClientContact as ClientContactModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\ClientContact as ClientContactDataObject;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
+use arueckauer\HarvestApi\DataObject\Collection\ClientContact as ClientContactCollection;
 
 class ClientContacts extends AbstractEndpoint
 {
@@ -46,62 +46,62 @@ class ClientContacts extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('contacts', $options);
-        return $this->collection(ClientContactCollection::class, $response);
+        return $this->getCollectionFromResponse(ClientContactCollection::class, $response);
     }
 
     /**
      * Retrieve a contact
      * @see https://help.getharvest.com/api-v2/clients-api/clients/contacts/#retrieve-a-contact
      * @param int $contactId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $contactId): AbstractModel
+    public function get(int $contactId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('contacts/%s', $contactId));
-        return $this->model(ClientContactModel::class, $response);
+        return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);
     }
 
     /**
      * Create a contact
      * @see https://help.getharvest.com/api-v2/clients-api/clients/contacts/#create-a-contact
-     * @param ClientContactModel $contact
-     * @return AbstractModel
+     * @param ClientContactDataObject $contact
+     * @return AbstractDataObject
      */
-    public function create(ClientContactModel $contact): AbstractModel
+    public function create(ClientContactDataObject $contact): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $contact);
-        $data     = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $contact);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $contact);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $contact);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('contacts', $options);
 
-        return $this->model(ClientContactModel::class, $response);
+        return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);
     }
 
     /**
      * Update a contact
      * @see https://help.getharvest.com/api-v2/clients-api/clients/contacts/#update-a-contact
-     * @param ClientContactModel $contact
-     * @return AbstractModel
+     * @param ClientContactDataObject $contact
+     * @return AbstractDataObject
      */
-    public function update(ClientContactModel $contact): AbstractModel
+    public function update(ClientContactDataObject $contact): AbstractDataObject
     {
-        $data     = $this->addRequiredDataFromModel(static::$requiredUpdateFields, [], $contact);
-        $data     = $this->addOptionalDataFromModel(static::$optionalUpdateFields, $data, $contact);
+        $data     = $this->addRequiredDataFromDataObject(static::$requiredUpdateFields, [], $contact);
+        $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, $data, $contact);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('contacts/%s', $contact->id), $options);
 
-        return $this->model(ClientContactModel::class, $response);
+        return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);
     }
 
     /**
      * Delete a contact
      * @see https://help.getharvest.com/api-v2/clients-api/clients/contacts/#delete-a-contact
      * @param int $contactId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $contactId): AbstractModel
+    public function delete(int $contactId): AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('contacts/%s', $contactId));
-        return $this->model(ClientContactModel::class, $response);
+        return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);
     }
 }

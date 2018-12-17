@@ -1,11 +1,13 @@
 {
-    "name": "arueckauer/harvest",
+    "name": "arueckauer/harvest-api",
     "type": "library",
     "description": "Harvest 2 API using OAuth access tokens",
     "homepage": "https://github.com/arueckauer/harvest-api",
     "license": "MIT",
     "authors": [{
-        "name": "Andi Rückauer"
+        "name": "Andi Rückauer",
+        "homepage": "https://github.com/arueckauer",
+        "role": "Developer"
     }],
     "keywords": [
         "harvest",
@@ -17,16 +19,18 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.1.0",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "doctrine/annotations": "^2.0@dev",
+        "zendframework/zend-filter": "^2.9@dev"
     },
     "autoload": {
         "psr-4": {
-            "arueckauer\\Harvest\\": "src/"
+            "arueckauer\\HarvestApi\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "arueckauer\\Harvest\\": "tests/"
+            "arueckauer\\HarvestApi\\": "tests/"
         }
     }
 }

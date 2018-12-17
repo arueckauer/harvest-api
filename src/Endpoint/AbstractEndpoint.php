@@ -1,9 +1,9 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Model\AbstractModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -30,7 +30,7 @@ abstract class AbstractEndpoint
      * @param ResponseInterface $response
      * @return AbstractCollection
      */
-    public function collection(string $collectionClass, ResponseInterface $response): AbstractCollection
+    public function getCollectionFromResponse(string $collectionClass, ResponseInterface $response): AbstractCollection
     {
         $column = substr($collectionClass, strrpos($collectionClass, '\\') + 1);
         $data   = $this->outerArray($response, strtolower($column));
@@ -38,14 +38,14 @@ abstract class AbstractEndpoint
     }
 
     /**
-     * Gets a model from given response
-     * @param string $modelClass
+     * Gets a dataObject from given response
+     * @param string $dataObjectClass
      * @param ResponseInterface $response
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function model($modelClass, ResponseInterface $response): AbstractModel
+    public function getDataObjectFromResponse($dataObjectClass, ResponseInterface $response): AbstractDataObject
     {
-        return new $modelClass($this->decodeJson($response));
+        return new $dataObjectClass($this->decodeJson($response));
     }
 
     /**
@@ -112,14 +112,16 @@ abstract class AbstractEndpoint
      * Adds values of given required fields to $data array
      * @param array $requiredFields
      * @param array $data
-     * @param AbstractModel $model
+     * @param AbstractDataObject $dataObject
      * @return array
-     * @todo Abstract
      */
-    protected function addRequiredDataFromModel(array $requiredFields, array $data, AbstractModel $model): array
-    {
+    protected function addRequiredDataFromDataObject(
+        array $requiredFields,
+        array $data,
+        AbstractDataObject $dataObject
+    ): array {
         foreach ($requiredFields as $key => $property) {
-            $data[$key] = $this->getValueFromModel($model, $property);
+            $data[$key] = $this->getValueFromDataObject($dataObject, $property);
         }
 
         return $data;
@@ -129,15 +131,17 @@ abstract class AbstractEndpoint
      * Adds non-null values of given optional fields to $data array
      * @param array $optionalFields
      * @param array $data
-     * @param AbstractModel $model
+     * @param AbstractDataObject $dataObject
      * @return array
-     * @todo Abstract
      */
-    protected function addOptionalDataFromModel(array $optionalFields, array $data, AbstractModel $model): array
-    {
+    protected function addOptionalDataFromDataObject(
+        array $optionalFields,
+        array $data,
+        AbstractDataObject $dataObject
+    ): array {
         foreach ($optionalFields as $key => $property) {
-            if (null !== $model->$property) {
-                $data[$key] = $this->getValueFromModel($model, $property);
+            if (null !== $dataObject->$property) {
+                $data[$key] = $this->getValueFromDataObject($dataObject, $property);
             }
         }
 
@@ -145,23 +149,22 @@ abstract class AbstractEndpoint
     }
 
     /**
-     * Gets a value from a model as defined in property argument
+     * Gets a value from a dataObject as defined in property argument
      * - For a direct property access, provide property name
-     * - For referencing a property of a model property, provide an array with model property in 'class'
+     * - For referencing a property of a dataObject property, provide an array with dataObject property in 'class'
      * and property name in 'property'
-     * @param AbstractModel $model
+     * @param AbstractDataObject $dataObject
      * @param array|string $property
      * @return mixed
-     * @todo Abstract
      */
-    private function getValueFromModel(AbstractModel $model, $property)
+    private function getValueFromDataObject(AbstractDataObject $dataObject, $property)
     {
         if (\is_string($property)) {
-            return $model->$property;
+            return $dataObject->$property;
         }
 
         if (\is_array($property)) {
-            return $model->$property['class']->$property['property'];
+            return $dataObject->$property['class']->$property['property'];
         }
 
         throw new \InvalidArgumentException('Property argument must be either of type string or array, neither given.');

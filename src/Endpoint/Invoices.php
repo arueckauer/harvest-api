@@ -1,12 +1,12 @@
 <?php
 
-namespace arueckauer\Harvest\Endpoint;
+namespace arueckauer\HarvestApi\Endpoint;
 
-use arueckauer\Harvest\Collection\AbstractCollection;
-use arueckauer\Harvest\Collection\Invoice as InvoiceCollection;
-use arueckauer\Harvest\Collection\InvoiceLineItem as LineItemCollection;
-use arueckauer\Harvest\Model\AbstractModel;
-use arueckauer\Harvest\Model\Invoice as InvoiceModel;
+use arueckauer\HarvestApi\DataObject\AbstractDataObject;
+use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
+use arueckauer\HarvestApi\DataObject\Collection\Invoice as InvoiceCollection;
+use arueckauer\HarvestApi\DataObject\Collection\InvoiceLineItem as LineItemCollection;
+use arueckauer\HarvestApi\DataObject\Invoice as InvoiceDataObject;
 
 class Invoices extends AbstractEndpoint
 {
@@ -82,80 +82,80 @@ class Invoices extends AbstractEndpoint
     public function all(array $options = []): AbstractCollection
     {
         $response = $this->getHttpClient()->get('invoices', $options);
-        return $this->collection(InvoiceCollection::class, $response);
+        return $this->getCollectionFromResponse(InvoiceCollection::class, $response);
     }
 
     /**
      * Retrieve an invoice
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#retrieve-an-invoice
      * @param int $invoiceId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function get(int $invoiceId): AbstractModel
+    public function get(int $invoiceId): AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('invoices/%s', $invoiceId));
-        return $this->model(InvoiceModel::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
      * Create a free-form invoice
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#create-a-free-form-invoice
-     * @param InvoiceModel $invoice
-     * @return AbstractModel
+     * @param InvoiceDataObject $invoice
+     * @return AbstractDataObject
      */
-    public function createFreeForm(InvoiceModel $invoice): AbstractModel
+    public function createFreeForm(InvoiceDataObject $invoice): AbstractDataObject
     {
-        $data               = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $invoice);
-        $data               = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $invoice);
+        $data               = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $invoice);
+        $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoice);
         $data['line_items'] = $this->generateCreateLineItemsArray($invoice->lineItems);
 
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('invoices', $options);
 
-        return $this->model(InvoiceModel::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
      * Create an invoice based on tracked time and expenses
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#create-an-invoice-based-on-tracked-time-and-expenses
-     * @param InvoiceModel $invoice
-     * @return AbstractModel
+     * @param InvoiceDataObject $invoice
+     * @return AbstractDataObject
      */
-    public function createBasedOnTrackedTimeAndExpenses(InvoiceModel $invoice): AbstractModel
+    public function createBasedOnTrackedTimeAndExpenses(InvoiceDataObject $invoice): AbstractDataObject
     {
-        $data               = $this->addRequiredDataFromModel(static::$requiredCreateFields, [], $invoice);
-        $data               = $this->addOptionalDataFromModel(static::$optionalCreateFields, $data, $invoice);
+        $data               = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $invoice);
+        $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoice);
         $data['line_items'] = $this->generateCreateLineItemsArray($invoice->lineItems);
 
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('invoices', $options);
 
-        return $this->model(InvoiceModel::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
      * Update a an invoice
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#update-an-invoice
-     * @param InvoiceModel $invoice
-     * @return AbstractModel
+     * @param InvoiceDataObject $invoice
+     * @return AbstractDataObject
      */
-    public function update(InvoiceModel $invoice): AbstractModel
+    public function update(InvoiceDataObject $invoice): AbstractDataObject
     {
-        $data               = $this->addOptionalDataFromModel(static::$optionalUpdateFields, [], $invoice);
+        $data               = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $invoice);
         $data['line_items'] = $this->generateUpdateLineItemsArray($invoice->lineItems);
         $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->patch(sprintf('invoices/%s', $invoice->id), $options);
 
-        return $this->model(InvoiceModel::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
      * Delete an invoice line item
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#delete-an-invoice-line-item
      * @param int $lineItemId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function deleteLineItem(int $lineItemId): AbstractModel
+    public function deleteLineItem(int $lineItemId): AbstractDataObject
     {
         $data = [
             'line_items' => [
@@ -166,20 +166,20 @@ class Invoices extends AbstractEndpoint
         $uri      = sprintf('invoices/%s', $lineItemId);
         $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch($uri, $options);
-        return $this->model(InvoiceModel::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
      * Delete an invoice
      * @see https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#delete-an-invoice
      * @param int $invoiceId
-     * @return AbstractModel
+     * @return AbstractDataObject
      */
-    public function delete(int $invoiceId): AbstractModel
+    public function delete(int $invoiceId): AbstractDataObject
     {
         $uri      = sprintf('invoices/%s', $invoiceId);
         $response = $this->getHttpClient()->delete($uri);
-        return $this->model(InvoiceModel::class, $response);
+        return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }
 
     /**
@@ -192,9 +192,9 @@ class Invoices extends AbstractEndpoint
         $requiredFields = static::$requiredLineItemCreateFreeFormFields;
         $optionalFields = static::$optionalLineItemCreateFreeFormFields;
         $lineItems      = [];
-        foreach ($lineItemCollection as $lineItemModel) {
-            $lineItem    = $this->addRequiredDataFromModel($requiredFields, [], $lineItemModel);
-            $lineItem    = $this->addOptionalDataFromModel($optionalFields, $lineItem, $lineItemModel);
+        foreach ($lineItemCollection as $lineItemDataObject) {
+            $lineItem    = $this->addRequiredDataFromDataObject($requiredFields, [], $lineItemDataObject);
+            $lineItem    = $this->addOptionalDataFromDataObject($optionalFields, $lineItem, $lineItemDataObject);
             $lineItems[] = $lineItem;
         }
         return $lineItems;
@@ -208,8 +208,12 @@ class Invoices extends AbstractEndpoint
     private function generateUpdateLineItemsArray(LineItemCollection $lineItemCollection): array
     {
         $lineItems = [];
-        foreach ($lineItemCollection as $lineItemModel) {
-            $lineItems[] = $this->addOptionalDataFromModel(static::$optionalLineItemUpdateFields, [], $lineItemModel);
+        foreach ($lineItemCollection as $lineItemDataObject) {
+            $lineItems[] = $this->addOptionalDataFromDataObject(
+                static::$optionalLineItemUpdateFields,
+                [],
+                $lineItemDataObject
+            );
         }
         return $lineItems;
     }

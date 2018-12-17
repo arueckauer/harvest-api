@@ -1,15 +1,17 @@
 <?php
 
-namespace arueckauer\Harvest;
+namespace arueckauer\HarvestApi;
 
-use arueckauer\Harvest\Endpoint\ClientContacts;
-use arueckauer\Harvest\Endpoint\Clients;
-use arueckauer\Harvest\Endpoint\Company;
-use arueckauer\Harvest\Endpoint\ExpenseCategories;
-use arueckauer\Harvest\Endpoint\Projects;
-use arueckauer\Harvest\Endpoint\Roles;
-use arueckauer\Harvest\Endpoint\Tasks;
-use arueckauer\Harvest\Endpoint\TimeEntries;
+use arueckauer\HarvestApi\Endpoint\ClientContacts;
+use arueckauer\HarvestApi\Endpoint\Clients;
+use arueckauer\HarvestApi\Endpoint\Company;
+use arueckauer\HarvestApi\Endpoint\ExpenseCategories;
+use arueckauer\HarvestApi\Endpoint\Expenses;
+use arueckauer\HarvestApi\Endpoint\Projects;
+use arueckauer\HarvestApi\Endpoint\Roles;
+use arueckauer\HarvestApi\Endpoint\Tasks;
+use arueckauer\HarvestApi\Endpoint\TimeEntries;
+use arueckauer\HarvestApi\Endpoint\Users;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\ClientInterface;
 
@@ -61,6 +63,11 @@ class Client
     private $projects;
 
     /**
+     * @var Users
+     */
+    private $users;
+
+    /**
      * @var array
      */
     private $headers = [
@@ -71,11 +78,9 @@ class Client
 
     /**
      * @var array
-     * @todo Should we set a default timeout? Guzzle's default (0: unlimited) seems to be too high
      */
     private $config = [
         'base_uri' => 'https://api.harvestapp.com/v2/',
-        'timeout'  => 30.0,
         'debug'    => false,
     ];
 
@@ -158,6 +163,19 @@ class Client
     }
 
     /**
+     * Gets expense endpoint
+     * @return Expenses
+     */
+    public function expenses(): Expenses
+    {
+        if (null === $this->expenseCategories) {
+            $this->expenseCategories = new Expenses($this->getHttpClient());
+        }
+
+        return $this->expenseCategories;
+    }
+
+    /**
      * Gets expense categories endpoint
      * @return ExpenseCategories
      */
@@ -220,6 +238,19 @@ class Client
         }
 
         return $this->projects;
+    }
+
+    /**
+     * Gets users endpoint
+     * @return Users
+     */
+    public function users(): Users
+    {
+        if (null === $this->users) {
+            $this->users = new Users($this->getHttpClient());
+        }
+
+        return $this->users;
     }
 
     /**
