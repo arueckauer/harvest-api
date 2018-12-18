@@ -38,6 +38,11 @@ class Client
     private $company;
 
     /**
+     * @var Expenses
+     */
+    private $expenses;
+
+    /**
      * @var ExpenseCategories
      */
     private $expenseCategories;
@@ -168,11 +173,11 @@ class Client
      */
     public function expenses(): Expenses
     {
-        if (null === $this->expenseCategories) {
-            $this->expenseCategories = new Expenses($this->getHttpClient());
+        if (null === $this->expenses) {
+            $this->expenses = new Expenses($this->getHttpClient());
         }
 
-        return $this->expenseCategories;
+        return $this->expenses;
     }
 
     /**
