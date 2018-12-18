@@ -79,7 +79,7 @@ class TimeEntries extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('time_entries', $options);
+        $response = $this->getHttpClient()->get('time_entries', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(TimeEntryCollection::class, $response);
     }
 

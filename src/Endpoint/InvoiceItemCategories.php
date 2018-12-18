@@ -36,7 +36,7 @@ class InvoiceItemCategories extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('invoice_item_categories', $options);
+        $response = $this->getHttpClient()->get('invoice_item_categories', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(InvoiceItemCategoryCollection::class, $response);
     }
 

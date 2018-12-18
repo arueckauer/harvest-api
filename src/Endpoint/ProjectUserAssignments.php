@@ -36,7 +36,7 @@ class ProjectUserAssignments extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('user_assignments', $options);
+        $response = $this->getHttpClient()->get('user_assignments', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ProjectUserAssignmentCollection::class, $response);
     }
 

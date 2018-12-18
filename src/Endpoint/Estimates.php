@@ -80,7 +80,7 @@ class Estimates extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('estimates', $options);
+        $response = $this->getHttpClient()->get('estimates', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(EstimateCollection::class, $response);
     }
 

@@ -34,7 +34,7 @@ class ExpenseCategories extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('expense_categories', $options);
+        $response = $this->getHttpClient()->get('expense_categories', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ExpenseCategoryCollection::class, $response);
     }
 

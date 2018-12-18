@@ -33,7 +33,7 @@ class Roles extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('roles', $options);
+        $response = $this->getHttpClient()->get('roles', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(RoleCollection::class, $response);
     }
 

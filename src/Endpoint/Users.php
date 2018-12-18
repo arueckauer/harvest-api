@@ -60,7 +60,7 @@ class Users extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('users', $options);
+        $response = $this->getHttpClient()->get('users', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(UserCollection::class, $response);
     }
 

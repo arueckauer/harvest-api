@@ -38,7 +38,7 @@ class EstimateMessages extends AbstractEndpoint
     public function all(int $estimateId, array $options = []): AbstractCollection
     {
         $uri      = sprintf('estimates/%s/messages', $estimateId);
-        $response = $this->getHttpClient()->get($uri, $options);
+        $response = $this->getHttpClient()->get($uri, [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(EstimateMessageCollection::class, $response);
     }
 

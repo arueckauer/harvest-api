@@ -36,7 +36,7 @@ class Tasks extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('tasks', $options);
+        $response = $this->getHttpClient()->get('tasks', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(TaskCollection::class, $response);
     }
 

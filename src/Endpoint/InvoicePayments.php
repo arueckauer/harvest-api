@@ -29,7 +29,7 @@ class InvoicePayments extends AbstractEndpoint
     public function all(int $invoiceId, array $options = []): AbstractCollection
     {
         $uri      = sprintf('invoices/%s/payments', $invoiceId);
-        $response = $this->getHttpClient()->get($uri, $options);
+        $response = $this->getHttpClient()->get($uri, [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(InvoicePaymentCollection::class, $response);
     }
 
