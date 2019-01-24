@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace arueckauer\HarvestApi\DataObject\Collection;
 
 use arueckauer\HarvestApi\DataObject\Task as TaskDataObject;

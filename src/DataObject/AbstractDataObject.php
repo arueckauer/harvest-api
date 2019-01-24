@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace arueckauer\HarvestApi\DataObject;
 
 use arueckauer\HarvestApi\DataObject\Property\DataHandler;
