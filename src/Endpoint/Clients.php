@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
@@ -34,7 +36,7 @@ class Clients extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('clients', $options);
+        $response = $this->getHttpClient()->get('clients', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ClientCollection::class, $response);
     }
 

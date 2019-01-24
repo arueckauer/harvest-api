@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
@@ -81,7 +83,7 @@ class Invoices extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('invoices', $options);
+        $response = $this->getHttpClient()->get('invoices', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(InvoiceCollection::class, $response);
     }
 

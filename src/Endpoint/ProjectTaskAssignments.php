@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
@@ -35,7 +37,7 @@ class ProjectTaskAssignments extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('task_assignments', $options);
+        $response = $this->getHttpClient()->get('task_assignments', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ProjectTaskAssignmentCollection::class, $response);
     }
 

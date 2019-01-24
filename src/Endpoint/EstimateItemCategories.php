@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
@@ -25,7 +27,7 @@ class EstimateItemCategories extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('estimate_item_categories', $options);
+        $response = $this->getHttpClient()->get('estimate_item_categories', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(EstimateItemCategoryCollection::class, $response);
     }
 

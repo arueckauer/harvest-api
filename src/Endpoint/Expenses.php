@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
@@ -44,7 +46,7 @@ class Expenses extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('expenses', $options);
+        $response = $this->getHttpClient()->get('expenses', [\GuzzleHttp\RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ExpenseCollection::class, $response);
     }
 

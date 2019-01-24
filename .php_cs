@@ -1,7 +1,6 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->exclude('vendor')
     ->in(__DIR__);
 
 return PhpCsFixer\Config::create()
@@ -18,6 +17,7 @@ return PhpCsFixer\Config::create()
         'combine_consecutive_issets'                => true,
         'general_phpdoc_annotation_remove'          => ['annotations' => ['author', 'package', 'subpackage']],
         'declare_equal_normalize'                   => ['space' => 'single'],
+        'declare_strict_types'                      => true,
         'dir_constant'                              => true,
         'fully_qualified_strict_types'              => true,
         'function_typehint_space'                   => true,
@@ -25,7 +25,10 @@ return PhpCsFixer\Config::create()
         'include'                                   => true,
         'is_null'                                   => ['use_yoda_style' => true],
         'linebreak_after_opening_tag'               => true,
+        'list_syntax'                               => ['syntax' => 'short'],
         'lowercase_cast'                            => true,
+        'lowercase_constants'                       => true,
+        'lowercase_keywords'                        => true,
         'modernize_types_casting'                   => true,
         'new_with_braces'                           => true,
         'no_alias_functions'                        => true,
