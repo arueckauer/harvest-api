@@ -20,6 +20,11 @@ class TimeEntry extends AbstractDataObject
     public $spentDate;
 
     /**
+     * @var int
+     */
+    public $userId;
+
+    /**
      * @var Reference\Creator
      * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Creator")
      */
