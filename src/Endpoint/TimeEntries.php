@@ -12,44 +12,26 @@ use arueckauer\HarvestApi\DataObject\TimeEntry as TimeEntryDataObject;
 class TimeEntries extends AbstractEndpoint
 {
     private static $requiredCreateViaDurationFields = [
-        'project_id' => [
-            'class'    => 'project',
-            'property' => 'id',
-        ],
-        'task_id' => [
-            'class'    => 'task',
-            'property' => 'id',
-        ],
+        'project_id' => 'projectId',
+        'task_id'    => 'taskId',
         'spent_date' => 'spentDate',
     ];
 
     private static $optionalCreateViaDurationFields = [
-        'user_id' => [
-            'class'    => 'user',
-            'property' => 'id',
-        ],
+        'user_id'            => 'userId',
         'hours'              => 'hours',
         'notes'              => 'notes',
         'external_reference' => 'externalReference',
     ];
 
     private static $requiredCreateViaStartAndEndTimeFields = [
-        'project_id' => [
-            'class'    => 'project',
-            'property' => 'id',
-        ],
-        'task_id' => [
-            'class'    => 'task',
-            'property' => 'id',
-        ],
+        'project_id' => 'projectId',
+        'task_id'    => 'taskId',
         'spent_date' => 'spentDate',
     ];
 
     private static $optionalCreateViaStartAndEndTimeFields = [
-        'user_id' => [
-            'class'    => 'user',
-            'property' => 'id',
-        ],
+        'user_id'            => 'userId',
         'started_time'       => 'startedTime',
         'ended_time'         => 'endedTime',
         'notes'              => 'notes',
@@ -57,14 +39,8 @@ class TimeEntries extends AbstractEndpoint
     ];
 
     private static $optionalUpdateFields = [
-        'project_id' => [
-            'class'    => 'project',
-            'property' => 'id',
-        ],
-        'task_id' => [
-            'class'    => 'task',
-            'property' => 'id',
-        ],
+        'project_id'         => 'projectId',
+        'task_id'            => 'taskId',
         'spent_date'         => 'spentDate',
         'started_time'       => 'startedTime',
         'ended_time'         => 'endedTime',
