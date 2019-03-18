@@ -5,8 +5,11 @@ declare(strict_types = 1);
 namespace arueckauer\HarvestApi\DataObject\Property;
 
 use arueckauer\HarvestApi\PropertyReference;
-use Doctrine\Annotations\AnnotationException;
-use Doctrine\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\AnnotationException;
+use Doctrine\Common\Annotations\AnnotationReader;
+use ReflectionClass;
+use ReflectionException;
+use ReflectionProperty;
 
 class DataHandler
 {
@@ -29,8 +32,8 @@ class DataHandler
     /**
      * @param string $property
      * @param mixed $value
-     * @throws \Doctrine\Annotations\AnnotationException
-     * @throws \ReflectionException
+     * @throws AnnotationException
+     * @throws ReflectionException
      * @return mixed
      */
     public function processValue(string $property, $value)
@@ -65,13 +68,13 @@ class DataHandler
 
     /**
      * Gets ReflectionClass for current dataObject object
-     * @throws \ReflectionException
-     * @return \ReflectionClass
+     * @throws ReflectionException
+     * @return ReflectionClass
      */
-    private function getReflectionClass(): \ReflectionClass
+    private function getReflectionClass(): ReflectionClass
     {
         if (null === $this->reflectionClass) {
-            $this->reflectionClass = new \ReflectionClass($this->dataObjectClass);
+            $this->reflectionClass = new ReflectionClass($this->dataObjectClass);
         }
 
         return $this->reflectionClass;
@@ -80,10 +83,10 @@ class DataHandler
     /**
      * Gets ReflectionProperty object for given property of current dataObject object
      * @param string $property
-     * @throws \ReflectionException
-     * @return \ReflectionProperty
+     * @throws ReflectionException
+     * @return ReflectionProperty
      */
-    private function getReflectionProperty(string $property): \ReflectionProperty
+    private function getReflectionProperty(string $property): ReflectionProperty
     {
         return $this->getReflectionClass()->getProperty($property);
     }
