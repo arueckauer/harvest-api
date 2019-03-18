@@ -16,12 +16,11 @@
         "oauth",
         "token"
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=7.1.0",
         "guzzlehttp/guzzle": "~6.0",
-        "doctrine/annotations": "^2.0@dev",
-        "zendframework/zend-filter": "^2.9@dev"
+        "doctrine/annotations": "^1.6",
+        "zendframework/zend-filter": "^2.9"
     },
     "autoload": {
         "psr-4": {
