@@ -47,6 +47,7 @@ return PhpCsFixer\Config::create()
         'no_unreachable_default_argument_value'     => true,
         'no_useless_else'                           => true,
         'no_useless_return'                         => true,
+        'not_operator_with_successor_space'         => true,
         'ordered_class_elements'                    => true,
         'ordered_imports'                           => true,
         'phpdoc_add_missing_param_annotation'       => ['only_untyped' => false],
