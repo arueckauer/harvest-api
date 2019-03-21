@@ -24,7 +24,7 @@ abstract class AbstractDataObject implements DataObjectInterface
         foreach ($data as $key => $value) {
             $property = $wordFilter->filter($key);
 
-            if (!property_exists($this, $property)) {
+            if (! property_exists($this, $property)) {
                 continue;
             }
 
