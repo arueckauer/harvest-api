@@ -1,35 +1,37 @@
 {
-    "name": "arueckauer/harvest-api",
-    "type": "library",
-    "description": "Harvest 2 API using OAuth access tokens",
-    "homepage": "https://github.com/arueckauer/harvest-api",
-    "license": "MIT",
-    "authors": [{
-        "name": "Andi Rückauer",
-        "homepage": "https://github.com/arueckauer",
-        "role": "Developer"
-    }],
-    "keywords": [
-        "harvest",
-        "api",
-        "apiv2",
-        "oauth",
-        "token"
-    ],
-    "require": {
-        "php": ">=7.1.0",
-        "guzzlehttp/guzzle": "~6.0",
-        "doctrine/annotations": "^1.6",
-        "zendframework/zend-filter": "^2.9"
-    },
-    "autoload": {
-        "psr-4": {
-            "arueckauer\\HarvestApi\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "arueckauer\\HarvestApi\\": "tests/"
-        }
+  "name": "arueckauer/harvest-api",
+  "type": "library",
+  "description": "Harvest 2 API using OAuth access tokens",
+  "homepage": "https://github.com/arueckauer/harvest-api",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andi Rückauer",
+      "homepage": "https://github.com/arueckauer",
+      "role": "Developer"
     }
+  ],
+  "keywords": [
+    "harvest",
+    "api",
+    "apiv2",
+    "oauth",
+    "token"
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "guzzlehttp/guzzle": "~6.0",
+    "doctrine/annotations": "^1.6",
+    "zendframework/zend-filter": "^2.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "arueckauer\\HarvestApi\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "arueckauer\\HarvestApi\\": "tests/"
+    }
+  }
 }
