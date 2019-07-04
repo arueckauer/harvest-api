@@ -2,6 +2,13 @@
   "name": "arueckauer/harvest-api",
   "type": "library",
   "description": "Harvest 2 API using OAuth access tokens",
+  "keywords": [
+    "harvest",
+    "api",
+    "apiv2",
+    "oauth",
+    "token"
+  ],
   "homepage": "https://github.com/arueckauer/harvest-api",
   "license": "MIT",
   "authors": [
@@ -11,17 +18,10 @@
       "role": "Project Lead and Lead Developer"
     }
   ],
-  "keywords": [
-    "harvest",
-    "api",
-    "apiv2",
-    "oauth",
-    "token"
-  ],
   "require": {
     "php": ">=7.1.0",
-    "guzzlehttp/guzzle": "~6.0",
     "doctrine/annotations": "^1.6",
+    "guzzlehttp/guzzle": "~6.0",
     "zendframework/zend-filter": "^2.9"
   },
   "autoload": {
