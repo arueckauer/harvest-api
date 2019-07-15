@@ -39,5 +39,16 @@
     "psr-4": {
       "arueckauerTest\\HarvestApi\\": "tests/"
     }
+  },
+  "scripts": {
+    "analyze": "psalm --show-info=false",
+    "check": [
+      "@cs-check",
+      "@test"
+    ],
+    "cs-check": "php-cs-fixer fix --dry-run",
+    "cs-fix": "php-cs-fixer fix",
+    "test": "phpunit --colors=always",
+    "test-coverage": "phpunit --colors=always --coverage-text=coverage.txt"
   }
 }
