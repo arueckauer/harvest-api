@@ -7,7 +7,7 @@ namespace arueckauer\HarvestApi\DataObject;
 use arueckauer\HarvestApi\DataObject\Property\DataHandler;
 use DateTime;
 use DateTimeImmutable;
-use Doctrine\Annotations\AnnotationException;
+use Doctrine\Common\Annotations\AnnotationException;
 use ReflectionException;
 use ReflectionObject;
 use ReflectionProperty;
