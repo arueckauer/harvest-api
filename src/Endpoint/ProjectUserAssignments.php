@@ -37,7 +37,7 @@ class ProjectUserAssignments extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('user_assignments', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ProjectUserAssignmentCollection::class, $response);
@@ -50,7 +50,7 @@ class ProjectUserAssignments extends AbstractEndpoint
      * @param int $projectId
      * @return AbstractCollection
      */
-    public function allForProject(int $projectId, array $options = []): AbstractCollection
+    public function allForProject(int $projectId, array $options = []) : AbstractCollection
     {
         $uri      = sprintf('projects/%s/user_assignments', $projectId);
         $response = $this->getHttpClient()->get($uri, $options);
@@ -64,7 +64,7 @@ class ProjectUserAssignments extends AbstractEndpoint
      * @param int $projectId
      * @return AbstractDataObject
      */
-    public function create(int $projectId, ProjectUserAssignmentDataObject $projectUserAssignment): AbstractDataObject
+    public function create(int $projectId, ProjectUserAssignmentDataObject $projectUserAssignment) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $projectUserAssignment);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $projectUserAssignment);
@@ -82,7 +82,7 @@ class ProjectUserAssignments extends AbstractEndpoint
      * @param int $projectId
      * @return AbstractDataObject
      */
-    public function get(int $projectId, int $projectUserAssignmentId): AbstractDataObject
+    public function get(int $projectId, int $projectUserAssignmentId) : AbstractDataObject
     {
         $uri      = sprintf('projects/%s/user_assignments/%s', $projectId, $projectUserAssignmentId);
         $response = $this->getHttpClient()->get($uri);
@@ -96,7 +96,7 @@ class ProjectUserAssignments extends AbstractEndpoint
      * @param int $projectId
      * @return AbstractDataObject
      */
-    public function update(int $projectId, ProjectUserAssignmentDataObject $projectUserAssignment): AbstractDataObject
+    public function update(int $projectId, ProjectUserAssignmentDataObject $projectUserAssignment) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $projectUserAssignment);
         $options  = [RequestOptions::JSON => $data];
@@ -113,7 +113,7 @@ class ProjectUserAssignments extends AbstractEndpoint
      * @param int $projectId
      * @return AbstractDataObject
      */
-    public function delete(int $projectId, int $projectUserAssignmentId): AbstractDataObject
+    public function delete(int $projectId, int $projectUserAssignmentId) : AbstractDataObject
     {
         $uri      = sprintf('projects/%s/user_assignments/%s', $projectId, $projectUserAssignmentId);
         $response = $this->getHttpClient()->delete($uri);

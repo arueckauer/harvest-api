@@ -17,7 +17,7 @@ class UserProjectAssignments extends AbstractEndpoint
      * @param int $userId
      * @return AbstractCollection
      */
-    public function all(int $userId, array $options = []): AbstractCollection
+    public function all(int $userId, array $options = []) : AbstractCollection
     {
         $uri      = sprintf('users/%s/project_assignments', $userId);
         $response = $this->getHttpClient()->get($uri, [RequestOptions::QUERY => $options]);
@@ -30,7 +30,7 @@ class UserProjectAssignments extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function allForProject(array $options = []): AbstractCollection
+    public function allForProject(array $options = []) : AbstractCollection
     {
         $uri      = 'users/me/project_assignments';
         $response = $this->getHttpClient()->get($uri, [RequestOptions::QUERY => $options]);

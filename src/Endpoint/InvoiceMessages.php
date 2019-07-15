@@ -41,7 +41,7 @@ class InvoiceMessages extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(int $invoiceId, array $options = []): AbstractCollection
+    public function all(int $invoiceId, array $options = []) : AbstractCollection
     {
         $uri      = sprintf('invoices/%s/messages', $invoiceId);
         $response = $this->getHttpClient()->get($uri, [RequestOptions::QUERY => $options]);
@@ -55,7 +55,7 @@ class InvoiceMessages extends AbstractEndpoint
      * @param InvoiceMessageDataObject $invoiceMessage
      * @return AbstractDataObject
      */
-    public function create(int $invoiceId, InvoiceMessageDataObject $invoiceMessage): AbstractDataObject
+    public function create(int $invoiceId, InvoiceMessageDataObject $invoiceMessage) : AbstractDataObject
     {
         $recipients = [];
         foreach ($invoiceMessage->recipients as $recipient) {
@@ -81,7 +81,7 @@ class InvoiceMessages extends AbstractEndpoint
      * @param int $invoiceMessageId
      * @return AbstractDataObject
      */
-    public function delete(int $invoiceId, int $invoiceMessageId): AbstractDataObject
+    public function delete(int $invoiceId, int $invoiceMessageId) : AbstractDataObject
     {
         $uri      = sprintf('invoices/%s/messages/%s', $invoiceId, $invoiceMessageId);
         $response = $this->getHttpClient()->delete($uri);
@@ -94,7 +94,7 @@ class InvoiceMessages extends AbstractEndpoint
      * @param int $invoiceId
      * @return AbstractDataObject
      */
-    public function markDraftInvoiceAsSent(int $invoiceId): AbstractDataObject
+    public function markDraftInvoiceAsSent(int $invoiceId) : AbstractDataObject
     {
         return $this->updateEventType($invoiceId, self::EVENT_TYPE_SEND);
     }
@@ -105,7 +105,7 @@ class InvoiceMessages extends AbstractEndpoint
      * @param int $invoiceId
      * @return AbstractDataObject
      */
-    public function markOpenInvoiceAsClosed(int $invoiceId): AbstractDataObject
+    public function markOpenInvoiceAsClosed(int $invoiceId) : AbstractDataObject
     {
         return $this->updateEventType($invoiceId, self::EVENT_TYPE_CLOSE);
     }
@@ -116,7 +116,7 @@ class InvoiceMessages extends AbstractEndpoint
      * @param int $invoiceId
      * @return AbstractDataObject
      */
-    public function reOpenClosedInvoice(int $invoiceId): AbstractDataObject
+    public function reOpenClosedInvoice(int $invoiceId) : AbstractDataObject
     {
         return $this->updateEventType($invoiceId, self::EVENT_TYPE_RE_OPEN);
     }
@@ -127,12 +127,12 @@ class InvoiceMessages extends AbstractEndpoint
      * @param int $invoiceId
      * @return AbstractDataObject
      */
-    public function markOpenInvoiceAsDraft(int $invoiceId): AbstractDataObject
+    public function markOpenInvoiceAsDraft(int $invoiceId) : AbstractDataObject
     {
         return $this->updateEventType($invoiceId, self::EVENT_TYPE_DRAFT);
     }
 
-    private function updateEventType(int $invoiceId, string $eventType): AbstractDataObject
+    private function updateEventType(int $invoiceId, string $eventType) : AbstractDataObject
     {
         $options  = ['event_type' => $eventType];
         $uri      = sprintf('invoices/%s/messages', $invoiceId);

@@ -37,7 +37,7 @@ class InvoiceItemCategories extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('invoice_item_categories', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(InvoiceItemCategoryCollection::class, $response);
@@ -49,7 +49,7 @@ class InvoiceItemCategories extends AbstractEndpoint
      * @param InvoiceItemCategoryDataObject $invoiceItemCategory
      * @return AbstractDataObject
      */
-    public function create(InvoiceItemCategoryDataObject $invoiceItemCategory): AbstractDataObject
+    public function create(InvoiceItemCategoryDataObject $invoiceItemCategory) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $invoiceItemCategory);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoiceItemCategory);
@@ -65,7 +65,7 @@ class InvoiceItemCategories extends AbstractEndpoint
      * @param int $invoiceItemCategoryId
      * @return AbstractDataObject
      */
-    public function get(int $invoiceItemCategoryId): AbstractDataObject
+    public function get(int $invoiceItemCategoryId) : AbstractDataObject
     {
         $uri      = sprintf('invoice_item_categories/%s', $invoiceItemCategoryId);
         $response = $this->getHttpClient()->get($uri);
@@ -78,7 +78,7 @@ class InvoiceItemCategories extends AbstractEndpoint
      * @param InvoiceItemCategoryDataObject $invoiceItemCategory
      * @return AbstractDataObject
      */
-    public function update(InvoiceItemCategoryDataObject $invoiceItemCategory): AbstractDataObject
+    public function update(InvoiceItemCategoryDataObject $invoiceItemCategory) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $invoiceItemCategory);
         $options  = [RequestOptions::JSON => $data];
@@ -94,7 +94,7 @@ class InvoiceItemCategories extends AbstractEndpoint
      * @param int $invoiceItemCategoryId
      * @return AbstractDataObject
      */
-    public function delete(int $invoiceItemCategoryId): AbstractDataObject
+    public function delete(int $invoiceItemCategoryId) : AbstractDataObject
     {
         $uri      = sprintf('invoice_item_categories/%s', $invoiceItemCategoryId);
         $response = $this->getHttpClient()->delete($uri);

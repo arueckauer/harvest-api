@@ -38,7 +38,7 @@ class EstimateMessages extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(int $estimateId, array $options = []): AbstractCollection
+    public function all(int $estimateId, array $options = []) : AbstractCollection
     {
         $uri      = sprintf('estimates/%s/messages', $estimateId);
         $response = $this->getHttpClient()->get($uri, [RequestOptions::QUERY => $options]);
@@ -52,7 +52,7 @@ class EstimateMessages extends AbstractEndpoint
      * @param EstimateMessageDataObject $estimateMessage
      * @return AbstractDataObject
      */
-    public function create(int $estimateId, EstimateMessageDataObject $estimateMessage): AbstractDataObject
+    public function create(int $estimateId, EstimateMessageDataObject $estimateMessage) : AbstractDataObject
     {
         $recipients = [];
         foreach ($estimateMessage->recipients as $recipient) {
@@ -78,7 +78,7 @@ class EstimateMessages extends AbstractEndpoint
      * @param int $estimateMessageId
      * @return AbstractDataObject
      */
-    public function delete(int $estimateId, int $estimateMessageId): AbstractDataObject
+    public function delete(int $estimateId, int $estimateMessageId) : AbstractDataObject
     {
         $uri      = sprintf('estimates/%s/messages/%s', $estimateId, $estimateMessageId);
         $response = $this->getHttpClient()->delete($uri);
@@ -91,7 +91,7 @@ class EstimateMessages extends AbstractEndpoint
      * @param int $estimateId
      * @return AbstractDataObject
      */
-    public function markDraftEstimateAsSent(int $estimateId): AbstractDataObject
+    public function markDraftEstimateAsSent(int $estimateId) : AbstractDataObject
     {
         return $this->updateEventType($estimateId, self::EVENT_TYPE_SEND);
     }
@@ -102,7 +102,7 @@ class EstimateMessages extends AbstractEndpoint
      * @param int $estimateId
      * @return AbstractDataObject
      */
-    public function markOpenEstimateAsAccepted(int $estimateId): AbstractDataObject
+    public function markOpenEstimateAsAccepted(int $estimateId) : AbstractDataObject
     {
         return $this->updateEventType($estimateId, self::EVENT_TYPE_ACCEPT);
     }
@@ -113,7 +113,7 @@ class EstimateMessages extends AbstractEndpoint
      * @param int $estimateId
      * @return AbstractDataObject
      */
-    public function markOpenEstimateAsDeclined(int $estimateId): AbstractDataObject
+    public function markOpenEstimateAsDeclined(int $estimateId) : AbstractDataObject
     {
         return $this->updateEventType($estimateId, self::EVENT_TYPE_DECLINE);
     }
@@ -124,12 +124,12 @@ class EstimateMessages extends AbstractEndpoint
      * @param int $estimateId
      * @return AbstractDataObject
      */
-    public function reOpenClosedEstimate(int $estimateId): AbstractDataObject
+    public function reOpenClosedEstimate(int $estimateId) : AbstractDataObject
     {
         return $this->updateEventType($estimateId, self::EVENT_TYPE_RE_OPEN);
     }
 
-    private function updateEventType(int $estimateId, string $eventType): AbstractDataObject
+    private function updateEventType(int $estimateId, string $eventType) : AbstractDataObject
     {
         $options  = ['event_type' => $eventType];
         $uri      = sprintf('estimates/%s/messages', $estimateId);

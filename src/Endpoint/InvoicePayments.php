@@ -29,7 +29,7 @@ class InvoicePayments extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(int $invoiceId, array $options = []): AbstractCollection
+    public function all(int $invoiceId, array $options = []) : AbstractCollection
     {
         $uri      = sprintf('invoices/%s/payments', $invoiceId);
         $response = $this->getHttpClient()->get($uri, [RequestOptions::QUERY => $options]);
@@ -43,7 +43,7 @@ class InvoicePayments extends AbstractEndpoint
      * @param InvoicePaymentDataObject $invoicePayment
      * @return AbstractDataObject
      */
-    public function create(int $invoiceId, InvoicePaymentDataObject $invoicePayment): AbstractDataObject
+    public function create(int $invoiceId, InvoicePaymentDataObject $invoicePayment) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $invoicePayment);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoicePayment);
@@ -61,7 +61,7 @@ class InvoicePayments extends AbstractEndpoint
      * @param int $invoicePaymentId
      * @return AbstractDataObject
      */
-    public function delete(int $invoiceId, int $invoicePaymentId): AbstractDataObject
+    public function delete(int $invoiceId, int $invoicePaymentId) : AbstractDataObject
     {
         $uri      = sprintf('invoices/%s/payments/%s', $invoiceId, $invoicePaymentId);
         $response = $this->getHttpClient()->delete($uri);

@@ -71,7 +71,7 @@ class DataHandler
      * @throws ReflectionException
      * @return ReflectionClass
      */
-    private function getReflectionClass(): ReflectionClass
+    private function getReflectionClass() : ReflectionClass
     {
         if (null === $this->reflectionClass) {
             $this->reflectionClass = new ReflectionClass($this->dataObjectClass);
@@ -86,7 +86,7 @@ class DataHandler
      * @throws ReflectionException
      * @return ReflectionProperty
      */
-    private function getReflectionProperty(string $property): ReflectionProperty
+    private function getReflectionProperty(string $property) : ReflectionProperty
     {
         return $this->getReflectionClass()->getProperty($property);
     }

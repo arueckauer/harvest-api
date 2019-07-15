@@ -14,7 +14,7 @@ class Company extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/company-api/company/company/#retrieve-a-company
      * @return AbstractDataObject
      */
-    public function get(): AbstractDataObject
+    public function get() : AbstractDataObject
     {
         $response = $this->getHttpClient()->get('company');
         return $this->getDataObjectFromResponse(CompanyDataObject::class, $response);

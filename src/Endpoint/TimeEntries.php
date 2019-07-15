@@ -56,7 +56,7 @@ class TimeEntries extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('time_entries', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(TimeEntryCollection::class, $response);
@@ -68,7 +68,7 @@ class TimeEntries extends AbstractEndpoint
      * @param int $timeEntryId
      * @return AbstractDataObject
      */
-    public function get(int $timeEntryId): AbstractDataObject
+    public function get(int $timeEntryId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('time_entries/%s', $timeEntryId));
         return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);
@@ -81,7 +81,7 @@ class TimeEntries extends AbstractEndpoint
      * @param TimeEntryDataObject $timeEntry
      * @return AbstractDataObject
      */
-    public function createViaDuration(TimeEntryDataObject $timeEntry): AbstractDataObject
+    public function createViaDuration(TimeEntryDataObject $timeEntry) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateViaDurationFields, [], $timeEntry);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateViaDurationFields, $data, $timeEntry);
@@ -98,7 +98,7 @@ class TimeEntries extends AbstractEndpoint
      * @param TimeEntryDataObject $timeEntry
      * @return AbstractDataObject
      */
-    public function createViaStartAndEndTime(TimeEntryDataObject $timeEntry): AbstractDataObject
+    public function createViaStartAndEndTime(TimeEntryDataObject $timeEntry) : AbstractDataObject
     {
         $data = $this->addRequiredDataFromDataObject(
             static::$requiredCreateViaStartAndEndTimeFields,
@@ -122,7 +122,7 @@ class TimeEntries extends AbstractEndpoint
      * @param TimeEntryDataObject $timeEntry
      * @return AbstractDataObject
      */
-    public function update(TimeEntryDataObject $timeEntry): AbstractDataObject
+    public function update(TimeEntryDataObject $timeEntry) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $timeEntry);
         $options  = [RequestOptions::JSON => $data];
@@ -137,7 +137,7 @@ class TimeEntries extends AbstractEndpoint
      * @param int $timeEntryId
      * @return AbstractDataObject
      */
-    public function delete(int $timeEntryId): AbstractDataObject
+    public function delete(int $timeEntryId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('time_entries/%s', $timeEntryId));
         return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);

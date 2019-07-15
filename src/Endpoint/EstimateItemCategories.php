@@ -26,7 +26,7 @@ class EstimateItemCategories extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('estimate_item_categories', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(EstimateItemCategoryCollection::class, $response);
@@ -38,7 +38,7 @@ class EstimateItemCategories extends AbstractEndpoint
      * @param EstimateItemCategoryDataObject $estimateItemCategory
      * @return AbstractDataObject
      */
-    public function create(EstimateItemCategoryDataObject $estimateItemCategory): AbstractDataObject
+    public function create(EstimateItemCategoryDataObject $estimateItemCategory) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $estimateItemCategory);
         $options  = [RequestOptions::JSON => $data];
@@ -53,7 +53,7 @@ class EstimateItemCategories extends AbstractEndpoint
      * @param int $estimateItemCategoryId
      * @return AbstractDataObject
      */
-    public function get(int $estimateItemCategoryId): AbstractDataObject
+    public function get(int $estimateItemCategoryId) : AbstractDataObject
     {
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategoryId);
         $response = $this->getHttpClient()->get($uri);
@@ -66,7 +66,7 @@ class EstimateItemCategories extends AbstractEndpoint
      * @param EstimateItemCategoryDataObject $estimateItemCategory
      * @return AbstractDataObject
      */
-    public function update(EstimateItemCategoryDataObject $estimateItemCategory): AbstractDataObject
+    public function update(EstimateItemCategoryDataObject $estimateItemCategory) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $estimateItemCategory);
         $options  = [RequestOptions::JSON => $data];
@@ -82,7 +82,7 @@ class EstimateItemCategories extends AbstractEndpoint
      * @param int $estimateItemCategoryId
      * @return AbstractDataObject
      */
-    public function delete(int $estimateItemCategoryId): AbstractDataObject
+    public function delete(int $estimateItemCategoryId) : AbstractDataObject
     {
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategoryId);
         $response = $this->getHttpClient()->delete($uri);

@@ -34,7 +34,7 @@ class Roles extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('roles', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(RoleCollection::class, $response);
@@ -46,7 +46,7 @@ class Roles extends AbstractEndpoint
      * @param RoleDataObject $role
      * @return AbstractDataObject
      */
-    public function create(RoleDataObject $role): AbstractDataObject
+    public function create(RoleDataObject $role) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $role);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $role);
@@ -62,7 +62,7 @@ class Roles extends AbstractEndpoint
      * @param int $roleId
      * @return AbstractDataObject
      */
-    public function get(int $roleId): AbstractDataObject
+    public function get(int $roleId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('roles/%s', $roleId));
         return $this->getDataObjectFromResponse(RoleDataObject::class, $response);
@@ -74,7 +74,7 @@ class Roles extends AbstractEndpoint
      * @param RoleDataObject $role
      * @return AbstractDataObject
      */
-    public function update(RoleDataObject $role): AbstractDataObject
+    public function update(RoleDataObject $role) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$requiredUpdateFields, [], $role);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, $data, $role);
@@ -90,7 +90,7 @@ class Roles extends AbstractEndpoint
      * @param int $roleId
      * @return AbstractDataObject
      */
-    public function delete(int $roleId): AbstractDataObject
+    public function delete(int $roleId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('roles/%s', $roleId));
         return $this->getDataObjectFromResponse(RoleDataObject::class, $response);

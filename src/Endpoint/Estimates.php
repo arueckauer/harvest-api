@@ -81,7 +81,7 @@ class Estimates extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('estimates', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(EstimateCollection::class, $response);
@@ -93,7 +93,7 @@ class Estimates extends AbstractEndpoint
      * @param EstimateDataObject $estimate
      * @return AbstractDataObject
      */
-    public function create(EstimateDataObject $estimate): AbstractDataObject
+    public function create(EstimateDataObject $estimate) : AbstractDataObject
     {
         $data               = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $estimate);
         $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $estimate);
@@ -112,7 +112,7 @@ class Estimates extends AbstractEndpoint
      * @param EstimateLineItem $lineItem
      * @return AbstractDataObject
      */
-    public function createLineItem(int $estimateId, EstimateLineItem $lineItem): AbstractDataObject
+    public function createLineItem(int $estimateId, EstimateLineItem $lineItem) : AbstractDataObject
     {
         $data['line_items'] = $this->generateCreateLineItemArray($lineItem);
         $options            = [RequestOptions::JSON => $data];
@@ -127,7 +127,7 @@ class Estimates extends AbstractEndpoint
      * @param int $estimateId
      * @return AbstractDataObject
      */
-    public function get(int $estimateId): AbstractDataObject
+    public function get(int $estimateId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('estimates/%s', $estimateId));
         return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
@@ -139,7 +139,7 @@ class Estimates extends AbstractEndpoint
      * @param EstimateDataObject $estimate
      * @return AbstractDataObject
      */
-    public function update(EstimateDataObject $estimate): AbstractDataObject
+    public function update(EstimateDataObject $estimate) : AbstractDataObject
     {
         $data               = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $estimate);
         $data['line_items'] = $this->generateUpdateLineItemsArray($estimate->lineItems);
@@ -156,7 +156,7 @@ class Estimates extends AbstractEndpoint
      * @param EstimateLineItem $lineItem
      * @return AbstractDataObject
      */
-    public function updateLineItem(int $estimateId, EstimateLineItem $lineItem): AbstractDataObject
+    public function updateLineItem(int $estimateId, EstimateLineItem $lineItem) : AbstractDataObject
     {
         $data['line_items'] = $this->generateUpdateLineItemArray($lineItem);
         $options            = [RequestOptions::JSON => $data];
@@ -171,7 +171,7 @@ class Estimates extends AbstractEndpoint
      * @param int $estimateId
      * @return AbstractDataObject
      */
-    public function delete(int $estimateId): AbstractDataObject
+    public function delete(int $estimateId) : AbstractDataObject
     {
         $uri      = sprintf('estimates/%s', $estimateId);
         $response = $this->getHttpClient()->delete($uri);
@@ -184,7 +184,7 @@ class Estimates extends AbstractEndpoint
      * @param int $lineItemId
      * @return AbstractDataObject
      */
-    public function deleteLineItem(int $lineItemId): AbstractDataObject
+    public function deleteLineItem(int $lineItemId) : AbstractDataObject
     {
         $data = [
             'line_items' => [
@@ -203,7 +203,7 @@ class Estimates extends AbstractEndpoint
      * @param LineItemCollection $lineItemCollection
      * @return array
      */
-    private function generateCreateLineItemsArray(LineItemCollection $lineItemCollection): array
+    private function generateCreateLineItemsArray(LineItemCollection $lineItemCollection) : array
     {
         $lineItems = [];
         foreach ($lineItemCollection as $lineItemDataObject) {
@@ -217,7 +217,7 @@ class Estimates extends AbstractEndpoint
      * @param EstimateLineItem $lineItemDataObject
      * @return array
      */
-    private function generateCreateLineItemArray(EstimateLineItem $lineItemDataObject): array
+    private function generateCreateLineItemArray(EstimateLineItem $lineItemDataObject) : array
     {
         $requiredFields = static::$requiredLineItemCreateFreeFormFields;
         $optionalFields = static::$optionalLineItemCreateFreeFormFields;
@@ -231,7 +231,7 @@ class Estimates extends AbstractEndpoint
      * @param LineItemCollection $lineItemCollection
      * @return array
      */
-    private function generateUpdateLineItemsArray(LineItemCollection $lineItemCollection): array
+    private function generateUpdateLineItemsArray(LineItemCollection $lineItemCollection) : array
     {
         $lineItems = [];
         foreach ($lineItemCollection as $lineItemDataObject) {
@@ -245,7 +245,7 @@ class Estimates extends AbstractEndpoint
      * @param EstimateLineItem $lineItemDataObject
      * @return array
      */
-    private function generateUpdateLineItemArray(EstimateLineItem $lineItemDataObject): array
+    private function generateUpdateLineItemArray(EstimateLineItem $lineItemDataObject) : array
     {
         return $this->addOptionalDataFromDataObject(static::$optionalLineItemUpdateFields, [], $lineItemDataObject);
     }

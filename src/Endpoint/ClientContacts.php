@@ -46,7 +46,7 @@ class ClientContacts extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('contacts', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ClientContactCollection::class, $response);
@@ -58,7 +58,7 @@ class ClientContacts extends AbstractEndpoint
      * @param int $contactId
      * @return AbstractDataObject
      */
-    public function get(int $contactId): AbstractDataObject
+    public function get(int $contactId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('contacts/%s', $contactId));
         return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);
@@ -70,7 +70,7 @@ class ClientContacts extends AbstractEndpoint
      * @param ClientContactDataObject $contact
      * @return AbstractDataObject
      */
-    public function create(ClientContactDataObject $contact): AbstractDataObject
+    public function create(ClientContactDataObject $contact) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $contact);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $contact);
@@ -86,7 +86,7 @@ class ClientContacts extends AbstractEndpoint
      * @param ClientContactDataObject $contact
      * @return AbstractDataObject
      */
-    public function update(ClientContactDataObject $contact): AbstractDataObject
+    public function update(ClientContactDataObject $contact) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredUpdateFields, [], $contact);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, $data, $contact);
@@ -102,7 +102,7 @@ class ClientContacts extends AbstractEndpoint
      * @param int $contactId
      * @return AbstractDataObject
      */
-    public function delete(int $contactId): AbstractDataObject
+    public function delete(int $contactId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('contacts/%s', $contactId));
         return $this->getDataObjectFromResponse(ClientContactDataObject::class, $response);

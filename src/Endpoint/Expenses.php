@@ -45,7 +45,7 @@ class Expenses extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('expenses', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ExpenseCollection::class, $response);
@@ -57,7 +57,7 @@ class Expenses extends AbstractEndpoint
      * @param ExpenseDataObject $expense
      * @return AbstractDataObject
      */
-    public function create(ExpenseDataObject $expense): AbstractDataObject
+    public function create(ExpenseDataObject $expense) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $expense);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $expense);
@@ -73,7 +73,7 @@ class Expenses extends AbstractEndpoint
      * @param int $expenseId
      * @return AbstractDataObject
      */
-    public function get(int $expenseId): AbstractDataObject
+    public function get(int $expenseId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('expenses/%s', $expenseId));
         return $this->getDataObjectFromResponse(ExpenseDataObject::class, $response);
@@ -85,7 +85,7 @@ class Expenses extends AbstractEndpoint
      * @param ExpenseDataObject $expense
      * @return AbstractDataObject
      */
-    public function update(ExpenseDataObject $expense): AbstractDataObject
+    public function update(ExpenseDataObject $expense) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $expense);
         $options  = [RequestOptions::JSON => $data];
@@ -100,7 +100,7 @@ class Expenses extends AbstractEndpoint
      * @param int $expenseId
      * @return AbstractDataObject
      */
-    public function delete(int $expenseId): AbstractDataObject
+    public function delete(int $expenseId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('expenses/%s', $expenseId));
         return $this->getDataObjectFromResponse(ExpenseDataObject::class, $response);

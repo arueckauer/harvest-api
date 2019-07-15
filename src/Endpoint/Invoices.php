@@ -82,7 +82,7 @@ class Invoices extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('invoices', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(InvoiceCollection::class, $response);
@@ -94,7 +94,7 @@ class Invoices extends AbstractEndpoint
      * @param int $invoiceId
      * @return AbstractDataObject
      */
-    public function get(int $invoiceId): AbstractDataObject
+    public function get(int $invoiceId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('invoices/%s', $invoiceId));
         return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
@@ -106,7 +106,7 @@ class Invoices extends AbstractEndpoint
      * @param InvoiceDataObject $invoice
      * @return AbstractDataObject
      */
-    public function createFreeForm(InvoiceDataObject $invoice): AbstractDataObject
+    public function createFreeForm(InvoiceDataObject $invoice) : AbstractDataObject
     {
         $data               = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $invoice);
         $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoice);
@@ -124,7 +124,7 @@ class Invoices extends AbstractEndpoint
      * @param InvoiceDataObject $invoice
      * @return AbstractDataObject
      */
-    public function createBasedOnTrackedTimeAndExpenses(InvoiceDataObject $invoice): AbstractDataObject
+    public function createBasedOnTrackedTimeAndExpenses(InvoiceDataObject $invoice) : AbstractDataObject
     {
         $data               = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $invoice);
         $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoice);
@@ -142,7 +142,7 @@ class Invoices extends AbstractEndpoint
      * @param InvoiceDataObject $invoice
      * @return AbstractDataObject
      */
-    public function update(InvoiceDataObject $invoice): AbstractDataObject
+    public function update(InvoiceDataObject $invoice) : AbstractDataObject
     {
         $data               = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $invoice);
         $data['line_items'] = $this->generateUpdateLineItemsArray($invoice->lineItems);
@@ -158,7 +158,7 @@ class Invoices extends AbstractEndpoint
      * @param int $lineItemId
      * @return AbstractDataObject
      */
-    public function deleteLineItem(int $lineItemId): AbstractDataObject
+    public function deleteLineItem(int $lineItemId) : AbstractDataObject
     {
         $data = [
             'line_items' => [
@@ -178,7 +178,7 @@ class Invoices extends AbstractEndpoint
      * @param int $invoiceId
      * @return AbstractDataObject
      */
-    public function delete(int $invoiceId): AbstractDataObject
+    public function delete(int $invoiceId) : AbstractDataObject
     {
         $uri      = sprintf('invoices/%s', $invoiceId);
         $response = $this->getHttpClient()->delete($uri);
@@ -190,7 +190,7 @@ class Invoices extends AbstractEndpoint
      * @param LineItemCollection $lineItemCollection
      * @return array
      */
-    private function generateCreateLineItemsArray(LineItemCollection $lineItemCollection): array
+    private function generateCreateLineItemsArray(LineItemCollection $lineItemCollection) : array
     {
         $requiredFields = static::$requiredLineItemCreateFreeFormFields;
         $optionalFields = static::$optionalLineItemCreateFreeFormFields;
@@ -208,7 +208,7 @@ class Invoices extends AbstractEndpoint
      * @param LineItemCollection $lineItemCollection
      * @return array
      */
-    private function generateUpdateLineItemsArray(LineItemCollection $lineItemCollection): array
+    private function generateUpdateLineItemsArray(LineItemCollection $lineItemCollection) : array
     {
         $lineItems = [];
         foreach ($lineItemCollection as $lineItemDataObject) {

@@ -42,7 +42,7 @@ abstract class AbstractDataObject implements DataObjectInterface
      * Convert dataObject to an array
      * @return array
      */
-    public function toArray(): array
+    public function toArray() : array
     {
         $reflection = new ReflectionObject($this);
         $data       = [];

@@ -61,7 +61,7 @@ class Users extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('users', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(UserCollection::class, $response);
@@ -73,7 +73,7 @@ class Users extends AbstractEndpoint
      * @param UserDataObject $user
      * @return AbstractDataObject
      */
-    public function create(UserDataObject $user): AbstractDataObject
+    public function create(UserDataObject $user) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $user);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $user);
@@ -89,7 +89,7 @@ class Users extends AbstractEndpoint
      * @param int $userId
      * @return AbstractDataObject
      */
-    public function get(int $userId): AbstractDataObject
+    public function get(int $userId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('users/%s', $userId));
         return $this->getDataObjectFromResponse(UserDataObject::class, $response);
@@ -100,7 +100,7 @@ class Users extends AbstractEndpoint
      * @see https://help.getharvest.com/api-v2/users-api/users/users/#retrieve-the-currently-authenticated-user
      * @return AbstractDataObject
      */
-    public function getCurrentlyAuthenticatedUser(): AbstractDataObject
+    public function getCurrentlyAuthenticatedUser() : AbstractDataObject
     {
         $response = $this->getHttpClient()->get('users/me');
         return $this->getDataObjectFromResponse(UserDataObject::class, $response);
@@ -112,7 +112,7 @@ class Users extends AbstractEndpoint
      * @param UserDataObject $user
      * @return AbstractDataObject
      */
-    public function update(UserDataObject $user): AbstractDataObject
+    public function update(UserDataObject $user) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $user);
         $options  = [RequestOptions::JSON => $data];
@@ -127,7 +127,7 @@ class Users extends AbstractEndpoint
      * @param int $userId
      * @return AbstractDataObject
      */
-    public function delete(int $userId): AbstractDataObject
+    public function delete(int $userId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('users/%s', $userId));
         return $this->getDataObjectFromResponse(UserDataObject::class, $response);

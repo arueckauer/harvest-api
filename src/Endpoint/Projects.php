@@ -67,7 +67,7 @@ class Projects extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('projects', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ProjectCollection::class, $response);
@@ -79,7 +79,7 @@ class Projects extends AbstractEndpoint
      * @param ProjectDataObject $project
      * @return AbstractDataObject
      */
-    public function create(ProjectDataObject $project): AbstractDataObject
+    public function create(ProjectDataObject $project) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $project);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $project);
@@ -95,7 +95,7 @@ class Projects extends AbstractEndpoint
      * @param int $projectId
      * @return AbstractDataObject
      */
-    public function get(int $projectId): AbstractDataObject
+    public function get(int $projectId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('projects/%s', $projectId));
         return $this->getDataObjectFromResponse(ProjectDataObject::class, $response);
@@ -107,7 +107,7 @@ class Projects extends AbstractEndpoint
      * @param ProjectDataObject $project
      * @return AbstractDataObject
      */
-    public function update(ProjectDataObject $project): AbstractDataObject
+    public function update(ProjectDataObject $project) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $project);
         $options  = [RequestOptions::JSON => $data];
@@ -122,7 +122,7 @@ class Projects extends AbstractEndpoint
      * @param int $projectId
      * @return AbstractDataObject
      */
-    public function delete(int $projectId): AbstractDataObject
+    public function delete(int $projectId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('projects/%s', $projectId));
         return $this->getDataObjectFromResponse(ProjectDataObject::class, $response);

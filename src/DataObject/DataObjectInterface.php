@@ -6,5 +6,5 @@ namespace arueckauer\HarvestApi\DataObject;
 
 interface DataObjectInterface
 {
-    public function toArray(): array;
+    public function toArray() : array;
 }

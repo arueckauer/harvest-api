@@ -35,7 +35,7 @@ class Clients extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('clients', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ClientCollection::class, $response);
@@ -47,7 +47,7 @@ class Clients extends AbstractEndpoint
      * @param int $clientId
      * @return AbstractDataObject
      */
-    public function get(int $clientId): AbstractDataObject
+    public function get(int $clientId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('clients/%s', $clientId));
         return $this->getDataObjectFromResponse(ClientDataObject::class, $response);
@@ -59,7 +59,7 @@ class Clients extends AbstractEndpoint
      * @param ClientDataObject $client
      * @return AbstractDataObject
      */
-    public function create(ClientDataObject $client): AbstractDataObject
+    public function create(ClientDataObject $client) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $client);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $client);
@@ -75,7 +75,7 @@ class Clients extends AbstractEndpoint
      * @param ClientDataObject $client
      * @return AbstractDataObject
      */
-    public function update(ClientDataObject $client): AbstractDataObject
+    public function update(ClientDataObject $client) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $client);
         $options  = [RequestOptions::JSON => $data];
@@ -90,7 +90,7 @@ class Clients extends AbstractEndpoint
      * @param int $clientId
      * @return AbstractDataObject
      */
-    public function delete(int $clientId): AbstractDataObject
+    public function delete(int $clientId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('clients/%s', $clientId));
         return $this->getDataObjectFromResponse(ClientDataObject::class, $response);

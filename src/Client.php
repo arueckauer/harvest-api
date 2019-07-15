@@ -107,7 +107,7 @@ class Client
      * Gets httpClient
      * @return ClientInterface
      */
-    public function getHttpClient(): ClientInterface
+    public function getHttpClient() : ClientInterface
     {
         if (null === $this->httpClient) {
             $config            = $this->getConfig();
@@ -124,7 +124,7 @@ class Client
      * @param ClientInterface $httpClient
      * @return Client
      */
-    public function setHttpClient(ClientInterface $httpClient): Client
+    public function setHttpClient(ClientInterface $httpClient) : Client
     {
         $this->httpClient = $httpClient;
         return $this;
@@ -134,7 +134,7 @@ class Client
      * Gets client contacts endpoint
      * @return ClientContacts
      */
-    public function clientContacts(): ClientContacts
+    public function clientContacts() : ClientContacts
     {
         if (null === $this->clientContacts) {
             $this->clientContacts = new ClientContacts($this->getHttpClient());
@@ -147,7 +147,7 @@ class Client
      * Gets clients endpoint
      * @return Clients
      */
-    public function clients(): Clients
+    public function clients() : Clients
     {
         if (null === $this->clients) {
             $this->clients = new Clients($this->getHttpClient());
@@ -160,7 +160,7 @@ class Client
      * Gets company endpoint
      * @return Company
      */
-    public function company(): Company
+    public function company() : Company
     {
         if (null === $this->company) {
             $this->company = new Company($this->getHttpClient());
@@ -173,7 +173,7 @@ class Client
      * Gets expense endpoint
      * @return Expenses
      */
-    public function expenses(): Expenses
+    public function expenses() : Expenses
     {
         if (null === $this->expenses) {
             $this->expenses = new Expenses($this->getHttpClient());
@@ -186,7 +186,7 @@ class Client
      * Gets expense categories endpoint
      * @return ExpenseCategories
      */
-    public function expenseCategories(): ExpenseCategories
+    public function expenseCategories() : ExpenseCategories
     {
         if (null === $this->expenseCategories) {
             $this->expenseCategories = new ExpenseCategories($this->getHttpClient());
@@ -199,7 +199,7 @@ class Client
      * Gets tasks endpoint
      * @return Roles
      */
-    public function roles(): Roles
+    public function roles() : Roles
     {
         if (null === $this->roles) {
             $this->roles = new Roles($this->getHttpClient());
@@ -212,7 +212,7 @@ class Client
      * Gets tasks endpoint
      * @return Tasks
      */
-    public function tasks(): Tasks
+    public function tasks() : Tasks
     {
         if (null === $this->tasks) {
             $this->tasks = new Tasks($this->getHttpClient());
@@ -225,7 +225,7 @@ class Client
      * Gets time entries endpoint
      * @return TimeEntries
      */
-    public function timeEntries(): TimeEntries
+    public function timeEntries() : TimeEntries
     {
         if (null === $this->timeEntries) {
             $this->timeEntries = new TimeEntries($this->getHttpClient());
@@ -238,7 +238,7 @@ class Client
      * Gets projects endpoint
      * @return Projects
      */
-    public function projects(): Projects
+    public function projects() : Projects
     {
         if (null === $this->projects) {
             $this->projects = new Projects($this->getHttpClient());
@@ -251,7 +251,7 @@ class Client
      * Gets users endpoint
      * @return Users
      */
-    public function users(): Users
+    public function users() : Users
     {
         if (null === $this->users) {
             $this->users = new Users($this->getHttpClient());
@@ -265,7 +265,7 @@ class Client
      * @param string $name
      * @return mixed
      */
-    public function getHeaders(string $name = ''): array
+    public function getHeaders(string $name = '') : array
     {
         if ('' === $name) {
             return $this->headers;
@@ -282,7 +282,7 @@ class Client
      * @param $value
      * @return $this
      */
-    public function addHeader(string $name, $value): Client
+    public function addHeader(string $name, $value) : Client
     {
         $this->headers[$name] = $value;
         return $this;
@@ -293,7 +293,7 @@ class Client
      * @param array $headers
      * @return Client
      */
-    public function setHeaders(array $headers): Client
+    public function setHeaders(array $headers) : Client
     {
         $this->headers = $headers;
         return $this;
@@ -304,7 +304,7 @@ class Client
      * @param string $name
      * @return mixed
      */
-    public function getConfig(string $name = ''): array
+    public function getConfig(string $name = '') : array
     {
         if ('' === $name) {
             return $this->config;
@@ -321,7 +321,7 @@ class Client
      * @param $value
      * @return $this
      */
-    public function addConfig(string $name, $value): Client
+    public function addConfig(string $name, $value) : Client
     {
         $this->config[$name] = $value;
         return $this;
@@ -332,7 +332,7 @@ class Client
      * @param array $config
      * @return Client
      */
-    public function setConfig(array $config): Client
+    public function setConfig(array $config) : Client
     {
         $this->config = $config;
         return $this;

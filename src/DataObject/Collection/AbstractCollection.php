@@ -67,7 +67,7 @@ abstract class AbstractCollection implements ArrayAccess, IteratorAggregate, Cou
      *
      * @return array
      */
-    public function toArray(): array
+    public function toArray() : array
     {
         return $this->data;
     }

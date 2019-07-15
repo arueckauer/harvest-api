@@ -35,7 +35,7 @@ abstract class AbstractEndpoint
      * @param ResponseInterface $response
      * @return AbstractCollection
      */
-    public function getCollectionFromResponse(string $collectionClass, ResponseInterface $response): AbstractCollection
+    public function getCollectionFromResponse(string $collectionClass, ResponseInterface $response) : AbstractCollection
     {
         $column = substr($collectionClass, strrpos($collectionClass, '\\') + 1);
         $data   = $this->outerArray($response, strtolower($column));
@@ -48,7 +48,7 @@ abstract class AbstractEndpoint
      * @param ResponseInterface $response
      * @return AbstractDataObject
      */
-    public function getDataObjectFromResponse($dataObjectClass, ResponseInterface $response): AbstractDataObject
+    public function getDataObjectFromResponse($dataObjectClass, ResponseInterface $response) : AbstractDataObject
     {
         return new $dataObjectClass($this->decodeJson($response));
     }
@@ -67,7 +67,7 @@ abstract class AbstractEndpoint
      * @param ClientInterface|HttpClient $httpClient
      * @return AbstractEndpoint
      */
-    public function setHttpClient(ClientInterface $httpClient): AbstractEndpoint
+    public function setHttpClient(ClientInterface $httpClient) : AbstractEndpoint
     {
         $this->httpClient = $httpClient;
         return $this;
@@ -97,7 +97,7 @@ abstract class AbstractEndpoint
      * @param string $column
      * @return array
      */
-    protected function innerArray(ResponseInterface $response, $column): array
+    protected function innerArray(ResponseInterface $response, $column) : array
     {
         $response = $this->decodeJson($response);
         return array_column($response, $column);
@@ -124,7 +124,7 @@ abstract class AbstractEndpoint
         array $requiredFields,
         array $data,
         AbstractDataObject $dataObject
-    ): array {
+    ) : array {
         foreach ($requiredFields as $key => $property) {
             $data[$key] = $this->getValueFromDataObject($dataObject, $property);
         }
@@ -143,7 +143,7 @@ abstract class AbstractEndpoint
         array $optionalFields,
         array $data,
         AbstractDataObject $dataObject
-    ): array {
+    ) : array {
         foreach ($optionalFields as $key => $property) {
             if (null !== $dataObject->$property) {
                 $data[$key] = $this->getValueFromDataObject($dataObject, $property);

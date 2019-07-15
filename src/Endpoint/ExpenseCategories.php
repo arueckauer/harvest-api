@@ -35,7 +35,7 @@ class ExpenseCategories extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('expense_categories', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ExpenseCategoryCollection::class, $response);
@@ -47,7 +47,7 @@ class ExpenseCategories extends AbstractEndpoint
      * @param ExpenseCategoryDataObject $expenseCategory
      * @return AbstractDataObject
      */
-    public function create(ExpenseCategoryDataObject $expenseCategory): AbstractDataObject
+    public function create(ExpenseCategoryDataObject $expenseCategory) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $expenseCategory);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $expenseCategory);
@@ -63,7 +63,7 @@ class ExpenseCategories extends AbstractEndpoint
      * @param int $expenseCategoryId
      * @return AbstractDataObject
      */
-    public function get(int $expenseCategoryId): AbstractDataObject
+    public function get(int $expenseCategoryId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('expense_categories/%s', $expenseCategoryId));
         return $this->getDataObjectFromResponse(ExpenseCategoryDataObject::class, $response);
@@ -75,7 +75,7 @@ class ExpenseCategories extends AbstractEndpoint
      * @param ExpenseCategoryDataObject $expenseCategory
      * @return AbstractDataObject
      */
-    public function update(ExpenseCategoryDataObject $expenseCategory): AbstractDataObject
+    public function update(ExpenseCategoryDataObject $expenseCategory) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $expenseCategory);
         $options  = [RequestOptions::JSON => $data];
@@ -90,7 +90,7 @@ class ExpenseCategories extends AbstractEndpoint
      * @param int $expenseCategoryId
      * @return AbstractDataObject
      */
-    public function delete(int $expenseCategoryId): AbstractDataObject
+    public function delete(int $expenseCategoryId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('expense_categories/%s', $expenseCategoryId));
         return $this->getDataObjectFromResponse(ExpenseCategoryDataObject::class, $response);

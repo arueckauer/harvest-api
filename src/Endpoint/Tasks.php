@@ -37,7 +37,7 @@ class Tasks extends AbstractEndpoint
      * @param array $options
      * @return AbstractCollection
      */
-    public function all(array $options = []): AbstractCollection
+    public function all(array $options = []) : AbstractCollection
     {
         $response = $this->getHttpClient()->get('tasks', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(TaskCollection::class, $response);
@@ -49,7 +49,7 @@ class Tasks extends AbstractEndpoint
      * @param TaskDataObject $task
      * @return AbstractDataObject
      */
-    public function create(TaskDataObject $task): AbstractDataObject
+    public function create(TaskDataObject $task) : AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $task);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $task);
@@ -65,7 +65,7 @@ class Tasks extends AbstractEndpoint
      * @param int $taskId
      * @return AbstractDataObject
      */
-    public function get(int $taskId): AbstractDataObject
+    public function get(int $taskId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->get(sprintf('tasks/%s', $taskId));
         return $this->getDataObjectFromResponse(TaskDataObject::class, $response);
@@ -77,7 +77,7 @@ class Tasks extends AbstractEndpoint
      * @param TaskDataObject $task
      * @return AbstractDataObject
      */
-    public function update(TaskDataObject $task): AbstractDataObject
+    public function update(TaskDataObject $task) : AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $task);
         $options  = [RequestOptions::JSON => $data];
@@ -92,7 +92,7 @@ class Tasks extends AbstractEndpoint
      * @param int $taskId
      * @return AbstractDataObject
      */
-    public function delete(int $taskId): AbstractDataObject
+    public function delete(int $taskId) : AbstractDataObject
     {
         $response = $this->getHttpClient()->delete(sprintf('tasks/%s', $taskId));
         return $this->getDataObjectFromResponse(TaskDataObject::class, $response);
