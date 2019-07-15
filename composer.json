@@ -19,7 +19,7 @@
     }
   ],
   "require": {
-    "php": ">=7.1.0",
+    "php": "^7.3",
     "container-interop/container-interop": "^1.2",
     "doctrine/annotations": "^1.6",
     "guzzlehttp/guzzle": "~6.0",
