@@ -8,6 +8,9 @@ use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\ClientInterface;
+use InvalidArgumentException;
+use function is_array;
+use function is_string;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractEndpoint
@@ -161,14 +164,14 @@ abstract class AbstractEndpoint
      */
     private function getValueFromDataObject(AbstractDataObject $dataObject, $property)
     {
-        if (\is_string($property)) {
+        if (is_string($property)) {
             return $dataObject->$property;
         }
 
-        if (\is_array($property)) {
+        if (is_array($property)) {
             return $dataObject->$property['class']->$property['property'];
         }
 
-        throw new \InvalidArgumentException('Property argument must be either of type string or array, neither given.');
+        throw new InvalidArgumentException('Property argument must be either of type string or array, neither given.');
     }
 }

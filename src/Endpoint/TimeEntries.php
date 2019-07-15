@@ -8,6 +8,7 @@ use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\TimeEntry as TimeEntryCollection;
 use arueckauer\HarvestApi\DataObject\TimeEntry as TimeEntryDataObject;
+use GuzzleHttp\RequestOptions;
 
 class TimeEntries extends AbstractEndpoint
 {
@@ -57,7 +58,7 @@ class TimeEntries extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('time_entries', [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get('time_entries', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(TimeEntryCollection::class, $response);
     }
 
@@ -84,7 +85,7 @@ class TimeEntries extends AbstractEndpoint
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateViaDurationFields, [], $timeEntry);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateViaDurationFields, $data, $timeEntry);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('time_entries', $options);
 
         return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);
@@ -109,7 +110,7 @@ class TimeEntries extends AbstractEndpoint
             $data,
             $timeEntry
         );
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('time_entries', $options);
 
         return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);
@@ -124,7 +125,7 @@ class TimeEntries extends AbstractEndpoint
     public function update(TimeEntryDataObject $timeEntry): AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $timeEntry);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('time_entries/%s', $timeEntry->id), $options);
 
         return $this->getDataObjectFromResponse(TimeEntryDataObject::class, $response);

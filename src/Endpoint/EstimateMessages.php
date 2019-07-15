@@ -8,6 +8,7 @@ use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\EstimateMessage as EstimateMessageCollection;
 use arueckauer\HarvestApi\DataObject\EstimateMessage as EstimateMessageDataObject;
+use GuzzleHttp\RequestOptions;
 
 class EstimateMessages extends AbstractEndpoint
 {
@@ -40,7 +41,7 @@ class EstimateMessages extends AbstractEndpoint
     public function all(int $estimateId, array $options = []): AbstractCollection
     {
         $uri      = sprintf('estimates/%s/messages', $estimateId);
-        $response = $this->getHttpClient()->get($uri, [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get($uri, [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(EstimateMessageCollection::class, $response);
     }
 
@@ -63,7 +64,7 @@ class EstimateMessages extends AbstractEndpoint
             $data,
             $estimateMessage
         );
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $uri      = sprintf('estimates/%s/messages', $estimateId);
         $response = $this->getHttpClient()->post($uri, $options);
 

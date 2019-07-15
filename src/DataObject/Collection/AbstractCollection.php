@@ -6,6 +6,7 @@ namespace arueckauer\HarvestApi\DataObject\Collection;
 
 use ArrayAccess;
 use ArrayIterator;
+use function count;
 use Countable;
 use IteratorAggregate;
 
@@ -50,7 +51,7 @@ abstract class AbstractCollection implements ArrayAccess, IteratorAggregate, Cou
      */
     public function count()
     {
-        return \count($this->data);
+        return count($this->data);
     }
 
     /**

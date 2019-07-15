@@ -6,6 +6,7 @@ namespace arueckauer\HarvestApi\Endpoint;
 
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\UserProjectAssignment as UserProjectAssignmentCollection;
+use GuzzleHttp\RequestOptions;
 
 class UserProjectAssignments extends AbstractEndpoint
 {
@@ -19,7 +20,7 @@ class UserProjectAssignments extends AbstractEndpoint
     public function all(int $userId, array $options = []): AbstractCollection
     {
         $uri      = sprintf('users/%s/project_assignments', $userId);
-        $response = $this->getHttpClient()->get($uri, [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get($uri, [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(UserProjectAssignmentCollection::class, $response);
     }
 
@@ -32,7 +33,7 @@ class UserProjectAssignments extends AbstractEndpoint
     public function allForProject(array $options = []): AbstractCollection
     {
         $uri      = 'users/me/project_assignments';
-        $response = $this->getHttpClient()->get($uri, [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get($uri, [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(UserProjectAssignmentCollection::class, $response);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace arueckauer\HarvestApi\DataObject;
 
 use arueckauer\HarvestApi\PropertyReference;
+use DateTimeImmutable;
 
 class EstimateMessage extends AbstractDataObject
 {
@@ -59,13 +60,13 @@ class EstimateMessage extends AbstractDataObject
     public $eventType;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $createdAt;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $updatedAt;

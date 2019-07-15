@@ -8,6 +8,7 @@ use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\InvoiceMessage as InvoiceMessageCollection;
 use arueckauer\HarvestApi\DataObject\InvoiceMessage as InvoiceMessageDataObject;
+use GuzzleHttp\RequestOptions;
 
 class InvoiceMessages extends AbstractEndpoint
 {
@@ -43,7 +44,7 @@ class InvoiceMessages extends AbstractEndpoint
     public function all(int $invoiceId, array $options = []): AbstractCollection
     {
         $uri      = sprintf('invoices/%s/messages', $invoiceId);
-        $response = $this->getHttpClient()->get($uri, [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get($uri, [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(InvoiceMessageCollection::class, $response);
     }
 
@@ -66,7 +67,7 @@ class InvoiceMessages extends AbstractEndpoint
             $data,
             $invoiceMessage
         );
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $uri      = sprintf('invoices/%s/messages', $invoiceId);
         $response = $this->getHttpClient()->post($uri, $options);
 

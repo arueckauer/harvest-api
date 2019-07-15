@@ -9,6 +9,7 @@ use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\Invoice as InvoiceCollection;
 use arueckauer\HarvestApi\DataObject\Collection\InvoiceLineItem as LineItemCollection;
 use arueckauer\HarvestApi\DataObject\Invoice as InvoiceDataObject;
+use GuzzleHttp\RequestOptions;
 
 class Invoices extends AbstractEndpoint
 {
@@ -83,7 +84,7 @@ class Invoices extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('invoices', [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get('invoices', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(InvoiceCollection::class, $response);
     }
 
@@ -111,7 +112,7 @@ class Invoices extends AbstractEndpoint
         $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoice);
         $data['line_items'] = $this->generateCreateLineItemsArray($invoice->lineItems);
 
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('invoices', $options);
 
         return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
@@ -129,7 +130,7 @@ class Invoices extends AbstractEndpoint
         $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $invoice);
         $data['line_items'] = $this->generateCreateLineItemsArray($invoice->lineItems);
 
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('invoices', $options);
 
         return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
@@ -145,7 +146,7 @@ class Invoices extends AbstractEndpoint
     {
         $data               = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $invoice);
         $data['line_items'] = $this->generateUpdateLineItemsArray($invoice->lineItems);
-        $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options            = [RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->patch(sprintf('invoices/%s', $invoice->id), $options);
 
         return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
@@ -166,7 +167,7 @@ class Invoices extends AbstractEndpoint
             ],
         ];
         $uri      = sprintf('invoices/%s', $lineItemId);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch($uri, $options);
         return $this->getDataObjectFromResponse(InvoiceDataObject::class, $response);
     }

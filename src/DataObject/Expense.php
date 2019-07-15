@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace arueckauer\HarvestApi\DataObject;
 
 use arueckauer\HarvestApi\PropertyReference;
+use DateTimeImmutable;
 
 class Expense extends AbstractDataObject
 {
@@ -101,7 +102,7 @@ class Expense extends AbstractDataObject
     public $lockedReason;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $spentDate;
@@ -117,13 +118,13 @@ class Expense extends AbstractDataObject
     public $units;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $createdAt;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $updatedAt;

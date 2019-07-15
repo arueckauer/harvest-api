@@ -6,6 +6,7 @@ namespace arueckauer\HarvestApi\DataObject\Reference;
 
 use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\PropertyReference;
+use DateTimeImmutable;
 
 class ProjectUserAssignment extends AbstractDataObject
 {
@@ -30,13 +31,13 @@ class ProjectUserAssignment extends AbstractDataObject
     public $budget;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $createdAt;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      * @PropertyReference(isReference=true, class="\DateTimeImmutable")
      */
     public $updatedAt;

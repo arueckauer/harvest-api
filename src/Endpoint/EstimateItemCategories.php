@@ -8,6 +8,7 @@ use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\EstimateItemCategory as EstimateItemCategoryCollection;
 use arueckauer\HarvestApi\DataObject\EstimateItemCategory as EstimateItemCategoryDataObject;
+use GuzzleHttp\RequestOptions;
 
 class EstimateItemCategories extends AbstractEndpoint
 {
@@ -27,7 +28,7 @@ class EstimateItemCategories extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('estimate_item_categories', [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get('estimate_item_categories', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(EstimateItemCategoryCollection::class, $response);
     }
 
@@ -40,7 +41,7 @@ class EstimateItemCategories extends AbstractEndpoint
     public function create(EstimateItemCategoryDataObject $estimateItemCategory): AbstractDataObject
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $estimateItemCategory);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('estimate_item_categories', $options);
 
         return $this->getDataObjectFromResponse(EstimateItemCategoryDataObject::class, $response);
@@ -68,7 +69,7 @@ class EstimateItemCategories extends AbstractEndpoint
     public function update(EstimateItemCategoryDataObject $estimateItemCategory): AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $estimateItemCategory);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $uri      = sprintf('estimate_item_categories/%s', $estimateItemCategory->id);
         $response = $this->getHttpClient()->patch($uri, $options);
 

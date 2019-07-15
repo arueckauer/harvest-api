@@ -10,6 +10,7 @@ use arueckauer\HarvestApi\DataObject\Collection\Estimate as EstimateCollection;
 use arueckauer\HarvestApi\DataObject\Collection\EstimateLineItem as LineItemCollection;
 use arueckauer\HarvestApi\DataObject\Estimate as EstimateDataObject;
 use arueckauer\HarvestApi\DataObject\EstimateLineItem;
+use GuzzleHttp\RequestOptions;
 
 class Estimates extends AbstractEndpoint
 {
@@ -82,7 +83,7 @@ class Estimates extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('estimates', [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get('estimates', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(EstimateCollection::class, $response);
     }
 
@@ -98,7 +99,7 @@ class Estimates extends AbstractEndpoint
         $data               = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $estimate);
         $data['line_items'] = $this->generateCreateLineItemsArray($estimate->lineItems);
 
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('estimates', $options);
 
         return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
@@ -114,7 +115,7 @@ class Estimates extends AbstractEndpoint
     public function createLineItem(int $estimateId, EstimateLineItem $lineItem): AbstractDataObject
     {
         $data['line_items'] = $this->generateCreateLineItemArray($lineItem);
-        $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options            = [RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->post(sprintf('estimates/%s', $estimateId), $options);
 
         return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
@@ -142,7 +143,7 @@ class Estimates extends AbstractEndpoint
     {
         $data               = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $estimate);
         $data['line_items'] = $this->generateUpdateLineItemsArray($estimate->lineItems);
-        $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options            = [RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->patch(sprintf('estimates/%s', $estimate->id), $options);
 
         return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
@@ -158,7 +159,7 @@ class Estimates extends AbstractEndpoint
     public function updateLineItem(int $estimateId, EstimateLineItem $lineItem): AbstractDataObject
     {
         $data['line_items'] = $this->generateUpdateLineItemArray($lineItem);
-        $options            = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options            = [RequestOptions::JSON => $data];
         $response           = $this->getHttpClient()->post(sprintf('estimates/%s', $estimateId), $options);
 
         return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
@@ -192,7 +193,7 @@ class Estimates extends AbstractEndpoint
             ],
         ];
         $uri      = sprintf('estimates/%s', $lineItemId);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch($uri, $options);
         return $this->getDataObjectFromResponse(EstimateDataObject::class, $response);
     }

@@ -8,6 +8,7 @@ use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\ExpenseCategory as ExpenseCategoryCollection;
 use arueckauer\HarvestApi\DataObject\ExpenseCategory as ExpenseCategoryDataObject;
+use GuzzleHttp\RequestOptions;
 
 class ExpenseCategories extends AbstractEndpoint
 {
@@ -36,7 +37,7 @@ class ExpenseCategories extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('expense_categories', [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get('expense_categories', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ExpenseCategoryCollection::class, $response);
     }
 
@@ -50,7 +51,7 @@ class ExpenseCategories extends AbstractEndpoint
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $expenseCategory);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $expenseCategory);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('expense_categories', $options);
 
         return $this->getDataObjectFromResponse(ExpenseCategoryDataObject::class, $response);
@@ -77,7 +78,7 @@ class ExpenseCategories extends AbstractEndpoint
     public function update(ExpenseCategoryDataObject $expenseCategory): AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $expenseCategory);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('expense_categories/%s', $expenseCategory->id), $options);
 
         return $this->getDataObjectFromResponse(ExpenseCategoryDataObject::class, $response);

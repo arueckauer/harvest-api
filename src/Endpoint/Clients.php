@@ -8,6 +8,7 @@ use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Client as ClientDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\Client as ClientCollection;
+use GuzzleHttp\RequestOptions;
 
 class Clients extends AbstractEndpoint
 {
@@ -36,7 +37,7 @@ class Clients extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('clients', [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get('clients', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(ClientCollection::class, $response);
     }
 
@@ -62,7 +63,7 @@ class Clients extends AbstractEndpoint
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $client);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $client);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('clients', $options);
 
         return $this->getDataObjectFromResponse(ClientDataObject::class, $response);
@@ -77,7 +78,7 @@ class Clients extends AbstractEndpoint
     public function update(ClientDataObject $client): AbstractDataObject
     {
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, [], $client);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('clients/%s', $client->id), $options);
 
         return $this->getDataObjectFromResponse(ClientDataObject::class, $response);

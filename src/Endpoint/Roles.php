@@ -8,6 +8,7 @@ use arueckauer\HarvestApi\DataObject\AbstractDataObject;
 use arueckauer\HarvestApi\DataObject\Collection\AbstractCollection;
 use arueckauer\HarvestApi\DataObject\Collection\Role as RoleCollection;
 use arueckauer\HarvestApi\DataObject\Role as RoleDataObject;
+use GuzzleHttp\RequestOptions;
 
 class Roles extends AbstractEndpoint
 {
@@ -35,7 +36,7 @@ class Roles extends AbstractEndpoint
      */
     public function all(array $options = []): AbstractCollection
     {
-        $response = $this->getHttpClient()->get('roles', [\GuzzleHttp\RequestOptions::QUERY => $options]);
+        $response = $this->getHttpClient()->get('roles', [RequestOptions::QUERY => $options]);
         return $this->getCollectionFromResponse(RoleCollection::class, $response);
     }
 
@@ -49,7 +50,7 @@ class Roles extends AbstractEndpoint
     {
         $data     = $this->addRequiredDataFromDataObject(static::$requiredCreateFields, [], $role);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalCreateFields, $data, $role);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->post('roles', $options);
 
         return $this->getDataObjectFromResponse(RoleDataObject::class, $response);
@@ -77,7 +78,7 @@ class Roles extends AbstractEndpoint
     {
         $data     = $this->addOptionalDataFromDataObject(static::$requiredUpdateFields, [], $role);
         $data     = $this->addOptionalDataFromDataObject(static::$optionalUpdateFields, $data, $role);
-        $options  = [\GuzzleHttp\RequestOptions::JSON => $data];
+        $options  = [RequestOptions::JSON => $data];
         $response = $this->getHttpClient()->patch(sprintf('roles/%s', $role->id), $options);
 
         return $this->getDataObjectFromResponse(RoleDataObject::class, $response);
