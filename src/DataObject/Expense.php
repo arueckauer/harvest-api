@@ -20,16 +20,31 @@ class Expense extends AbstractDataObject
     public $client;
 
     /**
+     * @var int
+     */
+    public $projectId;
+
+    /**
      * @var Reference\Project
      * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\Project")
      */
     public $project;
 
     /**
+     * @var int
+     */
+    public $expenseCategoryId;
+
+    /**
      * @var Reference\ExpenseCategory
      * @PropertyReference(isReference=true, class="arueckauer\HarvestApi\DataObject\Reference\ExpenseCategory")
      */
     public $expenseCategory;
+
+    /**
+     * @var int
+     */
+    public $userId;
 
     /**
      * @var Reference\Creator
