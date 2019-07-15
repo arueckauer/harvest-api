@@ -5,19 +5,12 @@ declare(strict_types = 1);
 namespace arueckauer\HarvestApi;
 
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
 
-class ClientFactory implements FactoryInterface
+class ClientFactory
 {
-    /**
-     * @param ContainerInterface $container
-     * @param string $requestedName
-     * @param array|null $options
-     * @return Client
-     */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container) : Client
     {
-        $applicationConfig = $container->has('config')? $container->get('config') : [];
+        $applicationConfig = $container->has('config') ? $container->get('config') : [];
         $harvestConfig     = array_key_exists(self::class, $applicationConfig)
             ? $applicationConfig[self::class]['config']
             : [];
