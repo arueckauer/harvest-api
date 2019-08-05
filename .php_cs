@@ -61,7 +61,6 @@ return PhpCsFixer\Config::create()
         'phpdoc_var_without_name'                   => true,
         'return_type_declaration'                   => ['space_before' => 'one'],
         'short_scalar_cast'                         => true,
-        'simplified_null_return'                    => true,
         'single_blank_line_before_namespace'        => true,
         'single_line_comment_style'                 => true,
         'single_quote'                              => ['strings_containing_single_quote_chars' => true],
