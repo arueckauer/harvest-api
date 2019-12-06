@@ -10,6 +10,7 @@ use arueckauer\HarvestApi\Endpoint\Company;
 use arueckauer\HarvestApi\Endpoint\ExpenseCategories;
 use arueckauer\HarvestApi\Endpoint\Expenses;
 use arueckauer\HarvestApi\Endpoint\Projects;
+use arueckauer\HarvestApi\Endpoint\ProjectTaskAssignments;
 use arueckauer\HarvestApi\Endpoint\Roles;
 use arueckauer\HarvestApi\Endpoint\Tasks;
 use arueckauer\HarvestApi\Endpoint\TimeEntries;
@@ -68,6 +69,11 @@ class Client
      * @var Projects
      */
     private $projects;
+
+    /**
+     * @var ProjectTaskAssignments
+     */
+    private $projectTaskAssignments;
 
     /**
      * @var Users
@@ -245,6 +251,15 @@ class Client
         }
 
         return $this->projects;
+    }
+
+    public function projectTaskAssignments() : ProjectTaskAssignments
+    {
+        if (null === $this->projectTaskAssignments) {
+            $this->projectTaskAssignments = new ProjectTaskAssignments($this->getHttpClient());
+        }
+
+        return $this->projectTaskAssignments;
     }
 
     /**
