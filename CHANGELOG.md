@@ -2,6 +2,33 @@
 
 All notable changes to this publication will be documented in this file.
 
+## v0.2.0 (2019-12-06)
+
+Pre-release adding ProjectTaskAssignments endpoint to Client
+
+[Full changelog](https://github.com/arueckauer/harvest-api/compare/0.1.0...0.2.0)
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+
 ## v0.1.0 (2018-12-17)
 
 Pre-release adding configurable (annotated) referenced objects.
